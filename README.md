@@ -49,29 +49,23 @@ Copy code
 
 ### Installation
 1. Clone the repository:
-git clone https://github.com/your-username/factortastic.git
+git clone https://github.com/premiumvortex/factortastic.git
 
-css
-Copy code
 2. Navigate to the project directory:
 cd factortastic
 
-arduino
-Copy code
-3. To build and run the Docker containers for both frontend and backend
-, use:
+3. To build and run the Docker containers for both frontend and backend, use:
 
-css
-Copy code
+
 docker-compose up --build
-Usage
+### Usage
 After successfully building and running the containers, you can access the Factortastic game through your web browser by visiting localhost:PORT, where PORT is the port number specified in the docker-compose.yml file for the frontend service.
 
-Contributing
+### Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-Fork the Project
-Create your Feature Branch (git checkout -b feature/AmazingFeature)
-Commit your Changes (git commit -m 'Add some AmazingFeature')
-Push to the Branch (git push origin feature/AmazingFeature)
-Open a Pull Request
+1. Fork the Project
+2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
+3. Commit your Changes (git commit -m 'Add some AmazingFeature')
+4. Push to the Branch (git push origin feature/AmazingFeature)
+5. Open a Pull Request
