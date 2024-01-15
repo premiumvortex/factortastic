@@ -16,30 +16,6 @@ The project is divided into two main directories:
 - **backend**: Contains the server-side code written in Node.js. It includes a Dockerfile for containerization, package management files, and the main server script.
 - **frontend**: Houses the client-side code. This includes the user interface, written in HTML/CSS/JS, along with configuration files for Vite and a dedicated Dockerfile.
 
-Below is the tree structure of the project files:
-factortastic
-├── backend
-│ ├── Dockerfile
-│ ├── node_modules
-│ ├── package.json
-│ ├── package-lock.json
-│ └── server.js
-├── docker-compose.yml
-├── frontend
-│ ├── Dockerfile
-│ ├── index.html
-│ ├── node_modules
-│ ├── package.json
-│ ├── package-lock.json
-│ ├── public
-│ ├── README.md
-│ ├── src
-│ └── vite.config.js
-└── README.md
-
-markdown
-Copy code
-
 ## Getting Started
 
 ### Prerequisites
@@ -62,7 +38,6 @@ docker-compose up --build
 After successfully building and running the containers, you can access the Factortastic game through your web browser by visiting localhost:PORT, where PORT is the port number specified in the docker-compose.yml file for the frontend service.
 
 ### Contributing
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 1. Fork the Project
 2. Create your Feature Branch (git checkout -b feature/AmazingFeature)
