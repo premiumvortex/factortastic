@@ -9,6 +9,17 @@ services:
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
+  storybook:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.storybook
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
   backend:
     build: ./backend
     ports:
