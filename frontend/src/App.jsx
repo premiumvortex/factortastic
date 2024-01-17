@@ -1,40 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import {Loading} from "./components/Loading.jsx";
+import React, { useState, useEffect } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
+import { Loading } from "./components/Loading.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+    const [isLoading, setIsLoading] = useState(true);
 
-  return (
-      <>
-          <div className="loading">
-              < Loading/>
-          </div>
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 8000); // 10000 milliseconds = 10 seconds
 
-          <div>
-              <a href="https://vitejs.dev" target="_blank">
-                  <img src={viteLogo} className="logo" alt="Vite logo"/>
-              </a>
-              <a href="https://react.dev" target="_blank">
-                  <img src={reactLogo} className="logo react" alt="React logo"/>
-              </a>
-          </div>
-          <h1>Vite + React</h1>
-          <div className="card">
-              <button onClick={() => setCount((count) => count + 1)}>
-                  count is {count}
-              </button>
-              <p>
-                  Edit <code>src/App.jsx</code> and save to test HMR
-              </p>
-          </div>
-          <p className="read-the-docs">
-              Click on the Vite and React logos to learn more
-          </p>
-      </>
-  )
+        return () => clearTimeout(timer); // Cleanup the timer
+    }, []);
+
+    if (isLoading) {
+        return <Loading />;
+    }
+
+    return (
+        <div>
+            {/* The content that should be displayed after the loading screen */}
+            <h1>Welcome to the app!</h1>
+            <img src={reactLogo} alt="React logo" />
+            <img src={viteLogo} alt="Vite logo" />
+            {/* Other components or content */}
+        </div>
+    );
 }
 
-export default App
+export default App;
