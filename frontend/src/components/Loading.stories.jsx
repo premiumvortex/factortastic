@@ -1,6 +1,5 @@
 import React from "react";
 import "./loading.css";
-import factortasticCard from '../assets/artwork/Individual_Assets/Card-Background_With_Boarders.png';
 import { Loading } from "./Loading"; // Assuming you have this component
 
 // Default export that describes the component
