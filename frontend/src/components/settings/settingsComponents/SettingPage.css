@@ -1,0 +1,47 @@
+
+body {
+    background-image: url("/Users/phoebe.wang/Desktop/factortastic/frontend/src/assets/artwork/Individual_Assets/Game_Background.PNG");
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+.GameSettings {
+    background-color: rgba(81, 110, 190, 1);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 80vh; /* Adjust width as needed */
+    height: 90vw; /* Adjust height as needed */
+    top: 50%;
+    left: 50%;
+    border-radius: 5vh;
+}
+
+.Title {
+    font-size: 3rem;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Music {
+    font-size: 3rem;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.Sound {
+    font-size: 3rem;
+    position: absolute;
+    top: 40%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.color1{
+    color: rgba(38, 219, 179, 1);
+}
+
+.color2{
+    color: rgba(255, 84, 229, 1);
+}
