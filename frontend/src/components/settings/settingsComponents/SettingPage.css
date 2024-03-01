@@ -7,12 +7,13 @@ body {
     background-color: rgba(81, 110, 190, 1);
     position: absolute;
     transform: translate(-50%, -50%);
-    width: 80vh; /* Adjust width as needed */
-    height: 90vw; /* Adjust height as needed */
+    width: 80vw; /* Adjust width as needed */
+    height: 90vh; /* Adjust height as needed */
     top: 50%;
     left: 50%;
     border-radius: 5vh;
 }
+
 
 .Title {
     font-size: 3rem;
@@ -22,7 +23,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.Music {
+.MusicText {
     font-size: 3rem;
     position: absolute;
     top: 20%;
@@ -30,11 +31,25 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.Sound {
+.MusicButton {
+    position: absolute;
+    top: 23%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+}
+
+.SoundText {
     font-size: 3rem;
     position: absolute;
     top: 40%;
     left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.SoundButton {
+    position: absolute;
+    top: 45%;
+    left: 75%;
     transform: translate(-50%, -50%);
 }
 
@@ -45,3 +60,15 @@ body {
 .color2{
     color: rgba(255, 84, 229, 1);
 }
+
+.button-container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 80%;
+    left: 50%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns with equal width */
+  gap: 5vh; /* Add some gap between buttons */
+}
+
+

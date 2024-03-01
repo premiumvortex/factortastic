@@ -3,10 +3,10 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/system';
 
 const StyledButton = styled(Button)({
-  backgroundColor: 'pink',
-  width: '10vw', // Set width to create a square button
-  height: '5vh', // Set height to match width
-  boxShadow: '0px 6px 10px rgba(0, 0, 255, 0.3)', // Blue shadow
+  backgroundColor: 'rgba(255, 84, 229, 1)',
+  width: '30vw', // Set width to create a square button
+  height: '6vh', // Set height to match width
+  boxShadow: '0px 8px 25px 0px rgba(150, 252, 253, 1)', // Blue shadow
   transition: 'box-shadow 0.3s ease', // Add transition for smoother effect
   borderRadius: '8px',
   '&:hover': {
