@@ -3,26 +3,24 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import { Loading } from "./components/Loading.jsx";
+import RandomPlacer from './components/RandomPlacer'; // Adjust the import path based on your file structure
 
 function App() {
-    const [isLoading, setIsLoading] = useState(true);
+    const [loadingDone, setLoadingDone] = useState(false);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 8000); // 10000 milliseconds = 10 seconds
+    const handleLoadingDone = () => {
+        setLoadingDone(true);
+    };
 
-        return () => clearTimeout(timer); // Cleanup the timer
-    }, []);
-
-    if (isLoading) {
-        return <Loading />;
+    if (!loadingDone) {
+        return <Loading onDone={handleLoadingDone} />;
     }
 
     return (
         <div>
             {/* The content that should be displayed after the loading screen */}
             <h1>Welcome to the app!</h1>
+            <RandomPlacer />
             <img src={reactLogo} alt="React logo" />
             <img src={viteLogo} alt="Vite logo" />
             {/* Other components or content */}
