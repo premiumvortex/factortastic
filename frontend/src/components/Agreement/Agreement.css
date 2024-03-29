@@ -1,0 +1,58 @@
+/* PrivacyPopup.css */
+.privacy-popup {
+    /* position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    background-color: lightgray;
+    height: 100%;
+    width: auto;
+    padding: 20px;
+    border: 2px solid black; /* Border color of the checkbox */
+    border-radius: 10pt;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    justify-content: space-between; /* Add space between items */
+  }
+  
+  .privacy-popup button {
+    background-color: grey;
+    color: black;
+    font-size: larger;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto; /* Center the button horizontally */
+    height: 30%;
+    width: 90%; /* Make the button take up 90% of the width */
+}
+  
+  .privacy-popup button:hover {
+    background-color: magenta;
+    box-shadow: 0px 4px 6px rgba(0, 255, 0, 0.5); /* Green drop shadow */
+  }
+
+  
+  .privacy-popup label {
+    /* display: block; */
+    margin-bottom: 20px; /* Add some space below the checkbox */
+  }
+  
+  .privacy-popup input[type="checkbox"] {
+    transform: scale(3); /* Make the checkmark bigger */
+    padding: 10pt;
+    border-color: black;
+    color: green;
+  }
+
+
+.privacy-popup-text {
+    padding: 30pt;
+    font-size: 20pt;
+    
+}
+  

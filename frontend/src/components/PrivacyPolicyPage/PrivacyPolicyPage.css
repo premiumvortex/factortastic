@@ -1,0 +1,14 @@
+.PrivacyPolicyPage-container {
+    background-color: grey;
+    width: 100vw;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    position: relative;
+    width: auto; /* Full width */
+    height: 90vh; /* Full viewport height */
+
+}
+
