@@ -16,20 +16,17 @@ export const HomePage = () => {
     };
 
     return (
-        <div className="HomePage">
-            {/* <div className="container"> */}
-                <h1>
-                    <span className="factor">factor</span>
-                    <span className="tastic">tastic!</span>
-                </h1>
-        
-                <img onClick={handleClick} src={StartButton}></img>
-        
-                <div className="pop-up-container">
-                    {showPopup && <Agreement onClose={handleClosePopup} />}   
-                </div>    
-            {/* </div> */}
-             
+        <div className="home-page">
+            <h1>
+                <span className="factor">factor</span>
+                <span className="tastic">tastic!</span>
+            </h1>
+    
+            <img onClick={handleClick} src={StartButton}></img>
+    
+            <div className="pop-up-container">
+                {showPopup && <Agreement onClose={handleClosePopup} />}   
+            </div>               
         </div>
     );
 }

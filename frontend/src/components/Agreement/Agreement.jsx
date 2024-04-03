@@ -24,20 +24,16 @@ export const Agreement = ({ onClose }) => {
     return (
         <div className="privacy-popup">
             <label>
-                {/* <input type="checkbox" checked={isChecked} onChange={handleCheckboxChange} /> */}
-                
                 <Checkbox
                     checked={isChecked}
                     onChange={handleCheckboxChange}
                     color="success"
-                    sx={{
-                        '& .MuiSvgIcon-root': { fontSize: '32px' }, 
-                        
-                    }} 
+                    sx={{ '& .MuiSvgIcon-root': { fontSize: '48px' }}} 
                 />
                 <span className="privacy-popup-text">I have read and agree to the terms and conditions</span>
             </label>
-            <button onClick={handleClose}>Agree</button>
+            <p className="privacy-policy-link">Privacy Policy</p>
+            <button className="agree-button" onClick={handleClose}>Agree</button>
         </div>
     );
 }

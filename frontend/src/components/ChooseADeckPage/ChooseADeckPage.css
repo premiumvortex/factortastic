@@ -1,0 +1,26 @@
+/* App.css */
+.choose-deck-page {
+    height: 100vh;
+    background-image: url('../../assets/artwork/Individual_Assets/Game_Background.PNG');
+    text-align: center;
+    background-position: center; 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    padding: 40px;
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 72pt;
+    color: cyan;
+}
+
+.deck-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 40px; 
+    grid-auto-rows: 1fr; 
+    height: 50%;
+    width: 80%;
+    margin: 40pt auto;
+}

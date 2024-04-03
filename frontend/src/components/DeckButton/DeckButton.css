@@ -1,0 +1,15 @@
+/* DeckButton.css */
+.deck-button {
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 50px;
+    width: 90%; 
+    height: 90%; 
+    text-transform: capitalize;
+    font-size: 32pt;
+    font-weight: bolder;
+    color: black;
+}
+
+
