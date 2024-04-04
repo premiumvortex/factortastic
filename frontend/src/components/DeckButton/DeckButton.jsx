@@ -1,30 +1,28 @@
-// DeckButton.jsx
 import React from 'react';
-import './DeckButton.css'; // Import the CSS file for styling
-import Lock from './Lock.svg'
+import './DeckButton.css';
+import Lock from './Lock.svg'; // Keep this import if you're using the icon elsewhere
 
-export const DeckButton = ( { deckName, unlocked, onClick, color } ) => {
-    const unlockDeck = () => {
-        if (!unlocked) {
-          onClick(); 
-        }
-    };
-    
+export const DeckButton = ({ deckName, unlocked, onClick, color }) => {
+    // Adjust styling based on state
     const buttonStyle = {
         backgroundColor: color,
-        // boxShadow: `0 8px 12px rgba(${color}, 0.3)`,
-        pointerEvents: unlocked ? 'auto' : 'none' 
+        pointerEvents: unlocked === 'disabled' ? 'none' : 'auto',
+        // opacity: unlocked === 'disabled' ? 0.5 : 1, // Optionally, make disabled buttons appear faded
     };
-    
+
+    // Determine content: Show deckName for 'unlocked' and 'disabled', lock icon for 'locked'
+    const buttonContent = unlocked === 'locked' ? <img src={Lock} alt="Locked Icon"/> : deckName;
+
+    // Adjust onClick: Only invoke onClick if not 'disabled'
+    const handleClick = () => {
+        if (unlocked !== 'disabled') {
+            onClick();
+        }
+    };
+
     return (
-        <button className="deck-button" style={buttonStyle} onClick={unlockDeck}>
-            {/* {unlocked ? (
-                deckName
-            ) : (
-                <img src={Lock} alt="Icon" />
-            )} */}
-            {deckName}
+        <button className="deck-button" onClick={handleClick} style={buttonStyle}>
+            {buttonContent}
         </button>
     );
-}
-
+};
