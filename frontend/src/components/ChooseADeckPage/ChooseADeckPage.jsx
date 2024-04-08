@@ -2,22 +2,26 @@ import React, { useState } from 'react';
 import { DeckButton } from '../DeckButton/DeckButton';
 import './ChooseADeckPage.css';
 
+// ChooseADeck uses an array that has variable called status.
+// Status has 3 states:
+// unlocked, locked, disabled
+//
 export const ChooseADeckPage = () => {
     const [decks, setDecks] = useState([
-        { name: 'red', unlocked: 'unlocked', color: '#B62F32' },
-        { name: 'purple', unlocked: 'unlocked', color: '#4E41BC'},
-        { name: 'Deck 3', unlocked: 'locked', color: '#81B850' },
-        { name: 'Deck 4', unlocked: 'locked', color: '#96FCFD' },
-        { name: 'Deck 5', unlocked: 'locked', color: '#BF6C2F' },
-        { name: 'Deck 6', unlocked: 'locked', color: '#E9CC47' },
-        { name: 'coming soon', unlocked: 'disabled', color: '#C2C2C2'},
-        { name: 'coming soon', unlocked: 'disabled', color: '#C2C2C2' },
+        { name: 'red', status: 'unlocked', color: '#B62F32' },
+        { name: 'purple', status: 'unlocked', color: '#4E41BC'},
+        { name: 'Deck 3', status: 'locked', color: '#81B850' },
+        { name: 'Deck 4', status: 'locked', color: '#96FCFD' },
+        { name: 'Deck 5', status: 'locked', color: '#BF6C2F' },
+        { name: 'Deck 6', status: 'locked', color: '#E9CC47' },
+        { name: 'coming soon', status: 'disabled', color: '#C2C2C2'},
+        { name: 'coming soon', status: 'disabled', color: '#C2C2C2' },
     ]);
 
     const handleDeckClick = (index) => {
         const updatedDecks = [...decks];
-        if (updatedDecks[index].unlocked !== 'disabled') {
-            updatedDecks[index].unlocked = updatedDecks[index].unlocked === 'locked' ? 'unlocked' : 'locked';
+        if (updatedDecks[index].status !== 'disabled') {
+            updatedDecks[index].status = updatedDecks[index].status === 'locked' ? 'unlocked' : 'locked';
             setDecks(updatedDecks);
         }
     };
@@ -30,7 +34,7 @@ export const ChooseADeckPage = () => {
                     <DeckButton
                         key={index}
                         deckName={deck.name}
-                        unlocked={deck.unlocked}
+                        status={deck.status}
                         color={deck.color}
                         onClick={() => handleDeckClick(index)}
                     />
