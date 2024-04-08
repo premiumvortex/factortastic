@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { soundManager } from './SoundManager'; // Ensure this path matches where you define SoundManager
+import { soundManager } from './SoundManager';
 
 const SoundContext = createContext();
 

@@ -1,7 +1,7 @@
 // SoundManager.js
 import { Howl } from 'howler';
 import clickSound from '../../assets/sound/SoundEffects/Sample_Click.mp3';
-import forg11 from '../../assets/sound/BackgroundMusic/11frogs_Theme_Music.mp3';
+import frog11 from '../../assets/sound/BackgroundMusic/11frogs_Theme_Music.mp3';
 
 // Predefined sound effect paths
 const soundEffects = {
@@ -13,7 +13,7 @@ const soundEffects = {
 
 // Predefined background music paths
 const backgroundMusicTracks = {
-    Sample1: forg11,
+    Sample1: frog11,
     // stage2: '/path/to/background/music/for/stage2.mp3',
     // stage3: '/path/to/background/music/for/stage3.mp3',
     // Add more stages as needed
