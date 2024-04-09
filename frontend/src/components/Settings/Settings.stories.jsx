@@ -1,4 +1,4 @@
-// Settings.stories.jsx
+// TEMPSettings.jsx
 import React from 'react';
 import Settings from './Settings';
 
