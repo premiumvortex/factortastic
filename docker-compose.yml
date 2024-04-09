@@ -20,12 +20,42 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=mydatabase
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+
   backend:
     build: ./backend
-    ports:
-      - "3001:3001"
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - ./backend:/app
-      - /app/node_modules
+      - ./backend:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
     environment:
-      - CHOKIDAR_USEPOLLING=true
+      - DATABASE_URL=postgres://myuser:mypassword@db/mydatabase
+      - DJANGO_SETTINGS_MODULE=myproject.settings
+      - PYTHONUNBUFFERED=1
+      - PYTHONDONTWRITEBYTECODE=1
+      - DJANGO_ALLOWED_HOSTS=0.0.0.0,localhost
+
+volumes:
+  postgres_data:
+
+#  OLD (Node.js)
+#  backend:
+#    build: ./backend
+#    ports:
+#      - "3001:3001"
+#    volumes:
+#      - ./backend:/app
+#      - /app/node_modules
+#    environment:
+#      - CHOKIDAR_USEPOLLING=true

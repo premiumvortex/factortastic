@@ -1,11 +1,16 @@
-FROM node:latest
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
 
-WORKDIR /app
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-COPY package*.json ./
-RUN npm install
+# Set work directory
+WORKDIR /code
 
-COPY . .
+# Install dependencies
+COPY requirements.txt /code/
+RUN pip install --upgrade pip && pip install -r requirements.txt
 
-EXPOSE 3001
-CMD ["npx", "nodemon", "server.js"]
+# Copy project
+COPY . /code/
