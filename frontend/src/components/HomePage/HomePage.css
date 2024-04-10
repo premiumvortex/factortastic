@@ -1,21 +1,28 @@
 /* App.css */
 .home-page {
-    width: 100%;
-  height: 100vh;
+    width: 100vw;
+    height: 100vh;
+
     background-image: url('./Characters.svg'), url('../../assets/artwork/Individual_Assets/Game_Background.PNG');
-    /* background-image: url('../../assets/artwork/Individual_Assets/Continue Page - Fox Blinking.PNG'); */
-    text-align: center;
-    position: relative; /* Make the container relative */
-    background-position: center, center; /* Center both background images */
-    background-size: cover, cover; /* Cover both background images */
-    background-repeat: no-repeat; /* Prevent repetition of background images */
-    padding: 20px;
+    background-position: center, center; 
+    background-size: contain, cover; /* Shrink characters to fit in screen and cover background image */
+    background-repeat: no-repeat;
+    overflow: hidden; /* Disable scrolling for the container */
+
+    position: fixed; 
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content at the top of the container */
 }
 
-h1 {
+.home-page-heading {
     text-transform: uppercase;
+    margin-top: 10vh; 
     font-size: 72pt;
     margin-bottom: 20px;
+    text-shadow: 2px 6px 4px black;
 }
 
 .factor {
@@ -26,7 +33,7 @@ h1 {
     color: magenta;
 }
 
-img{
+.start-button {
     height: 50%;
     width: auto; 
     background-color: transparent;
@@ -39,14 +46,14 @@ img{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1; /* Set a lower z-index for the button */
+    z-index: 1; 
 }
-
+/* 
 .pop-up-container {
-    z-index: 2; /* Ensure the pop-up container is on top */
+    z-index: 2; 
     height: 100pt;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
+  } */

@@ -1,4 +1,19 @@
 /* PrivacyPopup.css */
+.agreement-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+    z-index: 2;
+}
+
+
 .privacy-popup {
     background-color: lightgray;
     height: 200px;
@@ -22,7 +37,7 @@
     cursor: pointer;
     display: block;
     margin: 0 auto; /* Center the button horizontally */
-    height: 30%;
+    height: 20%;
     width: 90%; /* Make the button take up 90% of the width */
 }
   
