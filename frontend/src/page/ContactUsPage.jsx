@@ -50,7 +50,7 @@ export default function ContactUsPage() {
                   <p className='email-text'>email@example.com</p>
                 </div>
                 <div className='column-half'>
-                  <img src={Octipi} alt='Octipi'/>
+                  <img className='octipi-img' src={Octipi} alt='Octipi'/>
                 </div>
               </div>
             </div>

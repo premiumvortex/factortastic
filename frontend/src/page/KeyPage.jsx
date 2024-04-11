@@ -10,7 +10,7 @@ export default function KeyPage() {
           <BackButton/>
         </div>
         <div className="key">
-          <img src={Key} alt="Key" />
+          <img className="key-image" src={Key} alt="Key" />
         </div>
       </div>
     </>

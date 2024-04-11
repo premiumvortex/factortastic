@@ -21,13 +21,13 @@ body {
 .key,
 .title,
 .submit,
-img {
+.octipi-img {
   display: flex;
   justify-content: center;
   margin: 0 auto;
 }
 
-img {
+.octipi-img {
   width: 185px;
   padding-top: 20px;
 }
