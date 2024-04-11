@@ -55,23 +55,9 @@ import Switch from '@mui/material/Switch';
   }));
 
 export default function MusicToggle() {
- const [isPlaying, setIsPlaying] = useState(false);
-  const url = "https://www.youtube.com/watch?v=xQ0RgaDTydY&list=PLxvJ3-kdDEEiOxO55t1LrDvkNtWzO-Ohx&index=5"
-
- const toggleAudio = () => {
-  setIsPlaying(!isPlaying);
- };
     return (
       <>
-        <IOSSwitch onClick={toggleAudio} checked={isPlaying} />
-        {isPlaying && (
-          <audio loop>
-            <source
-              src={url}
-              type="audio/mp3"
-            />
-          </audio>
-        )}
+        <IOSSwitch/>
       </>
     );
   }
