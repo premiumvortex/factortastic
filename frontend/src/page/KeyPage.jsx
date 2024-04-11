@@ -1,6 +1,6 @@
 import BackButton from "../components/button/BackButton";
 import Key from "../assets/artwork/FC KEY.jpg";
-import '../page/page.css';
+import '../page/keyPage.css';
 
 export default function KeyPage() {
   return (

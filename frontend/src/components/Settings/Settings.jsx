@@ -7,17 +7,22 @@ import MusicToggle from '../button/MusicToggle';
 import SoundFxToggle from '../button/SoundFxToggle';
 import BackButton from "../button/BackButton";
 import KeyPage from '../../page/KeyPage';
+import ContactUsPage from '../../page/ContactUsPage';
 
 function CombinedSettings() {
 return (
     <div>
-        <KeyPage/>
+        <ContactUsPage/>
     </div>
     );
 }
 
 export default CombinedSettings;
-// {/* <SoundProvider>
+// {/*
+// <div>
+//        <KeyPage/>
+//    </div>
+// <SoundProvider>
 //             <div className="App">
 //                 <SoundComponent />
 //                 <SoundSettings />  Integrated SoundSettings from the second component
