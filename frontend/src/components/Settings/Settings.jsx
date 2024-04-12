@@ -8,69 +8,49 @@ import SoundFxToggle from '../button/SoundFxToggle';
 import BackButton from "../button/BackButton";
 import KeyPage from '../../page/KeyPage';
 import ContactUsPage from '../../page/ContactUsPage';
+import '../Settings/settings.css';
 
+// Add in KeyPage and ContactUsPage components
 function CombinedSettings() {
 return (
-    <div>
-        <ContactUsPage/>
-    </div>
+    <>
+        <SoundProvider>
+            <div className="App">
+                <SoundComponent />
+                <SoundSettings />  {/* Integrated SoundSettings from the second component */}
+                <div>
+                    <BackButton />
+                </div>
+                <div className='setting-content'>
+                    <div className='setting-title'>
+                        <h2>Game</h2>
+                        <h2 className='pink'>Settings</h2>
+                    </div>
+                    <div className='row justify-center'>
+                        <div className='column-half sound-labels'>
+                            <h2>Music:</h2>
+                            <h2>SoundFx:</h2>
+                        </div>
+                        <div className='column-half flex flex-column space-evenly'>
+                            <MusicToggle/>
+                            <SoundFxToggle/>
+                        </div>
+                      </div>
+                    <div className='row justify-center padding-top'>
+                        <div className='column-half flex flex-column'>
+                            <SettingButton text={'Key'} />
+                            <SettingButton text={'Menu'} />
+                        </div>
+                        <div className='column-half flex flex-column'>
+                            <SettingButton text={'Privacy Policy'} />
+                            <SettingButton text={'Contact Us'} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </SoundProvider>
+    </>
     );
 }
 
 export default CombinedSettings;
-// {/*
-// <div>
-//        <KeyPage/>
-//    </div>
-// <SoundProvider>
-//             <div className="App">
-//                 <SoundComponent />
-//                 <SoundSettings />  Integrated SoundSettings from the second component
-//                 <div>
-//                     <BackButton />
-//                 </div>
-//                 <div style={{
-//                     maxWidth: 600,
-//                     minWidth: 600,
-//                     height: 600,
-//                     padding: 10,
-//                     margin: 'auto',
-//                     borderRadius: 40,
-//                     border: 'none',
-//                     backgroundColor: '#516EBE'
-//                 }}>
-//                     <div style={{ display: "flex", justifyContent: "center", marginBottom: 20 }}>
-//                         <h2 style={{ color: '#96FCFD', fontSize: 40, marginRight: '10px', textShadow: '5px 10px 6px rgba(0, 0, 0, .5)' }}>Game</h2>
-//                         <h2 style={{ color: '#EE66C8', fontSize: 40, textShadow: '5px 10px 6px rgba(0, 0, 0, .5)' }}>Settings</h2>
-//                     </div>
-//                     <div style={{ padding: 'auto' }}>
-//                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-//                             <div>
-//                                 <h2 style={{ fontSize: 40 }}>Music:</h2>
-//                             </div>
-//                             <div style={{ paddingLeft: 40 }}>
-//                                 <MusicToggle />
-//                             </div>
-//                         </div>
-//                         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-//                             <div>
-//                                 <h2 style={{ fontSize: 40 }}>Sound Fx:</h2>
-//                             </div>
-//                             <div style={{ paddingLeft: 50, paddingRight: 50 }}>
-//                                 <SoundFxToggle />
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div style={{ display: 'flex', marginTop: 50 }}>
-//                         <div style={{ width: '50%', display: 'flex', flexDirection: 'column' }}>
-//                             <SettingButton text={'Key'} />
-//                             <SettingButton text={'Menu'} />
-//                         </div>
-//                         <div style={{ width: '50%', display: 'flex', flexDirection: 'column' }}>
-//                             <SettingButton text={'Privacy Policy'} />
-//                             <SettingButton text={'Contact Us'} />
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </SoundProvider>*/}

@@ -11,14 +11,16 @@ export default function SettingButton({text}) {
     setHovered(false);
   };
   return (
-    <button style={{
-      padding: 5, margin: 10, display: 'block',
+    <button
+    style={{
+      padding: 5, margin: 10, display: 'block', width: 280,
       borderRadius: 50, border: 'none', fontSize: 40, backgroundColor: '#EE66C8',
       boxShadow: hovered ? '0px 8px 8px rgba(96, 252, 253, 0)' : '0px 8px 8px rgba(96, 252, 253, 0.5)',
       cursor: 'pointer'
     }}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}>
+      onMouseLeave={handleMouseLeave}
+      >
       {text}
     </button>
   )
