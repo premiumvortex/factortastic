@@ -57,7 +57,7 @@ export default function ContactUsPage() {
           </div>
           <div className='row'>
             <div className='column-full submit'>
-              <button className='submit-button' type='submit'>Submit</button>
+              <button className='setting-long-button' type='submit'>Submit</button>
             </div>
           </div>
         </form>

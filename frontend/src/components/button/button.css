@@ -1,4 +1,4 @@
-button {
+.back-button {
   padding: 10px;
   align-content: center;
   border-radius: 15px;
@@ -11,4 +11,21 @@ button {
 button:hover {
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
 
+}
+
+.setting-long-button {
+  display: block;
+  padding: 5px;
+  margin: 10px;
+  width: 280px;
+  border-radius: 50px;
+  border: none;
+  font-size: 40px;
+  background-color: #EE66C8;
+  box-shadow: 0px 8px 8px rgba(96, 252, 253, 0.5);
+  cursor: pointer;
+}
+
+.setting-long-button:hover {
+  box-shadow: 0px 8px 8px rgba(96, 252, 253, 0);
 }

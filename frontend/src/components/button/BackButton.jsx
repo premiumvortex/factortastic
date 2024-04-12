@@ -4,7 +4,7 @@ import '../../components/button/button.css';
 export default function BackButton() {
   return (
     <>
-    <button>
+      <button className='back-button'>
       <ArrowBackIcon fontSize="large" />
     </button>
    </>

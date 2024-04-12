@@ -23,8 +23,8 @@ div.setting-title > h2 {
   text-shadow: 5px 10px 6px rgba(0, 0, 0, .5);
 }
 
-.padding-top {
-  padding-top: 50px;
+.padding-bottom {
+  padding-bottom: 40px;
 }
 
 .sound-labels {

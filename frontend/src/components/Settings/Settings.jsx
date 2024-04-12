@@ -6,8 +6,8 @@ import SettingButton from '../button/SettingButton';
 import MusicToggle from '../button/MusicToggle';
 import SoundFxToggle from '../button/SoundFxToggle';
 import BackButton from "../button/BackButton";
-import KeyPage from '../../page/KeyPage';
-import ContactUsPage from '../../page/ContactUsPage';
+// import KeyPage from '../../page/KeyPage';
+// import ContactUsPage from '../../page/ContactUsPage';
 import '../Settings/settings.css';
 
 // Add in KeyPage and ContactUsPage components
@@ -22,11 +22,11 @@ return (
                     <BackButton />
                 </div>
                 <div className='setting-content'>
-                    <div className='setting-title'>
+                    <div className='setting-title padding-bottom'>
                         <h2>Game</h2>
                         <h2 className='pink'>Settings</h2>
                     </div>
-                    <div className='row justify-center'>
+                    <div className='row justify-center padding-bottom'>
                         <div className='column-half sound-labels'>
                             <h2>Music:</h2>
                             <h2>SoundFx:</h2>
@@ -36,7 +36,7 @@ return (
                             <SoundFxToggle/>
                         </div>
                       </div>
-                    <div className='row justify-center padding-top'>
+                    <div className='row justify-center'>
                         <div className='column-half flex flex-column'>
                             <SettingButton text={'Key'} />
                             <SettingButton text={'Menu'} />
