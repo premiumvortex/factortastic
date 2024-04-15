@@ -7,26 +7,29 @@ export const PrivacyPolicyPage = ({onClose}) => {
   
     // Track scroll position
     const handleScroll = () => {
-      const currentPosition = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      setScrollPosition(currentPosition);
+        const currentPosition = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        setScrollPosition(currentPosition);
     setScrollReachedEnd(currentPosition >= maxScroll);
     };
   
     // Add scroll event listener
     useEffect(() => {
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
   
     // Handle back button click
     const handleBackButtonClick = () => {
         onClose();
-
     };
 
     return (
         <div className="privacy-policy-page">
+            <button className="back-button" onClick={handleBackButtonClick} disabled={!scrollReachedEnd}>
+                Back
+            </button>
+
             <div className="privacy-policy-content" onScroll={handleScroll}>
                 <p className="paragraphs">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor elit sed vulputate mi sit amet mauris commodo. Vel facilisis volutpat est velit egestas dui. Quis enim lobortis scelerisque fermentum dui faucibus. Sit amet justo donec enim. Ut enim blandit volutpat maecenas volutpat blandit. Viverra aliquet eget sit amet tellus. Sed turpis tincidunt id aliquet risus feugiat in. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices. Mi in nulla posuere sollicitudin aliquam ultrices sagittis. Sem et tortor consequat id porta. Massa eget egestas purus viverra. Nam aliquam sem et tortor consequat. Odio eu feugiat pretium nibh ipsum consequat nisl vel. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Maecenas ultricies mi eget mauris pharetra et ultrices neque. Vehicula ipsum a arcu cursus vitae congue mauris. Imperdiet proin fermentum leo vel orci porta non pulvinar. Nullam eget felis eget nunc lobortis mattis. Auctor augue mauris augue neque gravida in fermentum et.
@@ -64,10 +67,6 @@ export const PrivacyPolicyPage = ({onClose}) => {
                     Consequat interdum varius sit amet mattis vulputate enim. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Odio facilisis mauris sit amet massa vitae tortor. Consectetur lorem donec massa sapien faucibus et molestie ac. Aliquet porttitor lacus luctus accumsan tortor posuere. Velit laoreet id donec ultrices tincidunt arcu non. Id aliquet lectus proin nibh. Integer feugiat scelerisque varius morbi enim. Neque gravida in fermentum et sollicitudin ac. Nibh praesent tristique magna sit amet purus gravida quis. Id velit ut tortor pretium viverra suspendisse potenti nullam. Viverra justo nec ultrices dui. Sit amet volutpat consequat mauris nunc.
                 </p>
             </div>
-            
-            <button className="back-button" onClick={handleBackButtonClick} disabled={!scrollReachedEnd}>
-                Back
-            </button>
         </div>
     );
 };

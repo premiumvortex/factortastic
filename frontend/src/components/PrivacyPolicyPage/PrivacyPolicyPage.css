@@ -4,29 +4,34 @@
     left: 0;
     width: 100%;
     height: 100%;
+    overflow: hidden;
     background-image: url('../../assets/artwork/Individual_Assets/Game_Background.PNG');
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; 
     z-index: 9999;
-
-
 }
 
 .privacy-policy-content {
-    background-color: #fff; 
+    /* background-color: var(--setting-background); */
+    background-color: rgba(81, 110, 190, 1);
+    margin-top: 50px;
     padding: 50px;
     border-radius: 5px;
     max-width: 80%;
-    max-height: 80%;
+    max-height: 70%;
     overflow-y: scroll; 
+    box-shadow: 0px 8px 25px 0px rgba(150, 252, 253, 1);
+    border-radius: 15pt;
+    /* box-shadow: var(--setting-drop-shadow); */
 }
-  
+
 .paragraphs {
     font-size: 18px;
     line-height: 1.5;
     margin-bottom: 20px;
+    color: white;
 }  
 
 
@@ -34,6 +39,8 @@
     position: fixed;
     top: 20px;
     left: 20px;
+    width: 100px;
+    height: 40px;
     background-color: #007bff;
     color: #fff;
     padding: 10px 20px;
