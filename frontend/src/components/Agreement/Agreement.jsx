@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
-import './Agreement.css';
+import React, { useState } from 'react'
 import { PrivacyPolicyPage } from '../PrivacyPolicyPage/PrivacyPolicyPage';
 import Checkbox from '@mui/material/Checkbox';
-
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+import './Agreement.css';
 
 export const Agreement = ({ onClose }) => {
     const [isChecked, setIsChecked] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(true);
     const [showPrivacyPage, setShowPrivacyPage] = useState(false)
 
+    // called when user clicks on privacy policy link
     const handleClick = () => {
         setShowPrivacyPage(true);
+        setIsDisabled(false)
+    };
+
+    const toggleCheckbox = () => {
+        setIsChecked(!isChecked);
     };
 
     const handleClosePrivacyPage = () => {
         setShowPrivacyPage(false);
     };
 
+    // closes agreement box when user presses "Agree" button
     const handleClose = () => {
         if (isChecked) {
             onClose();
@@ -26,27 +32,25 @@ export const Agreement = ({ onClose }) => {
         }
     };
 
-    const handleCheckboxChange = () => {
-        setIsChecked(!isChecked);
-    };
-
     return (
         <div className="agreement-container">
             <div className="privacy-popup">
-                <label>
+                <div>
                     <Checkbox
                         checked={isChecked}
-                        onChange={handleCheckboxChange}
+                        onChange={toggleCheckbox}
                         color="success"
+                        disabled={isDisabled}
                         sx={{ '& .MuiSvgIcon-root': { fontSize: '48px' }}} 
                     />
-                    <span className="privacy-popup-text">I have read and agree to the terms and conditions</span>
-                </label>
-                <p className="privacy-policy-link" onClick={handleClick}>Privacy Policy</p>
-    
+                    <span className="privacy-popup-text">I have read and agreed to the terms and conditions</span>
+                </div>
+
+                <p className="privacy-policy-link" onClick={handleClick}>privacy policy</p>
             
                 <button className="agree-button" onClick={handleClose}>Agree</button>
             </div>
+
             <div className="privacy-page-container">
                 {showPrivacyPage && <PrivacyPolicyPage onClose={handleClosePrivacyPage}/>}
             </div>    
