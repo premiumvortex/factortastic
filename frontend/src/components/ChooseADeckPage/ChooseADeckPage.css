@@ -12,7 +12,7 @@
 .deck-page-heading {
     text-transform: uppercase;
     margin-top: 10vh; 
-    font-size: 72pt;
+    font-size: 7vw;
     margin-bottom: 20px;
     text-shadow: 2px 6px 4px black;
     color: cyan;
@@ -20,10 +20,9 @@
 
 .decks-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 40px; 
-    grid-auto-rows: 1fr; 
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    grid-gap: 40px;
     height: 50%;
     width: 80%;
-    margin: 40pt auto;
+    margin: 40px auto;
 }
