@@ -1,12 +1,13 @@
 import React from 'react';
 import './DeckButton.css';
-import Lock from './Lock.svg'; // Keep this import if you're using the icon elsewhere
+import Lock from './Lock.svg'; 
 
 export const DeckButton = ({ deckName, status, onClick, color }) => {
     // Adjust styling based on state
     const buttonStyle = {
         backgroundColor: color,
-        pointerEvents: status === 'disabled' ? 'none' : 'auto',
+        color: color,
+        pointerEvents: status === 'disabled' ? 'none' : 'auto'
         // opacity: unlocked === 'disabled' ? 0.5 : 1, // Optionally, make disabled buttons appear faded
     };
 
@@ -22,7 +23,7 @@ export const DeckButton = ({ deckName, status, onClick, color }) => {
 
     return (
         <button className="deck-button" onClick={handleClick} style={buttonStyle}>
-            {buttonContent}
+            <p className="button-name">{buttonContent}</p>
         </button>
     );
 };

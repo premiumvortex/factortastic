@@ -1,5 +1,5 @@
-/* App.css */
 .choose-deck-page {
+    width: 100vw;
     height: 100vh;
     background-image: url('../../assets/artwork/Individual_Assets/Game_Background.PNG');
     text-align: center;
@@ -9,13 +9,16 @@
     padding: 40px;
 }
 
-h1 {
+.deck-page-heading {
     text-transform: uppercase;
+    margin-top: 10vh; 
     font-size: 72pt;
+    margin-bottom: 20px;
+    text-shadow: 2px 6px 4px black;
     color: cyan;
 }
 
-.deck-container {
+.decks-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
     gap: 40px; 
