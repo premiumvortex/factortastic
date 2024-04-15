@@ -8,21 +8,25 @@ export const Agreement = ({ onClose }) => {
     const [isDisabled, setIsDisabled] = useState(true);
     const [showPrivacyPage, setShowPrivacyPage] = useState(false)
 
-    // called when user clicks on privacy policy link
     const handleClick = () => {
         setShowPrivacyPage(true);
         setIsDisabled(false)
     };
 
     const toggleCheckbox = () => {
-        setIsChecked(!isChecked);
+        
+        if (isDisabled) {
+            alert('Please read the privacy policy before agreeing to the terms and conditions')
+        }
+        else {
+            setIsChecked(!isChecked);
+        }
     };
 
     const handleClosePrivacyPage = () => {
         setShowPrivacyPage(false);
     };
 
-    // closes agreement box when user presses "Agree" button
     const handleClose = () => {
         if (isChecked) {
             onClose();
@@ -34,16 +38,16 @@ export const Agreement = ({ onClose }) => {
 
     return (
         <div className="agreement-container">
-            <div className="privacy-popup">
+            <div className="agreement-popup">
                 <div>
                     <Checkbox
                         checked={isChecked}
                         onChange={toggleCheckbox}
                         color="success"
-                        disabled={isDisabled}
+                        // disabled={isDisabled}
                         sx={{ '& .MuiSvgIcon-root': { fontSize: '48px' }}} 
                     />
-                    <span className="privacy-popup-text">I have read and agreed to the terms and conditions</span>
+                    <span className="agreement-popup-text">I have read and agreed to the terms and conditions</span>
                 </div>
 
                 <p className="privacy-policy-link" onClick={handleClick}>privacy policy</p>
