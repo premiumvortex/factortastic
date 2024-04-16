@@ -3,11 +3,17 @@
   display: flex;
 }
 
+body.contact-content {
+  background-color: rgb(70, 70, 70);
+}
+
 .flex-column {
+  display: flex;
   flex-direction: column;
 }
 
 .flex-wrap {
+  display: flex;
   flex-wrap: wrap;
 }
 

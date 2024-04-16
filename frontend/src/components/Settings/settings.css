@@ -1,3 +1,17 @@
+.hide {
+  display: none;
+  /* Hide the popup when the showPopup state is false */
+}
+
+.column-half-50 {
+  width: 50%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 h2 {
   color: #96FCFD;
   font-size: 40px;
@@ -37,4 +51,13 @@ div.sound-labels > h2 {
 
 .space-evenly {
   justify-content: space-evenly;
+}
+
+.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.padding-left-30 {
+  padding-left: 30px;
 }
