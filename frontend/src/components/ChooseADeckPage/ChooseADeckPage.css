@@ -1,12 +1,17 @@
 .choose-deck-page {
     width: 100vw;
     height: 100vh;
+    top: 0;
+    left: 0;
+
     background-image: url('../../assets/artwork/Individual_Assets/Game_Background.PNG');
     text-align: center;
     background-position: center; 
     background-size: cover; 
     background-repeat: no-repeat; 
-    padding: 40px;
+    
+    position: fixed;
+    overflow: scroll;
 }
 
 .deck-page-heading {
