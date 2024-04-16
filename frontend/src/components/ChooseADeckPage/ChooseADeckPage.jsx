@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { DeckButton } from '../DeckButton/DeckButton';
 import './ChooseADeckPage.css';
+import '../../index.css';
 
 // ChooseADeck uses an array that has variable called status.
 // Status has 3 states:
@@ -18,9 +19,10 @@ export const ChooseADeckPage = () => {
         { name: 'coming soon', status: 'disabled', color: '#C2C2C2' },
     ]);
 
-    // toggle unlocked and locked status
+    // toggle unlocked and locked status (currently on click for testing)
     const handleDeckClick = (index) => {
         const updatedDecks = [...decks];
+
         if (updatedDecks[index].status !== 'disabled') {
             updatedDecks[index].status = updatedDecks[index].status === 'locked' ? 'unlocked' : 'locked';
             setDecks(updatedDecks);
@@ -30,13 +32,14 @@ export const ChooseADeckPage = () => {
     return (
         <div className="choose-deck-page">
             <h1 className="deck-page-heading">Choose a Deck</h1>
+            
             <div className="decks-container">
-                {decks.map((deck, index) => (
+                {decks.map(({ name, status, color }, index) => (
                     <DeckButton
                         key={index}
-                        deckName={deck.name}
-                        status={deck.status}
-                        color={deck.color}
+                        deckName={name}
+                        status={status}
+                        color={color}
                         onClick={() => handleDeckClick(index)}
                     />
                 ))}

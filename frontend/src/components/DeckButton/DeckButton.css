@@ -1,26 +1,34 @@
 .deck-button {
-    border: none;
-    /* padding: 20px; */
-    cursor: pointer;
-    border-radius: 50px;
+    position: relative; 
+    font-size: 3vw;
+    text-transform: capitalize; 
 
+    border: none;
+    border-radius: 40px;
+    box-shadow: 0px 8px 25px 0px;
+
+    /* Set height to be equal to width to create a square */
     width: 100%; 
     height: 0; 
-    padding-bottom: 100%; /* Set height to be equal to width to create a square */
-    position: relative; 
+    padding-bottom: 100%; 
+}
 
-    text-transform: capitalize; 
-    
-    box-shadow: 0px 8px 25px 0px;
+img {
+    width: 80%;
 }
 
 .button-name {
-    color: black;
-    font-size: 3vw;
+    color: var(--black);
     font-weight: bolder;
     position: absolute; 
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center the content vertically and horizontally */
+    transform: translate(-50%, -50%);
     margin: 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .deck-button {
+        font-size: 5vw;
+    }
 }

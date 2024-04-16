@@ -2,8 +2,8 @@ import React from 'react';
 import './DeckButton.css';
 import Lock from './Lock.svg'; 
 
-export const DeckButton = ({ deckName, status, onClick, color }) => {
-    // Adjust styling based on state
+export const DeckButton = ({ deckName, status, color, onClick }) => {
+    // Adjust styling based on color and status
     const buttonStyle = {
         backgroundColor: color,
         color: color,
@@ -22,8 +22,12 @@ export const DeckButton = ({ deckName, status, onClick, color }) => {
     };
 
     return (
-        <button className="deck-button" onClick={handleClick} style={buttonStyle}>
-            <p className="button-name">{buttonContent}</p>
+        <button 
+            className="deck-button" 
+            aria-disabled={status === 'disabled'} 
+            onClick={handleClick} 
+            style={buttonStyle}>
+                <p className="button-name">{buttonContent}</p>
         </button>
     );
 };
