@@ -1,40 +1,118 @@
 :root {
-  --black: rgba(0, 0, 0, 1);
-  --cyon: rgba(38, 219, 179, 1);
-  --drop-shadow: 3px 13px 6px 3px rgba(0, 0, 0, 0.25);
-  --heading-font-family: "LeagueGothic-Regular", Helvetica;
-  --heading-font-size: 170px;
-  --heading-font-style: normal;
-  --heading-font-weight: 400;
-  --heading-letter-spacing: 0px;
-  --heading-line-height: 100%;
-  --math-equations-font-family: "Acme-Regular", Helvetica;
-  --math-equations-font-size: 128px;
-  --math-equations-font-style: normal;
-  --math-equations-font-weight: 400;
-  --math-equations-letter-spacing: 0px;
-  --math-equations-line-height: 100%;
-  --pink: rgba(255, 84, 229, 1);
-  --secondary-font-family: "AkayaTelivigala-Regular", Helvetica;
-  --secondary-font-size: 64px;
-  --secondary-font-style: normal;
-  --secondary-font-weight: 400;
-  --secondary-letter-spacing: 0px;
-  --secondary-line-height: 100%;
-  --setting-2nd-gray: rgba(181, 181, 181, 1);
-  --setting-background: rgba(81, 110, 190, 1);
-  --setting-drop-shadow: 0px 8px 25px 0px rgba(150, 252, 253, 1);
-  --setting-drop-shadow-hover: 3px 13px 6px 3px rgba(0, 0, 0, 0.55);
-  --settings-font-family: "ABeeZee-Regular", Helvetica;
-  --settings-font-size: 24px;
-  --settings-font-style: normal;
-  --settings-font-weight: 400;
-  --settings-gray-color: rgba(207, 207, 207, 1);
-  --settings-letter-spacing: 0px;
-  --settings-line-height: 100%;
-  --settings-pink: rgba(238, 102, 200, 1);
-  --variable-collection-link: rgba(2, 25, 230, 1);
-  --variable-collection-white: rgba(255, 255, 255, 1);
+  :root {
+    /* Color Palette */
+    --black: rgba(0, 0, 0, 1);
+    --cyan: rgba(38, 219, 179, 1);
+    --pink: rgba(255, 84, 229, 1);
+    --setting-2nd-gray: rgba(181, 181, 181, 1);
+    --setting-background: rgba(81, 110, 190, 1);
+    --settings-pink: rgba(238, 102, 200, 1);
+    --variable-collection-green: rgba(88, 173, 69, 1);
+    --variable-collection-link: rgba(2, 25, 230, 1);
+    --variable-collection-white: rgba(255, 255, 255, 1);
+
+    /* Shadows */
+    --drop-shadow: 3px 13px 6px 3px rgba(0, 0, 0, 0.25);
+    --setting-drop-shadow: 0px 8px 25px 0px rgba(150, 252, 253, 1);
+    --setting-drop-shadow-hover: 3px 13px 6px 3px rgba(0, 0, 0, 0.55);
+    --strong-shadow: 3px 13px 6px 0px rgba(0, 0, 0, 0.8);
+    --startnstop-drop-shadow: 0px 8px 30px 0px rgba(53, 252, 17, 1);
+
+    /* Typography */
+    --heading-font-family: "League Gothic", Helvetica;
+    --heading-font-size: 170px;
+    --heading-font-style: normal;
+    --heading-font-weight: 400;
+    --heading-letter-spacing: 0px;
+    --heading-line-height: 100%;
+    --math-equations-font-family: "Acme", Helvetica;
+    --math-equations-font-size: 128px;
+    --math-equations-font-style: normal;
+    --math-equations-font-weight: 400;
+    --math-equations-letter-spacing: 0px;
+    --math-equations-line-height: 100%;
+    --page-title-font-family: "Akaya Telivigala", Helvetica;
+    --page-title-font-size: 128px;
+    --page-title-font-style: normal;
+    --page-title-font-weight: 400;
+    --page-title-letter-spacing: 0px;
+    --page-title-line-height: 100%;
+    --regular-text-font-family: "Akaya Telivigala", Helvetica;
+    --regular-text-font-size: 64px;
+    --regular-text-font-style: normal;
+    --regular-text-font-weight: 400;
+    --regular-text-letter-spacing: 0px;
+    --regular-text-line-height: 100%;
+    --secondary-font-family: "Akaya Telivigala", Helvetica;
+    --secondary-font-size: 64px;
+    --secondary-font-style: normal;
+    --secondary-font-weight: 400;
+    --secondary-letter-spacing: 0px;
+    --secondary-line-height: 100%;
+    --settings-font-family: "ABeeZee", Helvetica;
+    --settings-font-size: 24px;
+    --settings-font-style: normal;
+    --settings-font-weight: 400;
+    --settings-gray-color: rgba(207, 207, 207, 1);
+    --settings-letter-spacing: 0px;
+    --settings-line-height: 100%;
+    --tutorial-text-font-family: "Akaya Telivigala", Helvetica;
+    --tutorial-text-font-size: 52px;
+    --tutorial-text-font-style: normal;
+    --tutorial-text-font-weight: 400;
+    --tutorial-text-letter-spacing: 0px;
+    --tutorial-text-line-height: 100%;
+  }
+  /* Typography Classes */
+  .heading {
+    font-family: var(--heading-font-family);
+    font-size: var(--heading-font-size);
+    font-style: var(--heading-font-style);
+    font-weight: var(--heading-font-weight);
+    letter-spacing: var(--heading-letter-spacing);
+    line-height: var(--heading-line-height);
+  }
+
+  .math-equations {
+    font-family: var(--math-equations-font-family);
+    font-size: var(--math-equations-font-size);
+    font-style: var(--math-equations-font-style);
+    font-weight: var(--math-equations-font-weight);
+    letter-spacing: var(--math-equations-letter-spacing);
+    line-height: var(--math-equations-line-height);
+  }
+
+  .page-title {
+    font-family: var(--page-title-font-family);
+    font-size: var(--page-title-font-size);
+    font-style: var(--page-title-font-style);
+    font-weight: var(--page-title-font-weight);
+    letter-spacing: var(--page-title-letter-spacing);
+    line-height: var(--page-title-line-height);
+  }
+
+  .tutorial-text {
+    font-family: var(--tutorial-text-font-family);
+    font-size: var(--tutorial-text-font-size);
+    font-style: var(--tutorial-text-font-style);
+    font-weight: var(--tutorial-text-font-weight);
+    letter-spacing: var(--tutorial-text-letter-spacing);
+    line-height: var(--tutorial-text-line-height);
+  }
+
+  /* Using Color Variables */
+  .background-cyan {
+    background-color: var(--cyan);
+  }
+
+  .text-pink {
+    color: var(--pink);
+  }
+
+  /* Applying Shadows */
+  .shadow-strong {
+    box-shadow: var(--strong-shadow);
+  }
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
