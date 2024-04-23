@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { DeckButton } from '../DeckButton/DeckButton';
-import './ChooseADeckPage.css';
+import Grid from '@mui/material/Unstable_Grid2';
 import '../../index.css';
+import './ChooseADeckPage.css';
 
 // ChooseADeck uses an array that has variable called status.
 // Status has 3 states:
@@ -31,19 +32,45 @@ export const ChooseADeckPage = () => {
 
     return (
         <div className="choose-deck-page">
-            <h1 className="deck-page-heading">Choose a Deck</h1>
-            
-            <div className="decks-container">
-                {decks.map(({ name, status, color }, index) => (
-                    <DeckButton
-                        key={index}
-                        deckName={name}
-                        status={status}
-                        color={color}
-                        onClick={() => handleDeckClick(index)}
-                    />
-                ))}
+            <div className="choose-deck-title">
+                <h1 className="page-title">Choose a Deck</h1>
             </div>
+            
+            <div className="grid">
+                <Grid container spacing={{ xs: 6, md: 9, lg: 12 }}>
+                    {decks.map((deck, index) => (
+                        <Grid item key={index} xs={3} className="grid-item">
+                            <DeckButton
+                                deckName={deck.name}
+                                status={deck.status}
+                                color={deck.color}
+                                onClick={() => handleDeckClick(index)}
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
+            </div>
+            
         </div>
     );
 }
+
+
+
+
+
+/* 
+old deck container using display: grid
+
+<div className="decks-container">
+    {decks.map(({ name, status, color }, index) => (
+        <DeckButton
+            key={index}
+            deckName={name}
+            status={status}
+            color={color}
+            onClick={() => handleDeckClick(index)}
+        />
+    ))}
+</div> 
+*/
