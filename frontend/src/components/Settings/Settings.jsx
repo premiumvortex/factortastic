@@ -7,17 +7,14 @@ import MusicToggle from '../button/MusicToggle';
 import SoundFxToggle from '../button/SoundFxToggle';
 import BackButton from "../button/BackButton";
 import '../Settings/settings.css';
-// import KeyPage from '../../page/KeyPage';
-// import ContactUsPage from '../../page/ContactUsPage';
+import '../../../src/index.css';
+import KeyPage from '../../page/KeyPage';
+import ContactUsPage from '../../page/ContactUsPage';
 
-function CombinedSettings() {
-    const [showPopup, setShowPopup] = useState(true);
-    const handleClosePopup = () => {
-        setShowPopup(false);
-    };
+function CombinedSettings({ handleClosePopup }) {
 return (
     <>
-     <div className={`popup-container ${showPopup ? '' : 'hide'}`}>
+        <div className='setting-container'>
             <SoundProvider>
                 <div className="App">
                     <SoundComponent />
@@ -26,21 +23,21 @@ return (
                         <BackButton onClick={handleClosePopup} />
                     </div>
                     <div className='setting-content'>
-                        <div className='setting-title padding-bottom'>
-                            <h2>Game</h2>
-                            <h2 className='pink'>Settings</h2>
+                        <div className='setting-title padding-top-20 padding-bottom-40'>
+                            <div className='tutorial-text'>Game</div>
+                            <div className='tutorial-text text-pink'>Settings</div>
                         </div>
-                        <div className='row justify-center padding-bottom'>
+                        <div className='row justify-center padding-top-20 padding-bottom-40'>
                             <div className='column-half sound-labels'>
-                                <h2>Music:</h2>
-                                <h2>SoundFx:</h2>
+                                <div className='padding-bottom-40'>Music:</div>
+                                <div className=''>SoundFx:</div>
                             </div>
-                            <div className='column-half flex-column space-evenly padding-left-30'>
+                            <div className='column-half flex-column space-between padding-left-30 margin-top-20'>
                                 <MusicToggle />
                                 <SoundFxToggle />
                             </div>
                         </div>
-                        <div className='row justify-center'>
+                        <div className='row justify-center padding-top-40'>
                             <div className='column-half flex flex-column'>
                                 <SettingButton text={'Key'} />
                                 <SettingButton text={'Menu'} />
@@ -53,9 +50,9 @@ return (
                     </div>
                 </div>
             </SoundProvider>
-    </div>
+        </div>
     </>
-    );
+);
 }
 
 export default CombinedSettings;
