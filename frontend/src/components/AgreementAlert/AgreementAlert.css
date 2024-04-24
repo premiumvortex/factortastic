@@ -1,0 +1,25 @@
+.alert-container {
+    position: fixed;
+}
+
+.alert-container .agreement-alert {
+    width: 30vw;
+    height: 25vh;
+
+    min-height: 200px;
+    min-width: 300px;
+   
+    font-family: var(--regular-text-font-family);
+
+    padding: 20px;
+    border: 4px solid black; 
+    border-radius: 30pt;
+
+    text-align: center;
+    font-size: 150%;
+}
+
+.alert-container .agreement-alert .MuiAlert-message {
+    display: flex;
+    align-items: center;
+}
