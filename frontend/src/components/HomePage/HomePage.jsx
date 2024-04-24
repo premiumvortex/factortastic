@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './HomePage.css';
-import StartButton from './Start.png';
 import { Agreement } from '../Agreement/Agreement';
+import StartButton from './Start.png';
+import './HomePage.css';
+import '../../index.css';
 
 export const HomePage = () => {
     const [showAgreement, setShowAgreement] = useState(false);
@@ -16,9 +17,9 @@ export const HomePage = () => {
 
     return (
         <div className="home-page">
-            <h1 className="home-page-heading">
-                <span className="factor">factor</span>
-                <span className="tastic">tastic!</span>
+            <h1 className="home-page-title">
+                <span className="page-title factor">factor</span>
+                <span className="page-title text-pink">tastic!</span>
             </h1>
     
             <img className="start-button" onClick={handleClick} src={StartButton}></img>

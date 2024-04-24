@@ -20,7 +20,8 @@
     border: 4px solid black; 
     border-radius: 30pt;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: var(--setting-2nd-gray);
+    /* background-color: var(--setting-gray-color); */
+    background-color: #CFCFCF;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -37,15 +38,14 @@
 
 
 .privacy-policy-link {
-    /* font-size: 100%; */
-    color: blue;
+    color: var(--variable-collection-link);
     cursor: pointer;
     text-decoration: underline;
     margin: none;
 }
 
 .agree-button {
-    background-color: grey;
+    background-color: var(--pink);
     color: black;
     font-size: larger;
     border: none;
@@ -57,8 +57,16 @@
     height: 20%;
     width: 90%; 
 }
+
+.agree-button-checked {
+    background-color: var(--setting-2nd-gray);
+}
+
+/* .agree-button:disabled {
+    background-color: var(--setting-2nd-gray);
+} */
   
-.agree-button:hover {
+/* .agree-button:hover {
     background-color: var(--pink);
     box-shadow: 0px 4px 6px rgba(0, 255, 0, 0.5);
-}
+} */

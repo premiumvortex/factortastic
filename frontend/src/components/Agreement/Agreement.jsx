@@ -52,20 +52,28 @@ export const Agreement = ({ onClose }) => {
                     <span className="privacy-policy-link" onClick={handleClick}>privacy policy</span>
                 </p>
             
-                <button className="agree-button" onClick={handleClose}>Agree</button>
+                <button
+                    className={`agree-button ${!isChecked ? 'agree-button-checked' : ''}`}
+                    onClick={handleClose}
+                >
+                    Agree
+                </button>
             </div>
 
-            {showPrivacyPage && <PrivacyPolicyPage onClose={() => {setShowPrivacyPage(false)}}/>}
+            { showPrivacyPage && 
+                <PrivacyPolicyPage 
+                    onClose={() => { setShowPrivacyPage(false) }}
+                /> }
 
-            {showPrivacyAlert && 
+            { showPrivacyAlert && 
                 <AgreementAlert 
-                    onClose={ () => {setShowPrivacyAlert(false)}} 
+                    onClose={() => { setShowPrivacyAlert(false) }} 
                     message="Please read the privacy policy before agreeing to the terms and conditions"  
                 /> }
 
-            {showCheckboxAlert && 
+            { showCheckboxAlert && 
                 <AgreementAlert 
-                    onClose={ () => {setShowCheckboxAlert(false)}} 
+                    onClose={() => { setShowCheckboxAlert(false) }} 
                     message="Please accept the terms before closing"
                 /> }
         </div>
