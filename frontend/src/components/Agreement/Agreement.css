@@ -16,7 +16,7 @@
     width: 30%;
     min-height: 200px;
     min-width: 300px;
-    padding: 20px;
+    padding: 30px 10px;
     border: 4px solid black; 
     border-radius: 30pt;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -31,7 +31,7 @@
 }
 
 .agreement-popup input[type="checkbox"] {
-    transform: scale(3); 
+    /* transform: scale(3);   */
     border-color: black;
     color: green;
 }
@@ -58,15 +58,10 @@
     width: 90%; 
 }
 
-.agree-button-checked {
+.agree-button-disabled {
     background-color: var(--setting-2nd-gray);
 }
-
-/* .agree-button:disabled {
-    background-color: var(--setting-2nd-gray);
-} */
   
-/* .agree-button:hover {
-    background-color: var(--pink);
-    box-shadow: 0px 4px 6px rgba(0, 255, 0, 0.5);
-} */
+.agree-button-default:hover {
+    box-shadow: var(--setting-drop-shadow);
+}

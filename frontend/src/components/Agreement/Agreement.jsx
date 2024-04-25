@@ -53,7 +53,7 @@ export const Agreement = ({ onClose }) => {
                 </p>
             
                 <button
-                    className={`agree-button ${!isChecked ? 'agree-button-checked' : ''}`}
+                    className={`agree-button ${isChecked ? 'agree-button-default' : 'agree-button-disabled'}`}
                     onClick={handleClose}
                 >
                     Agree
