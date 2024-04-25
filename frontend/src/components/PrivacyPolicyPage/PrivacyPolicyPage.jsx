@@ -4,31 +4,29 @@ import './PrivacyPolicyPage.css';
 import '../../index.css';
 
 export const PrivacyPolicyPage = ({onClose}) => {
-    const [scrollPosition, setScrollPosition] = useState(0);
-    const [scrollReachedEnd, setScrollReachedEnd] = useState(false);
+    const [scrollPosition, setScrollPosition] = useState(false);
   
-    // Track scroll position
-    const handleScroll = () => {
-        const currentPosition = window.scrollY;
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        setScrollPosition(currentPosition);
-    setScrollReachedEnd(currentPosition >= maxScroll);
+   // Track scroll position within privacy-policy-content 
+   const handleScroll = (event) => {
+        const target = event.target;
+        const currentPosition = target.scrollTop;
+        const maxScroll = target.scrollHeight - target.clientHeight;
+        
+        if (!scrollPosition && currentPosition >= maxScroll) {
+            setScrollPosition(true);
+        }
     };
-  
-    // Add scroll event listener
+
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        const privacyPolicyContent = document.querySelector('.privacy-policy-content');
+        privacyPolicyContent.addEventListener('scroll', handleScroll);
+
+        return () => privacyPolicyContent.removeEventListener('scroll', handleScroll);
     }, []);
-  
-    // Handle back button click
-    const handleBackButtonClick = () => {
-        onClose();
-    };
 
     return (
         <div className="privacy-policy-page">
-            <button className="back-button" onClick={handleBackButtonClick} disabled={!scrollReachedEnd}>
+            <button className="back-button" onClick={onClose} disabled={!scrollPosition}>
                 Back
             </button>
 
