@@ -12,7 +12,7 @@ export const DeckButton = ({ deckName, status, color, onClick }) => {
     };
 
     // Determine content: Show deckName for 'unlocked' and 'disabled', lock icon for 'locked'
-    const buttonContent = status === 'locked' ? <img src={Lock} alt="Locked Icon"/> : deckName;
+    const buttonContent = status === 'locked' ? <img className="lock-icon" src={Lock} alt="Locked Icon"/> : deckName;
 
     // Adjust onClick: Only invoke onClick if not 'disabled'
     const handleClick = () => {
