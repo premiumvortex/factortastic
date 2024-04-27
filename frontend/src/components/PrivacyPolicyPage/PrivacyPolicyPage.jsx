@@ -12,7 +12,7 @@ export const PrivacyPolicyPage = ({onClose}) => {
         const currentPosition = target.scrollTop;
         const maxScroll = target.scrollHeight - target.clientHeight;
         
-        if (!scrollPosition && currentPosition >= maxScroll) {
+        if (currentPosition + 50 >= maxScroll) {
             setScrollPosition(true);
         }
     };
