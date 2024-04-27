@@ -12,16 +12,17 @@
 }
 
 .agreement-popup {
+    /* NEED TO UPDATE var not in index.css, not sure if i can do that */
+    background-color: #CFCFCF;      /* background-color: var(--agreement-gray-color);  */
+    
     height: 25%;
     width: 30%;
     min-height: 200px;
     min-width: 300px;
     padding: 30px 10px;
-    border: 4px solid black; 
+    border: 4px solid var(--black); 
     border-radius: 30pt;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* background-color: var(--setting-gray-color); */
-    background-color: #CFCFCF;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -31,37 +32,12 @@
 }
 
 .agreement-popup input[type="checkbox"] {
-    /* transform: scale(3);   */
-    border-color: black;
-    color: green;
+    border-color: var(--black);
 }
-
 
 .privacy-policy-link {
     color: var(--variable-collection-link);
     cursor: pointer;
     text-decoration: underline;
     margin: none;
-}
-
-.agree-button {
-    background-color: var(--pink);
-    color: black;
-    font-size: larger;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    transition: 0.25s ease;    
-    height: 20%;
-    width: 90%; 
-}
-
-.agree-button-disabled {
-    background-color: var(--setting-2nd-gray);
-}
-  
-.agree-button-default:hover {
-    box-shadow: var(--setting-drop-shadow);
 }
