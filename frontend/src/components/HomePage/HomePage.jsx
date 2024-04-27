@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Agreement } from '../Agreement/Agreement';
 import StartButton from './Start.png';
+
 import './HomePage.css';
 import '../../index.css';
 

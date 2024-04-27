@@ -10,10 +10,10 @@ import '../../index.css';
 import './Agreement.css';
 
 export const Agreement = ({ onClose }) => {
-    const [isChecked, setIsChecked] = useState(false);                  // checked state of checkbox
-    const [isDisabled, setIsDisabled] = useState(true);                 // disabled state of checkbox 
-    const [showPrivacyPage, setShowPrivacyPage] = useState(false);      // state of privacy policy 
-    const [showAlert, setShowAlert] = useState(false);                  // show alert when user clicks checkbox without reading privacy policy 
+    const [isChecked, setIsChecked] = useState(false);              
+    const [isDisabled, setIsDisabled] = useState(true);                 
+    const [showPrivacyPage, setShowPrivacyPage] = useState(false);      
+    const [showAlert, setShowAlert] = useState(false);                
 
     const message = "Please read the privacy policy before agreeing to the terms and conditions";
 

@@ -5,12 +5,14 @@
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    display: block;
-    margin: 0 auto;
+    
     transition: 0.25s ease;    
-    height: 20%;
+    height: 25%;
     width: 90%; 
     box-shadow: var(--setting-drop-shadow);
+    text-align: center; 
+    display: block;
+    margin: 0 auto;
 }
 
 .agree-button:disabled {
