@@ -29,13 +29,7 @@
 
 .paragraphs {
     color: white;
-    font-family: var(--settings-font-family);
-    /* font-size: var(--settings-font-size); */
     font-size: 120%;
-    font-style: var(--settings-font-style);
-    font-weight: var(--settings-font-weight);
-    letter-spacing: var(--settings-letter-spacing);
-    /* line-height: var(--settings-line-height); */
     line-height: 1.5;
 }  
 

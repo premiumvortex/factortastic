@@ -19,7 +19,7 @@ export const HomePage = () => {
     return (
         <div className="home-page">
             <h1 className="home-page-title">
-                <span className="page-title factor">factor</span>
+                <span className="page-title text-cyan">factor</span>
                 <span className="page-title text-pink">tastic!</span>
             </h1>
     

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FormControlLabel, FormGroup } from "@mui/material";
 
 import { PrivacyPolicyPage } from '../PrivacyPolicyPage/PrivacyPolicyPage';
 import { AgreementAlert } from '../AgreementAlert/AgreementAlert';
@@ -44,8 +45,11 @@ export const Agreement = ({ onClose }) => {
                     <Checkbox
                         checked={isChecked}
                         onChange={toggleCheckbox}
-                        color="success"
-                        sx={{ '& .MuiSvgIcon-root': { fontSize: '48px' }}} 
+                        color='success'
+                        sx={{
+                            color: 'black',                            
+                            '& .MuiSvgIcon-root': { fontSize: '48px' }
+                        }}
                     />
                     <span className="agreement-popup-text">I have read and agreed to the terms and conditions</span>
                 </div>
@@ -53,6 +57,7 @@ export const Agreement = ({ onClose }) => {
                 <p><span className="privacy-policy-link" onClick={handlePrivacyPolicyClick}>privacy policy</span></p>
             
                 <SettingLongButton isChecked={isChecked} onClick={handleAgreementClose} />
+                
             </div>
 
             { showPrivacyPage && <PrivacyPolicyPage onClose={handlePrivacyPolicyClose} /> }
@@ -60,3 +65,5 @@ export const Agreement = ({ onClose }) => {
         </div>
     );
 };
+
+

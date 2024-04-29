@@ -3,9 +3,8 @@
 }
 
 .alert-container .agreement-alert {
-    width: 30vw;
     height: 25vh;
-
+    width: 35vw;
     min-height: 200px;
     min-width: 300px;
    

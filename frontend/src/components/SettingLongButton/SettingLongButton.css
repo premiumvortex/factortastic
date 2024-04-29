@@ -3,7 +3,7 @@
     color: var(--black);
     font-size: larger;
     border: none;
-    border-radius: 15px;
+    border-radius: 25px;
     cursor: pointer;
     
     transition: 0.25s ease;    
