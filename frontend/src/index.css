@@ -99,6 +99,15 @@
   line-height: var(--tutorial-text-line-height);
 }
 
+.settings-text {
+  font-family: var(--settings-font-family);
+  font-size: var(--settings-font-size);
+  font-style: var(--settings-font-style);
+  font-weight: var(--settings-font-weight);
+  letter-spacing: var(--settings-letter-spacing);
+  line-height: var(--settings-line-height);
+}
+
 /* Using Color Variables */
 .background-cyan {
   background-color: var(--cyan);
@@ -106,6 +115,10 @@
 
 .text-pink {
   color: var(--pink);
+}
+
+.text-cyan {
+  color: var(--cyan);
 }
 
 /* Applying Shadows */
