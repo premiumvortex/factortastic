@@ -3,41 +3,39 @@
     height: 100vh;
     top: 0;
     left: 0;
+    position: fixed; 
+    display: flex;
+    overflow: hidden; 
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
 
     background-image: url('./Characters.svg'), url('../../assets/artwork/Individual_Assets/Game_Background.PNG');
     background-position: center, center; 
     background-size: contain, cover; 
-    background-repeat: no-repeat;
-    overflow: hidden; 
-
-    position: fixed; 
-   
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; 
+    background-repeat: no-repeat; 
 }
 
 .home-page-title .page-title {
     text-transform: uppercase;
     font-size: 7vw;
-    text-shadow: 3px 13px 6px rgba(0, 0, 0, 0.8);
 }
 
 .start-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    width: auto;     
     max-height: 40vh;
     max-width: 50vw;
-    width: auto;     
-    height: auto;
+    margin-top: 50px;
+    transform: translate(-50%, -50%);
+    z-index: 1; 
+    
+    cursor: pointer;
 
     background-color: transparent;
     border: none;
-    cursor: pointer;
-    position: absolute;
-
-    margin-top: 50px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1; 
 }

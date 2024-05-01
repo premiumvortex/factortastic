@@ -1,24 +1,27 @@
 .agree-button {
-    background-color: var(--pink);
-    color: var(--black);
-    font-size: larger;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    
-    transition: 0.25s ease;    
+    display: block;
+
     height: 25%;
     width: 90%; 
-    box-shadow: var(--setting-drop-shadow);
-    text-align: center; 
-    display: block;
     margin: 0 auto;
+
+    cursor: pointer;
+    transition: 0.25s ease;    
+
+    border: none;
+    border-radius: 25px;
+    box-shadow: var(--setting-drop-shadow);
+
+    text-align: center; 
+    color: var(--black);
+    font-size: larger;
+    background-color: var(--pink);
 }
 
 .agree-button:disabled {
-    background-color: var(--setting-2nd-gray);
-    box-shadow: none;
     cursor: not-allowed;
+    box-shadow: none;
+    background-color: var(--setting-2nd-gray);
 }
   
 .agree-button:hover {

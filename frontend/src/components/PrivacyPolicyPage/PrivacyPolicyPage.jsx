@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import './PrivacyPolicyPage.css';
 import '../../index.css';
 
+// PrivacyPolicyPage shows the privacy policy and forces the user to scroll to the bottom before closing
 export const PrivacyPolicyPage = ({onClose}) => {
     const [scrollPosition, setScrollPosition] = useState(false);
   
@@ -70,4 +72,8 @@ export const PrivacyPolicyPage = ({onClose}) => {
             </div>
         </div>
     );
+};
+
+PrivacyPolicyPage.propTypes = {
+    onClose: PropTypes.func.isRequired
 };

@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './SettingLongButton.css';
 import '../../index.css'
+
 
 export const SettingLongButton = ({ isChecked, onClick }) => {
     return (
@@ -13,4 +15,9 @@ export const SettingLongButton = ({ isChecked, onClick }) => {
             Agree
         </button>
     );
+};
+
+SettingLongButton.propTypes = {
+    isChecked: PropTypes.bool.isRequired,
+    onClick: PropTypes.func.isRequired,
 };
