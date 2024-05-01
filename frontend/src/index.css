@@ -14,7 +14,7 @@
   --drop-shadow: 3px 13px 6px 3px rgba(0, 0, 0, 0.25);
   --setting-drop-shadow: 0px 8px 25px 0px rgba(150, 252, 253, 1);
   --setting-drop-shadow-hover: 3px 13px 6px 3px rgba(0, 0, 0, 0.55);
-  --strong-shadow: 3px 13px 6px 0px rgba(0, 0, 0, 0.8);
+  --strong-shadow: 3px 13px 6px rgba(0, 0, 0, 0.8);
   --startnstop-drop-shadow: 0px 8px 30px 0px rgba(53, 252, 17, 1);
 
   /* Typography */
@@ -88,6 +88,7 @@
   font-weight: var(--page-title-font-weight);
   letter-spacing: var(--page-title-letter-spacing);
   line-height: var(--page-title-line-height);
+  text-shadow: var(--strong-shadow);
 }
 
 .tutorial-text {
