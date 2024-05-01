@@ -1,6 +1,6 @@
 import React from "react";
 import "./ChooseADeckPage.css";
-import { ChooseADeckPage } from "./ChooseADeckPage"; // Assuming you have this component
+import { ChooseADeckPage } from "./ChooseADeckPage";
 
 // Default export that describes the component
 export default {

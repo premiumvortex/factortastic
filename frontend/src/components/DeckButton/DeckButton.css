@@ -20,13 +20,14 @@
 }
 
 .button-name {
-    color: var(--black);
-    font-weight: bolder;
-    position: absolute; 
     top: 50%;
     left: 50%;
+    position: absolute; 
     transform: translate(-50%, -50%);
     margin: 0;
+
+    color: var(--black);
+    font-weight: bolder; 
 }
 
 @media screen and (max-width: 1000px) {

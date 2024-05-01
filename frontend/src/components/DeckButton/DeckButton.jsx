@@ -1,7 +1,9 @@
 import React from 'react';
-import './DeckButton.css';
+import PropTypes from 'prop-types';
 import Lock from './Lock.svg'; 
+import './DeckButton.css';
 
+// DeckButton component takes in deck button arguments and displays the button
 export const DeckButton = ({ deckName, status, color, onClick }) => {
     // Adjust styling based on color and status
     const buttonStyle = {
@@ -30,4 +32,11 @@ export const DeckButton = ({ deckName, status, color, onClick }) => {
                 <p className="button-name">{buttonContent}</p>
         </button>
     );
+};
+
+DeckButton.propTypes = {
+    deckName: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    color: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
 };

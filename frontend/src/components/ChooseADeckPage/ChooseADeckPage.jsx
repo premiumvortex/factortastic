@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { DeckButton } from '../DeckButton/DeckButton';
 import Grid from '@mui/material/Unstable_Grid2';
+
 import '../../index.css';
 import './ChooseADeckPage.css';
 
-// ChooseADeck uses an array that has variable called status.
+// ChooseADeck component stores the decks array and shows the different deck buttons
+// It uses an array that has variable called status.
 // Status has 3 states:
 // unlocked, locked, disabled
-
 export const ChooseADeckPage = () => {
     const [decks, setDecks] = useState([
         { name: 'red', status: 'unlocked', color: '#B62F32' },
@@ -49,28 +50,7 @@ export const ChooseADeckPage = () => {
                         </Grid>
                     ))}
                 </Grid>
-            </div>
-            
+            </div>    
         </div>
     );
 }
-
-
-
-
-
-/* 
-old deck container using display: grid
-
-<div className="decks-container">
-    {decks.map(({ name, status, color }, index) => (
-        <DeckButton
-            key={index}
-            deckName={name}
-            status={status}
-            color={color}
-            onClick={() => handleDeckClick(index)}
-        />
-    ))}
-</div> 
-*/
