@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import { Loading } from "./components/Loading.jsx";
 import RandomPlacer from './components/RandomPlacer'; // Adjust the import path based on your file structure
-
+import Settings from './components/Settings/Settings';
 function App() {
     const [loadingDone, setLoadingDone] = useState(false);
 
@@ -13,7 +13,8 @@ function App() {
     };
 
     if (!loadingDone) {
-        return <Loading onDone={handleLoadingDone} />;
+        // return <Loading onDone={handleLoadingDone} />;
+        return <Settings onDone={handleLoadingDone} />
     }
 
     return (

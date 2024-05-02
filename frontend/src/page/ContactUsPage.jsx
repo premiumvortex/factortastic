@@ -3,17 +3,20 @@ import '../page/contactUs.css';
 import EmailIcon from '@mui/icons-material/Email';
 import Octipi from '../assets/artwork/Individual_Assets/Characters/8-octopus.png';
 
-export default function ContactUsPage() {
+export default function ContactUsPage({ changePage }) {
   return (
     <>
       <div className='row'>
         <div className='align-center'>
-          <BackButton />
+          <BackButton onClick={() => changePage(null)} />
         </div>
         <div className='title'>
-          <h2>Get</h2>
-          <h2 className='pink'>In</h2>
-          <h2>Touch</h2>
+          {/* <h2>Get</h2>
+          <h2 className='text-pink'>In</h2>
+          <h2>Touch</h2> */}
+          <div className='tutorial-text text-cyan'>Get</div>
+          <div className='tutorial-text text-pink padding-left-20'>In</div>
+          <div className='tutorial-text text-cyan padding-left-20'>Touch</div>
         </div>
       </div>
       <div className='row contact-content'>
@@ -31,7 +34,7 @@ export default function ContactUsPage() {
                     </div>
                     <div className='column-half block'>
                       <label>Last Name :</label>
-                      <input type="text" />
+                      <input type="text"/>
                       <label>Phone Number :</label>
                       <input type="text" />
                     </div>

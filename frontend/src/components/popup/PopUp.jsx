@@ -6,14 +6,14 @@ import Settings from '../Settings/Settings';
 export default function PopUp() {
   const [anchor, setAnchor] = useState(null);
 
-  const handleClick = (event) => {
+  function handleClick(event) {
     setAnchor(anchor ? null : event.currentTarget);
   };
 
   const open = Boolean(anchor);
   const id = open ? 'setting-popup' : undefined;
 
-  const handleClosePopup = () => {
+  function handleClosePopup() {
     setAnchor(null);
   };
 
