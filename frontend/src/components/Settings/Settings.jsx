@@ -10,13 +10,11 @@ import '../Settings/settings.css';
 import '../../../src/index.css';
 import KeyPage from '../../page/KeyPage';
 import ContactUsPage from '../../page/ContactUsPage';
-import ThankYouPage from '../../page/ThankYouPage';
 
 function Settings({ handleClosePopup}) {
  const [currentPage, setCurrentPage] = useState(null);
 
  let changePage = (pageName) => {
-     console.log('Changing page to:', pageName);
     setCurrentPage(pageName);
   };
 
@@ -27,9 +25,7 @@ function Settings({ handleClosePopup}) {
 return (
 <>
     <div className='popup-container'>
-        <ThankYouPage />
-
-        {/* {currentPage === null && (<SoundProvider>
+        {currentPage === null && (<SoundProvider>
             <div className="App">
                 <SoundComponent />
                 <SoundSettings />
@@ -54,10 +50,10 @@ return (
                     <div className='row justify-center padding-top-40'>
                         <div className='column-half flex flex-column'>
                             <SettingButton text={'Key'} onClick={() => changePage('Key')} />
-                            <SettingButton text={'Menu'}/>
+                            <SettingButton text={'Menu'} onClick={() => alert('Nothing here yet!')}/>
                         </div>
                         <div className='column-half flex flex-column'>
-                            <SettingButton text={'Privacy Policy'} />
+                                <SettingButton text={'Privacy Policy'} onClick={() => alert('Nothing here yet!')} />
                             <SettingButton text={'Contact Us'} onClick={() => changePage('Contact Us')}/>
                         </div>
                     </div>
@@ -66,9 +62,9 @@ return (
         </SoundProvider>
         )}
         {currentPage === 'Key' && <KeyPage changePage={changePage}/>}
-        {currentPage === 'Contact Us' && <ContactUsPage changePage={changePage} />} */}
+        {currentPage === 'Contact Us' && <ContactUsPage changePage={changePage} />}
     </div>
-    </>
+</>
 );
 }
 

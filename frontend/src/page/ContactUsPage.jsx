@@ -3,6 +3,7 @@ import BackButton from '../components/button/BackButton';
 import '../page/contactUs.css';
 import EmailIcon from '@mui/icons-material/Email';
 import Octipi from '../assets/artwork/Individual_Assets/Characters/8-octopus.png';
+import ThankYouPage from './ThankYouPage';
 
 export default function ContactUsPage({ changePage }) {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ export default function ContactUsPage({ changePage }) {
     phoneNumber: '',
     message: ''
   });
+  const [giveThanks, setGiveThanks] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,11 +26,11 @@ export default function ContactUsPage({ changePage }) {
   const handleSubmit = (e) => {
   e.preventDefault();
   console.log('Form Data:', formData);
-
   // Convert formData to JSON
   const jsonFormData = JSON.stringify(formData);
 
   // You can do further processing here, such as sending the form data to backend
+
 
   // Resets the form after the submition is handled
     setFormData({
@@ -38,20 +40,20 @@ export default function ContactUsPage({ changePage }) {
       phoneNumber: '',
       message: ''
     });
+    setGiveThanks(!giveThanks);
   };
 
   return (
     <>
+    {!giveThanks && (<div className='align-center'>
       <div className='row'>
-        <div className='align-center'>
-          <BackButton onClick={() => changePage(null)} />
-        </div>
+            <BackButton onClick={() => changePage(null)} />
+      </div>
         <div className='title'>
            <div className='tutorial-text text-cyan'>Get</div>
            <div className='tutorial-text text-pink padding-left-20'>In</div>
            <div className='tutorial-text text-cyan padding-left-20'>Touch</div>
         </div>
-      </div>
       <div className='row contact-content'>
         <form onSubmit={handleSubmit}>
           <div className='row justify-center'>
@@ -98,6 +100,9 @@ export default function ContactUsPage({ changePage }) {
           </div>
         </form>
       </div>
+    </div>
+    )}
+    {giveThanks && <ThankYouPage giveThanks={giveThanks} setGiveThanks={setGiveThanks}/>}
     </>
   );
 }

@@ -6,8 +6,11 @@ import '../index.css';
 import './thankYou.css';
 import SettingButton from '../components/button/SettingButton';
 
-export default function ThankYouPage() {
+export default function ThankYouPage({ giveThanks, setGiveThanks }) {
 
+function handleBack() {
+  setGiveThanks(!giveThanks);
+};
   return (
     <>
     <div className='thank-you-content'>
@@ -24,7 +27,7 @@ export default function ThankYouPage() {
       </div>
       <div className='row justify-center pad-top-50'>
         <div className='column-full pad-top-50'>
-            <SettingButton text={'Back'}/>
+            <SettingButton onClick={handleBack} text={'Back'}/>
         </div>
       </div>
     </div>
