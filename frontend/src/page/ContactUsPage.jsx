@@ -1,9 +1,45 @@
+import React, {useState} from 'react';
 import BackButton from '../components/button/BackButton';
 import '../page/contactUs.css';
 import EmailIcon from '@mui/icons-material/Email';
 import Octipi from '../assets/artwork/Individual_Assets/Characters/8-octopus.png';
 
 export default function ContactUsPage({ changePage }) {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    emailAddress: '',
+    phoneNumber: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log('Form Data:', formData);
+
+  // Convert formData to JSON
+  const jsonFormData = JSON.stringify(formData);
+
+  // You can do further processing here, such as sending the form data to backend
+
+  // Resets the form after the submition is handled
+    setFormData({
+      firstName: '',
+      lastName: '',
+      emailAddress: '',
+      phoneNumber: '',
+      message: ''
+    });
+  };
+
   return (
     <>
       <div className='row'>
@@ -11,16 +47,13 @@ export default function ContactUsPage({ changePage }) {
           <BackButton onClick={() => changePage(null)} />
         </div>
         <div className='title'>
-          {/* <h2>Get</h2>
-          <h2 className='text-pink'>In</h2>
-          <h2>Touch</h2> */}
-          <div className='tutorial-text text-cyan'>Get</div>
-          <div className='tutorial-text text-pink padding-left-20'>In</div>
-          <div className='tutorial-text text-cyan padding-left-20'>Touch</div>
+           <div className='tutorial-text text-cyan'>Get</div>
+           <div className='tutorial-text text-pink padding-left-20'>In</div>
+           <div className='tutorial-text text-cyan padding-left-20'>Touch</div>
         </div>
       </div>
       <div className='row contact-content'>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className='row justify-center'>
             <div className='column-half'>
               <div className='row flex-column margin-bottom-20'>
@@ -28,21 +61,21 @@ export default function ContactUsPage({ changePage }) {
                   <div className='row space-between'>
                     <div className='column-half block'>
                       <label>First Name :</label>
-                      <input type="text" />
+                      <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
                       <label>Email Address :</label>
-                      <input type="text" />
+                      <input type="text" name="emailAddress" value={formData.emailAddress} onChange={handleChange} />
                     </div>
                     <div className='column-half block'>
                       <label>Last Name :</label>
-                      <input type="text"/>
+                      <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
                       <label>Phone Number :</label>
-                      <input type="text" />
+                      <input type="text" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} />
                     </div>
                   </div>
                 </div>
                 <div className='column-half block'>
                   <label>Message* :</label>
-                  <input className='message-box' type="textbox" />
+                  <textarea className='message-box' name="message" value={formData.message} onChange={handleChange}></textarea>
                 </div>
               </div>
             </div>
@@ -53,7 +86,7 @@ export default function ContactUsPage({ changePage }) {
                   <p className='email-text'>email@example.com</p>
                 </div>
                 <div className='column-half'>
-                  <img className='octipi-img' src={Octipi} alt='Octipi'/>
+                  <img className='octipi-img' src={Octipi} alt='Octipi' />
                 </div>
               </div>
             </div>

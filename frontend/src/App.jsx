@@ -13,8 +13,7 @@ function App() {
     };
 
     if (!loadingDone) {
-        // return <Loading onDone={handleLoadingDone} />;
-        return <Settings onDone={handleLoadingDone} />
+        return <Loading onDone={handleLoadingDone} />;
     }
 
     return (

@@ -2,10 +2,10 @@
 .flex {
   display: flex;
 }
-
+/*
 body.contact-content {
   background-color: rgb(70, 70, 70);
-}
+} */
 
 .flex-column {
   display: flex;
@@ -69,6 +69,7 @@ input {
 .message-box {
   min-width: 500px;
   min-height: 150px;
+  resize: vertical;
 }
 
 .block {

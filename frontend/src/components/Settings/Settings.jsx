@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { SoundProvider } from '../Sound/SoundContext';
 import SoundComponent from '../Sound/SoundComponent';
 import SoundSettings from "../Sound/SoundSettings"; // Import from second component
- import SettingButton from '../button/SettingButton';
+import SettingButton from '../button/SettingButton';
 import MusicToggle from '../button/MusicToggle';
 import SoundFxToggle from '../button/SoundFxToggle';
 import BackButton from "../button/BackButton";
@@ -10,6 +10,7 @@ import '../Settings/settings.css';
 import '../../../src/index.css';
 import KeyPage from '../../page/KeyPage';
 import ContactUsPage from '../../page/ContactUsPage';
+import ThankYouPage from '../../page/ThankYouPage';
 
 function Settings({ handleClosePopup}) {
  const [currentPage, setCurrentPage] = useState(null);
@@ -22,10 +23,13 @@ function Settings({ handleClosePopup}) {
  const backToSettings = () => {
     setCurrentPage(null);
  }
+
 return (
 <>
     <div className='popup-container'>
-        {currentPage === null && (<SoundProvider>
+        <ThankYouPage />
+
+        {/* {currentPage === null && (<SoundProvider>
             <div className="App">
                 <SoundComponent />
                 <SoundSettings />
@@ -50,7 +54,6 @@ return (
                     <div className='row justify-center padding-top-40'>
                         <div className='column-half flex flex-column'>
                             <SettingButton text={'Key'} onClick={() => changePage('Key')} />
-                                {console.log('hi')}
                             <SettingButton text={'Menu'}/>
                         </div>
                         <div className='column-half flex flex-column'>
@@ -63,7 +66,7 @@ return (
         </SoundProvider>
         )}
         {currentPage === 'Key' && <KeyPage changePage={changePage}/>}
-        {currentPage === 'Contact Us' && <ContactUsPage changePage={changePage} />}
+        {currentPage === 'Contact Us' && <ContactUsPage changePage={changePage} />} */}
     </div>
     </>
 );

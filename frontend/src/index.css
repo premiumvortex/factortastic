@@ -2,11 +2,11 @@
   :root {
     /* Color Palette */
     --black: #000000;
-    --cyan: #96FCFD;
-    --pink: #EE66C8;
+    --cyan: #26DBB3;
+    --pink: #FF54E5;
     --setting-2nd-gray: rgba(181, 181, 181, 1);
     --setting-background: rgba(81, 110, 190, 1);
-    --settings-pink: #EE66C8;
+    --settings-pink: #FF54E5;
     --variable-collection-green: rgba(88, 173, 69, 1);
     --variable-collection-link: rgba(2, 25, 230, 1);
     --variable-collection-white: rgba(255, 255, 255, 1);

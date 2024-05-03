@@ -1,0 +1,24 @@
+.thank-you-content {
+  justify-content: center;
+  margin: 30px 0;
+  /* Remove once game background is applied*/
+  background-color: aqua;
+}
+
+img.TY-characters {
+  width: 38%;
+}
+
+img.TY-characters:last-child {
+  transform: rotate(0.04turn);
+}
+
+.TY-msg {
+  display: block;
+  margin: 0 auto;
+  color: white
+}
+
+.pad-top-50 {
+  padding-top: 50px;
+}
