@@ -58,12 +58,12 @@ export const Agreement = ({ onClose }) => {
                         }}
                     />
 
-                    <span className="agreement-popup-text">I have read and agreed to the terms and conditions</span>
+                    <span className="settings-text">I have read and agreed to the terms and conditions</span>
                 </div>
 
-                <p className="privacy-policy-link" onClick={handlePrivacyPolicyClick}>privacy policy</p>
+                <p className="privacy-policy-link settings-text" onClick={handlePrivacyPolicyClick}>privacy policy</p>
             
-                <SettingLongButton isChecked={isChecked} onClick={closeAgreement} />
+                <SettingLongButton isDisabled={!isChecked} onClick={closeAgreement} />
             </div>
 
             { showPrivacyPage && <PrivacyPolicyPage onClose={closePrivacyPolicy} /> }

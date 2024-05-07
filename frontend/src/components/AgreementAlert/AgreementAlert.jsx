@@ -28,8 +28,6 @@ export const AgreementAlert = ({ onClose, message }) => {
                         <CloseIcon />
                     </IconButton>
                 }
-
-                sx={{ fontSize: '2vw' }}
             >
                 {/* Hidden divs for accessibility labels */}
                 <div id="alert-dialog-title" style={{ display: 'none' }}>
@@ -40,7 +38,7 @@ export const AgreementAlert = ({ onClose, message }) => {
                     Close Agreement Alert
                 </div>
 
-                {message}
+                <p className="settings-text">{message}</p>
             </Alert>
         </div>
     );

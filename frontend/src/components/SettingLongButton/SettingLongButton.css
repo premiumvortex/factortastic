@@ -1,5 +1,7 @@
 .agree-button {
-    display: block;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
 
     height: 25%;
     width: 90%; 
@@ -12,9 +14,7 @@
     border-radius: 25px;
     box-shadow: var(--setting-drop-shadow);
 
-    text-align: center; 
     color: var(--black);
-    font-size: larger;
     background-color: var(--pink);
 }
 
