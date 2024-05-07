@@ -1,7 +1,8 @@
 .deck-button {
     position: relative; 
-    font-size: 3vw;
+
     text-transform: capitalize; 
+    font-size: small;
 
     border: none;
     border-radius: 40px;
@@ -27,7 +28,6 @@
     margin: 0;
 
     color: var(--black);
-    font-weight: bolder; 
 }
 
 @media screen and (max-width: 1000px) {

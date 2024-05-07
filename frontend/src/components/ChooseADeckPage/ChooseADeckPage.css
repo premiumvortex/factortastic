@@ -5,6 +5,7 @@
     height: 100vh;
     position: fixed;
     overflow: hidden;
+    padding-top: 5vh;
 
     background-image: url('../../assets/artwork/Individual_Assets/Game_Background.PNG');
     background-position: center; 
@@ -12,12 +13,6 @@
     background-repeat: no-repeat; 
 
     text-align: center;
-}
-
-.choose-deck-title .page-title {
-    text-transform: uppercase;
-    font-size: 7vw; 
-    color: var(--cyan);
 }
 
 .grid {

@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Lock from './Lock.svg'; 
+
 import './DeckButton.css';
+import '../../index.css';
 
 // DeckButton component takes in deck button arguments and displays the button
 export const DeckButton = ({ deckName, status, color, onClick }) => {
@@ -29,7 +31,10 @@ export const DeckButton = ({ deckName, status, color, onClick }) => {
             aria-disabled={status === 'disabled'} 
             onClick={handleClick} 
             style={buttonStyle}>
-                <p className="button-name">{buttonContent}</p>
+                <div className="button-name">
+                <p className="secondary">{buttonContent}</p>
+                </div>
+                
         </button>
     );
 };

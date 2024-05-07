@@ -33,9 +33,7 @@ export const ChooseADeckPage = () => {
 
     return (
         <div className="choose-deck-page">
-            <div className="choose-deck-title">
-                <h1 className="page-title">Choose a Deck</h1>
-            </div>
+            <h1 className="page-title text-cyan">Choose a Deck</h1>
             
             <div className="grid">
                 <Grid container spacing={{ xs: 6, md: 9, lg: 12 }}>
