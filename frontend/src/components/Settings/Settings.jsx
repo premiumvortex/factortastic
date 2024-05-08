@@ -10,6 +10,7 @@ import '../Settings/settings.css';
 import '../../../src/index.css';
 import KeyPage from '../../page/KeyPage';
 import ContactUsPage from '../../page/ContactUsPage';
+import SettingTitles from '../titles/SettingTitles';
 
 function Settings({ handleClosePopup}) {
  const [currentPage, setCurrentPage] = useState(null);
@@ -34,10 +35,10 @@ return (
                 </div>
                 <div className='setting-content'>
                     <div className='setting-title padding-top-20 padding-bottom-40'>
-                        <div className='tutorial-text text-cyan'>Game</div>
-                        <div className='tutorial-text text-pink padding-left-20'>Settings</div>
+                        <SettingTitles text={'Game Setting'}/>
                     </div>
                     <div className='row justify-center padding-top-20 padding-bottom-40'>
+
                         <div className='column-half sound-labels'>
                             <div className='text-black padding-bottom-40'>Music:</div>
                             <div className='text-black'>SoundFx:</div>
