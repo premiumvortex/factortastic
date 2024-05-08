@@ -4,6 +4,7 @@ import '../page/contactUs.css';
 import EmailIcon from '@mui/icons-material/Email';
 import Octipi from '../assets/artwork/Individual_Assets/Characters/8-octopus.png';
 import ThankYouPage from './ThankYouPage';
+import SettingButton from '../components/button/SettingButton';
 
 export default function ContactUsPage({ changePage }) {
   const [formData, setFormData] = useState({
@@ -95,7 +96,7 @@ export default function ContactUsPage({ changePage }) {
           </div>
           <div className='row'>
             <div className='column-full submit'>
-              <button className='setting-long-button' type='submit'>Submit</button>
+              <SettingButton type='submit' text={'Submit'}/>
             </div>
           </div>
         </form>
