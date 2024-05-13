@@ -18,10 +18,6 @@
     background-repeat: no-repeat; 
 }
 
-.home-page-title .page-title {
-    text-transform: uppercase;
-}
-
 .start-button {
     position: absolute;
     top: 50%;
