@@ -63,7 +63,7 @@ export const Agreement = ({ onClose }) => {
 
                 <p className="privacy-policy-link settings-text" onClick={handlePrivacyPolicyClick}>privacy policy</p>
             
-                <SettingLongButton isDisabled={!isChecked} onClick={closeAgreement} />
+                <SettingLongButton message="Agree" isDisabled={!isChecked} onClick={closeAgreement} />
             </div>
 
             { showPrivacyPage && <PrivacyPolicyPage onClose={closePrivacyPolicy} /> }
