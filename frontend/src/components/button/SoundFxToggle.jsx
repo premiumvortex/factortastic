@@ -53,8 +53,8 @@ const IOSSwitch = styled((props) => (
   },
 }));
 
-export default function SoundFxToggle() {
+export default function SoundFxToggle({ checked, onChange }) {
   return (
-    <IOSSwitch />
+      <IOSSwitch checked={checked} onChange={onChange} />
   );
 }

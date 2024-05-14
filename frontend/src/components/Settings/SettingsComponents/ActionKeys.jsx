@@ -1,0 +1,41 @@
+import SettingButton from '../../button/SettingButton';
+
+function ActionKeys({ changePage }) {
+    return (
+        <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr', // Two equal columns
+            gridTemplateRows: 'auto auto auto', // Three rows, height determined by content
+            gridTemplateAreas: `
+                'firstColumn secondColumn'
+                'thirdColumn fourthColumn'
+                'fullWidth fullWidth'
+            `,
+            gap: '1%',
+            rowGap: '10%' // Space between grid items
+        }}>
+            {/* First Column */}
+            <div style={{ gridArea: 'firstColumn' }}>
+                <SettingButton text={'Key'} onClick={() => changePage('Key')} />
+            </div>
+            {/* Second Column */}
+            <div style={{ gridArea: 'secondColumn' }}>
+                <SettingButton text={'Menu'} onClick={() => alert('Nothing here yet!')} />
+            </div>
+            {/* Third Column */}
+            <div style={{ gridArea: 'thirdColumn' }}>
+                <SettingButton text={'Privacy Policy'} onClick={() => alert('Nothing here yet!')}/>
+            </div>
+            {/* Fourth Column */}
+            <div style={{ gridArea: 'fourthColumn' }}>
+                <SettingButton text={'Contact Us'} onClick={() => changePage('Contact Us')}/>
+            </div>
+            {/* Full width row */}
+            <div style={{ gridArea: 'fullWidth' }}>
+                <SettingButton text={'Tutorial'} onClick={() => alert('Nothing here yet!')}/>
+            </div>
+        </div>
+    );
+}
+
+export default ActionKeys;

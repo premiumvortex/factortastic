@@ -54,10 +54,10 @@ import Switch from '@mui/material/Switch';
     },
   }));
 
-export default function MusicToggle() {
+export default function MusicToggle({ checked, onChange }) {
     return (
       <>
-        <IOSSwitch/>
+        <IOSSwitch checked={checked} onChange={onChange} />
       </>
     );
   }

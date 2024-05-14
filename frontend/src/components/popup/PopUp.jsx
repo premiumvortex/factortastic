@@ -31,7 +31,7 @@ export default function PopUp() {
   );
 }
 
-const PopupBody = styled('div')(
+const PopupBody = styled('a')(
   ({ theme }) => `
   width: 1000px;
   min-width: 600px;`

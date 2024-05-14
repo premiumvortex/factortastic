@@ -100,6 +100,14 @@
     line-height: var(--tutorial-text-line-height);
   }
 
+  .secondary-text {
+    font-family: var(--secondary-font-family);
+    font-size: var(--secondary-font-size);
+    font-style: var(--secondary-font-style);
+    font-weight: var(--secondary-font-weight);
+    letter-spacing: var(--secondary-letter-spacing);
+    line-height: var(--tutorial-text-line-height);
+  }
   /* Using Color Variables */
   .background-cyan {
     background-color: var(--cyan);
@@ -113,28 +121,14 @@
     color: var(--cyan);
   }
 
-    .text-black {
-      color: var(--black);
-    }
+  .text-black {
+    color: var(--black);
+  }
 
   /* Applying Shadows */
   .shadow-strong {
     box-shadow: var(--strong-shadow);
   }
-
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: black;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-/* } */
 
 
 a {

@@ -3,6 +3,8 @@ import React from 'react';
 import { useSound } from './SoundContext';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import MusicToggle from "../button/MusicToggle.jsx";
+import SoundFxToggle from "../button/SoundFxToggle.jsx";
 
 const SoundSettings = () => {
     const {
@@ -31,15 +33,51 @@ const SoundSettings = () => {
     };
 
     return (
-        <div>
-            <FormControlLabel
-                control={<Switch checked={isSoundEffectEnabled} onChange={handleToggleSoundEffect} />}
-                label="Sound Effects"
-            />
-            <FormControlLabel
-                control={<Switch checked={isBackgroundMusicEnabled} onChange={handleToggleBackgroundMusic} />}
-                label="Background Music"
-            />
+        <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1.5fr 1fr', // ratio of columns
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%', // Full width of the container
+            gap: '5%' // Space between columns
+        }}>
+            {/* First Row: Music */}
+            <div className='sound-labels text-black'
+                 style={{
+                     textAlign: 'right',
+                     display: 'flex',
+                     alignItems: 'center',
+                     justifyContent: 'flex-end',
+                     padding: '8px'
+                 }}>
+                Music:
+            </div>
+            <div style={{padding: '8px'}}>
+                <FormControlLabel
+                    control={<MusicToggle checked={isBackgroundMusicEnabled} onChange={handleToggleBackgroundMusic}/>}
+                    label="" // Label is empty because it's separately handled
+                    style={{margin: 'auto'}} // Center the switch in the grid cell
+                />
+            </div>
+
+            {/* Second Row: SoundFx */}
+            <div className='sound-labels text-black'
+                 style={{
+                     textAlign: 'right',
+                     display: 'flex',
+                     alignItems: 'center',
+                     justifyContent: 'flex-end',
+                     padding: '8px'
+                 }}>
+                SoundFx:
+            </div>
+            <div style={{padding: '8px'}}>
+                <FormControlLabel
+                    control={<SoundFxToggle checked={isSoundEffectEnabled} onChange={handleToggleSoundEffect}/>}
+                    label="" // Label is empty because it's separately handled
+                    style={{margin: 'auto'}} // Center the switch in the grid cell
+                />
+            </div>
         </div>
     );
 };
