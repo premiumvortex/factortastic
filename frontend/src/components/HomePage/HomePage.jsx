@@ -8,7 +8,7 @@ import StartButton from './Start.png';
 import './HomePage.css';
 import '../../index.css';
 
-// HomePage component shows start button which prompts user to read privacy policy and agree to terms and conditions
+// HomePage component displays a start button which shows the Agreement component when the user clicks on it
 export const HomePage = () => {
     const [showAgreement, setShowAgreement] = useState(false);
 
@@ -23,7 +23,7 @@ export const HomePage = () => {
     return (
         <div className="home-page">
             <HomePageTitle />
-            
+
             <img className="start-button" onClick={handleClick} src={StartButton}></img>
            
             {showAgreement && <Agreement onClose={handleClosePopup} />}      
