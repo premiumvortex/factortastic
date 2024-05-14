@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import { DeckButton } from '../DeckButton/DeckButton';
 import Grid from '@mui/material/Unstable_Grid2';
 
-import './ChooseADeckPageContent.css';
+import './DecksGrid.css';
 import '../../index.css';
 
-export const ChooseADeckPageContent = () => {
+// DecksGrid displays the different decks a user can choose
+// Displays a Grid of DeckButtons
+export const DecksGrid = () => {
     const [decks, setDecks] = useState([
         { name: 'red', status: 'unlocked', color: '#B62F32' },
         { name: 'purple', status: 'unlocked', color: '#4E41BC'},
