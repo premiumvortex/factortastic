@@ -1,10 +1,10 @@
-import Fox from '../assets/artwork/Individual_Assets/Characters/9-tail-fox.png';
-import Rainbow from '../assets/artwork/Individual_Assets/Characters/7-rainbow.png';
-import Star from '../assets/artwork/Individual_Assets/Characters/5-point-star.png';
-import '../components/Settings/settings.css';
-import '../index.css';
+import Fox from '../../../../assets/artwork/Individual_Assets/Characters/9-tail-fox.png';
+import Rainbow from '../../../../assets/artwork/Individual_Assets/Characters/7-rainbow.png';
+import Star from '../../../../assets/artwork/Individual_Assets/Characters/5-point-star.png';
+import '../../settings.css';
+import '../../../../index.css';
 import './thankYou.css';
-import SettingButton from '../components/button/SettingButton';
+import SettingButton from '../../../button/SettingButton.jsx';
 
 export default function ThankYouPage({ giveThanks, setGiveThanks }) {
 

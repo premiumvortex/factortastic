@@ -4,78 +4,49 @@ import SoundSettings from "../Sound/SoundSettings"; // Import from second compon
 import BackButton from "../button/BackButton";
 import './settings.css';
 import '../../index.css';
-import KeyPage from '../../page/KeyPage';
-import ContactUsPage from '../../page/ContactUsPage';
+import KeyPage from './SettingsComponents/page/KeyPage';
+import ContactUsPage from './SettingsComponents/page/ContactUsPage';
 import SettingTitles from './SettingsComponents/SettingTitles.jsx';
 import ActionKeys from "./SettingsComponents/ActionKeys.jsx";
 
 function Settings({ handleClosePopup}) {
- const [currentPage, setCurrentPage] = useState(null);
+ const [currentPopUp, setCurrentPopUp] = useState(null);
 
- let changePage = (pageName) => {
-    setCurrentPage(pageName);
+ let changePopUp = (pageName) => {
+    setCurrentPopUp(pageName);
   };
 
  const backToSettings = () => {
-    setCurrentPage(null);
+    setCurrentPopUp(null);
  }
 
-return (
-<>
-    <div className='popup-container'>
-        {currentPage === null && (<SoundProvider>
-                <div>
-                    <BackButton onClick={handleClosePopup}/>
-                </div>
+    return (
+        <>
+            <div className='popup-container'>
+                {currentPopUp === null && (<SoundProvider>
+                        <div>
+                            <BackButton onClick={handleClosePopup}/>
+                        </div>
 
-                <div className="setting-content">
-                    {/*<div className='setting-content'>*/}
-                    <div className=' padding-top-40'>
-                        <SettingTitles />
-                    </div>
+                        <div className="setting-content">
+                            <div style={{marginTop: 40}}>
+                                <SettingTitles />
+                            </div>
 
-                    <SoundSettings/>
+                            <SoundSettings/>
 
-                    {/* Commented Out by Faraz*/}
+                            <div style={{marginBottom: 40}}>
+                                <ActionKeys changePage={changePopUp}/>
+                            </div>
 
-                    {/*<div className='row justify-center padding-top-20 padding-bottom-40'>*/}
-
-                    {/*    <div className='column-half sound-labels'>*/}
-                    {/*        <div className='text-black padding-bottom-40'>Music:</div>*/}
-                    {/*        <div className='text-black'>SoundFx:</div>*/}
-                    {/*    </div>*/}
-                    {/*    <div className='column-half flex-column space-between padding-left-20 margin-top-20'>*/}
-                    {/*        <MusicToggle />*/}
-                    {/*        <SoundFxToggle />*/}
-                    {/*    </div>*/}
-                    {/*</div>*/}
-
-                    <div style={{marginBottom: 40}}>
-                        <ActionKeys changePage={changePage}/>
-                    </div>
-
-                    {/* Commented Out by Faraz*/}
-
-                    {/*    <div className='row justify-center padding-top-40'>*/}
-                    {/*        <div className='column-half flex flex-column'>*/}
-                    {/*            <SettingButton text={'Key'} onClick={() => changePage('Key')} />*/}
-                    {/*            <SettingButton text={'Menu'} onClick={() => alert('Nothing here yet!')}/>*/}
-                    {/*        </div>*/}
-                    {/*        <div className='column-half flex flex-column'>*/}
-                    {/*                <SettingButton text={'Privacy Policy'} onClick={() => alert('Nothing here yet!')} />*/}
-                    {/*            <SettingButton text={'Contact Us'} onClick={() => changePage('Contact Us')}/>*/}
-                    {/*        </div>*/}
-                    {/*    </div>*/}
-
-                    {/*</div>*/}
-                </div>
-            </SoundProvider>
-        )}
-        {currentPage === 'Key' && <KeyPage changePage={changePage}/>}
-        {currentPage === 'Contact Us' && <ContactUsPage changePage={changePage} />}
-    </div>
-</>
-);
+                        </div>
+                    </SoundProvider>
+                )}
+                {currentPopUp === 'Key' && <KeyPage changePage={changePopUp}/>}
+                {currentPopUp === 'Contact Us' && <ContactUsPage changePage={changePopUp} />}
+            </div>
+        </>
+    );
 }
 
 export default Settings;

@@ -13,7 +13,7 @@
   background-color: #516EBE;
   display: grid;
   grid-template-columns: 1fr; /* Single column layout */
-  grid-gap: 25%;
+  grid-gap: 13vh;
 }
 
 .setting-title {

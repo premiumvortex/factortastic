@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import BackButton from '../components/button/BackButton';
-import '../page/contactUs.css';
+import BackButton from '../../../button/BackButton.jsx';
+import './contactUs.css';
 import EmailIcon from '@mui/icons-material/Email';
-import Octipi from '../assets/artwork/Individual_Assets/Characters/8-octopus.png';
-import ThankYouPage from './ThankYouPage';
-import SettingButton from '../components/button/SettingButton';
+import Octipi from '../../../../assets/artwork/Individual_Assets/Characters/8-octopus.png';
+import ThankYouPage from './ThankYouPage.jsx';
+import SettingButton from '../../../button/SettingButton.jsx';
 
 export default function ContactUsPage({ changePage }) {
   const [formData, setFormData] = useState({

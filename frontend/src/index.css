@@ -125,10 +125,10 @@
     color: var(--black);
   }
 
-  /* Applying Shadows */
-  .shadow-strong {
-    box-shadow: var(--strong-shadow);
-  }
+  /*!* Applying Shadows *!*/
+  /*.shadow-strong {*/
+  /*  box-shadow: var(--strong-shadow);*/
+  /*}*/
 
 
 a {
