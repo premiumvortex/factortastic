@@ -5,7 +5,7 @@ import Alert from '@mui/material/Alert';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 
-import '../../index.css';
+import '../../../../index.css';
 import './AgreementAlert.css';
 
 // AgreementAlert component displays an error alert with a close button

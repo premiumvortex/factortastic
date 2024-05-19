@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { DecksGrid } from '../DecksGrid/DecksGrid';
+import { DecksGrid } from './ChooseADeckComponents/DecksGrid/DecksGrid';
 
 import '../../index.css';
 import './ChooseADeckPage.css';

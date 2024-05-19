@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './HomePageTitle.css';
-import '../../index.css';
+import '../../../../index.css';
 
 export const HomePageTitle = () => {
     return (

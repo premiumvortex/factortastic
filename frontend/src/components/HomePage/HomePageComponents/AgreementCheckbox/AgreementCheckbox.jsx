@@ -2,7 +2,7 @@ import React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import PropTypes from 'prop-types';
 
-import '../../index.css';
+import '../../../../index.css';
 
 export const AgreementCheckbox = ({ id, isChecked, toggleCheckbox }) => {
     return (

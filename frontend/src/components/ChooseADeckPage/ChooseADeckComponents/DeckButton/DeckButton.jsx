@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Lock from './Lock.svg'; 
 
 import './DeckButton.css';
-import '../../index.css';
+import '../../../../index.css';
 
 // DeckButton component takes in deck button arguments and displays the button
 export const DeckButton = ({ deckName, status, color, onClick }) => {

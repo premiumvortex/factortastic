@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
-import { DeckButton } from '../DeckButton/DeckButton';
+import { DeckButton } from '../DeckButton/DeckButton.jsx';
 import Grid from '@mui/material/Unstable_Grid2';
 
 import './DecksGrid.css';
-import '../../index.css';
+import '../../../../index.css';
 
 // DecksGrid displays the different decks a user can choose
 // Displays a Grid of DeckButtons

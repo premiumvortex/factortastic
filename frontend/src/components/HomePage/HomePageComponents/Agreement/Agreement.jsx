@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Checkbox from '@mui/material/Checkbox';
 
-import { AgreementAlert } from '../AgreementAlert/AgreementAlert';
-import { AgreementCheckbox } from '../AgreementCheckbox/AgreementCheckbox';
-import { PrivacyPolicyPage } from '../PrivacyPolicyPage/PrivacyPolicyPage';
-import { SettingLongButton } from '../SettingLongButton/SettingLongButton';
+import { AgreementAlert } from '../AgreementAlert/AgreementAlert.jsx';
+import { AgreementCheckbox } from '../AgreementCheckbox/AgreementCheckbox.jsx';
+import { PrivacyPolicyPage } from '../../../PrivacyPolicyPage/PrivacyPolicyPage.jsx';
+import { SettingLongButton } from '../../../SettingLongButton/SettingLongButton.jsx';
 
-import '../../index.css';
+import '../../../../index.css';
 import './Agreement.css';
 
 // Agreement component shows the agreement pop up, which forces users to agree to terms and conditions before continuing

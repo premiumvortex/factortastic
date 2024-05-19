@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import { HomePageTitle } from '../HomePageTitle/HomePageTitle';
-import { Agreement } from '../Agreement/Agreement';
+import { HomePageTitle } from './HomePageComponents/HomePageTitle/HomePageTitle';
+import { Agreement } from './HomePageComponents/Agreement/Agreement';
 
 import StartButton from './Start.png';
 
