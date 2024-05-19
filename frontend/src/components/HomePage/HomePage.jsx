@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { HomePageTitle } from './HomePageComponents/HomePageTitle/HomePageTitle';
 import { Agreement } from './HomePageComponents/Agreement/Agreement';
 
-import StartButton from './Start.png';
+// import StartButton from './Start.png';
+import StartButton from '../../assets/artwork/Individual_Assets/Start.png';
 
 import './HomePage.css';
 import '../../index.css';
