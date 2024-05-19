@@ -24,8 +24,10 @@ export const HomePage = () => {
         <div className="home-page">
             <HomePageTitle />
 
-            <img className="start-button" onClick={handleClick} src={StartButton}></img>
-           
+            <div className="oval-image-wrapper">
+                <img className="start-button" onClick={handleClick} src={StartButton}></img>
+            </div>
+
             {showAgreement && <Agreement onClose={handleClosePopup} />}      
         </div>
     );
