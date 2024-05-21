@@ -1,4 +1,5 @@
 import '../page/contactUs.css';
+import '../../settings.css';
 import EmailIcon from '@mui/icons-material/Email';
 import Octipi from '../../../../assets/artwork/Individual_Assets/Characters/8-octopus.png';
 import SettingButton from '../../../button/SettingButton.jsx';
@@ -7,12 +8,12 @@ export default function ContactForm({formData, handleChange, handleSubmit}) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className='row justify-center'>
-          <div className='column-half'>
-            <div className='row flex-column margin-bottom-20'>
-              <div className='column-half block'>
-                <div className='row space-between'>
-                  <div className='column-half block'>
+        <div className='justify-center'>
+          <div>
+            <div style={{display: 'flex', flexDirection: 'column', marginBottom: '8%'}}>
+              <div>
+                <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                  <div>
                     <label>First Name :</label>
                     <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} />
                     <label>Email Address :</label>

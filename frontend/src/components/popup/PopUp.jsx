@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
 import { styled } from '@mui/system';
 import Settings from '../Settings/Settings';
+import SettingsIconButton from '../button/SettingIconButton';
 
 export default function PopUp() {
   const [anchor, setAnchor] = useState(null);
@@ -19,9 +20,7 @@ export default function PopUp() {
 
   return (
     <div className='flex justify-center'>
-      <button onClick={handleClick}>
-        Toggle Popup
-      </button>
+      <SettingsIconButton onClick={handleClick}/>
       <BasePopup id={id} open={open} anchor={anchor}>
         <PopupBody>
           <Settings handleClosePopup={handleClosePopup} />
