@@ -4,16 +4,15 @@ import PropTypes from 'prop-types';
 
 import '../../../../index.css';
 
-export const AgreementCheckbox = ({ id, isChecked, toggleCheckbox }) => {
+export const AgreementCheckbox = ({ id, checked, onChange }) => {
     return (
         <Checkbox
             id={id}
-            checked={isChecked}
-            onChange={toggleCheckbox}
-       
+            checked={checked}
+            onChange={onChange}
             sx={{
                 color: 'black',
-                '&.Mui-checked': { color: 'var(--cyan)' },                        
+                '&.Mui-checked': { color: 'var(--cyan)' },
                 '& .MuiSvgIcon-root': { fontSize: '48px' }
             }}
         />
@@ -22,6 +21,6 @@ export const AgreementCheckbox = ({ id, isChecked, toggleCheckbox }) => {
 
 AgreementCheckbox.propTypes = {
     id: PropTypes.string.isRequired,
-    isChecked: PropTypes.bool.isRequired,
-    toggleCheckbox: PropTypes.func.isRequired,
+    checked: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired,
 };

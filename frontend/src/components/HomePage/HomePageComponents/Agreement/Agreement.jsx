@@ -11,7 +11,7 @@ import '../../../../index.css';
 import './Agreement.css';
 
 // Agreement component shows the agreement pop up, which forces users to agree to terms and conditions before continuing
-// It controls the checkbox, PrivacyPolicyPage visibility, and alert visibility
+// It controls the checkbox, PrivacyPolicyPage visibility, and AgreementAlert visibility
 export const Agreement = ({ onClose }) => {
 
     // state variables
@@ -44,19 +44,9 @@ export const Agreement = ({ onClose }) => {
 
     return (
         <div className="agreement-container">
-            <div className="agreement-popup">
+            <div className="agreement-content">
                 <div>
-                    <Checkbox
-                        id="agreementCheckbox"
-                        checked={isChecked}
-                        onChange={toggleCheckbox}
-                
-                        sx={{
-                            color: 'black',
-                            '&.Mui-checked': { color: 'var(--cyan)' },                        
-                            '& .MuiSvgIcon-root': { fontSize: '48px' }
-                        }}
-                    />
+                    <AgreementCheckbox id="checkbox" checked={isChecked} onChange={toggleCheckbox} />
 
                     <span className="settings-text">I have read and agreed to the terms and conditions</span>
                 </div>
@@ -75,4 +65,3 @@ export const Agreement = ({ onClose }) => {
 Agreement.propTypes = {
     onClose: PropTypes.func.isRequired
 };
-
