@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 
 import { HomePageTitle } from './HomePageComponents/HomePageTitle/HomePageTitle';
+import { StartButton } from './HomePageComponents/StartButton/StartButton';
 import { Agreement } from './HomePageComponents/Agreement/Agreement';
-
-// import StartButton from './Start.png';
-import StartButton from '../../assets/artwork/Individual_Assets/Start.png';
 
 import './HomePage.css';
 import '../../index.css';
 
-// HomePage component displays a start button which shows the Agreement component when the user clicks on it
+// HomePage component displays title and a start button
 export const HomePage = () => {
     const [showAgreement, setShowAgreement] = useState(false);
 
@@ -24,14 +22,9 @@ export const HomePage = () => {
     return (
         <div className="home-page">
             <HomePageTitle />
-
-            <div className="oval-image-wrapper">
-                <img className="start-button" onClick={handleClick} src={StartButton}></img>
-            </div>
+            <StartButton handleClick={handleClick}/>
 
             {showAgreement && <Agreement onClose={handleClosePopup} />}      
         </div>
     );
 }
-
-

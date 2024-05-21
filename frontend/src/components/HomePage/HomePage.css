@@ -17,26 +17,3 @@
     background-size: contain, cover; 
     background-repeat: no-repeat; 
 }
-
-.oval-image-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: inline-block;
-    border-radius: 50%;
-    /*overflow: hidden; !* Ensures the image stays within the wrapper's border radius *!*/
-    z-index: 1;
-    cursor: pointer;
-}
-
-.start-button {
-    max-height: 40vh;
-    max-width: 50vw;
-    height: auto;
-    width: auto;
-    background-color: transparent;
-    display: block;
-    filter: drop-shadow(0 0 20px green); /* Adjust values for desired effect */
-    border-radius: 50%; /* Ensures the image itself is oval/circular */
-}

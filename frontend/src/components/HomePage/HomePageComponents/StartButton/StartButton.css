@@ -1,0 +1,37 @@
+.oval-image-wrapper {
+    position: absolute;
+    display: inline-block;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: auto;
+    width: auto;
+    max-height: 40vh;
+    max-width: 50vw;
+    
+    border-radius: 80%;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.start-button {
+    display: block;
+    
+    height: auto;
+    width: auto;
+    max-height: 40vh;
+    max-width: 50vw;
+    
+    border-radius: 50%; 
+    background-color: transparent;
+    
+    filter: drop-shadow(var(--startnstop-drop-shadow));
+    transition: filter 0.3s ease;
+}
+
+.start-button:hover {
+    filter: drop-shadow(0 0 0 transparent); 
+    transition: filter 0.3s ease; 
+} 
