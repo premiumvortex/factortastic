@@ -3,6 +3,8 @@ import '../button/button.css';
 
 export default function SettingsIconButton({onClick}) {
   return (
-    <SettingsIcon onClick={onClick} style={{ fontSize: 80}} className='setting-btn-icon'/>
+    <div className="setting-btn-icon-container">
+      <SettingsIcon style={{ fontSize: 'inherit' }} onClick={onClick} className='setting-btn-icon'/>
+    </div>
   )
 }
