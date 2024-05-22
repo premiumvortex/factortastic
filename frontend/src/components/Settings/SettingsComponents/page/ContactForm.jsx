@@ -19,7 +19,7 @@ export default function ContactForm({formData, handleChange, handleSubmit}) {
                     <label>Email Address :</label>
                     <input type="text" name="emailAddress" value={formData.emailAddress} onChange={handleChange} />
                   </div>
-                  <div className='column-half block'>
+                  <div>
                     <label>Last Name :</label>
                     <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
                     <label>Phone Number :</label>
@@ -27,26 +27,26 @@ export default function ContactForm({formData, handleChange, handleSubmit}) {
                   </div>
                 </div>
               </div>
-              <div className='column-half block'>
+              <div>
                 <label>Message* :</label>
                 <textarea className='message-box' name="message" value={formData.message} onChange={handleChange}></textarea>
               </div>
             </div>
           </div>
-          <div className='column-half width-300'>
-            <div className='row flex-column'>
-              <div className='column-half flex justify-center'>
+          <div style={{width: '50vh'}}>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+              <div className='flex justify-center'>
                 <EmailIcon fontSize='large' />
                 <p className='email-text'>email@example.com</p>
               </div>
-              <div className='column-half'>
+              <div>
                 <img className='octipi-img' src={Octipi} alt='Octipi' />
               </div>
             </div>
           </div>
         </div>
-        <div className='row'>
-          <div className='column-full submit'>
+        <div style={{display: 'flex'}}>
+          <div className='submit'>
             <SettingButton type='submit' text={'Submit'} />
           </div>
         </div>
