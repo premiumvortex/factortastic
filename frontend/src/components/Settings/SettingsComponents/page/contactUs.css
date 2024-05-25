@@ -17,26 +17,18 @@ p {
   color: white;
   display: block;
   font-size: 18px;
-}
-
-label,
-input {
   margin-bottom: 10px;
 }
 
 input {
   height: 20px;
   min-width: 200px;
+  margin-bottom: 10px;
 }
 
 .contact-content {
   justify-content: center;
   margin: 30px 0;
-}
-
-.space-between {
-  display: flex;
-  justify-content: space-between;
 }
 
 .message-box {

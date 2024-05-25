@@ -6,9 +6,11 @@ import SettingsIconButton from '../button/SettingIconButton';
 
 export default function PopUp() {
   const [anchor, setAnchor] = useState(null);
+  const [showButton, setShowButton] = useState(true);
 
   function handleClick(event) {
     setAnchor(anchor ? null : event.currentTarget);
+    setShowButton(!showButton);
   };
 
   const open = Boolean(anchor);
@@ -16,11 +18,12 @@ export default function PopUp() {
 
   function handleClosePopup() {
     setAnchor(null);
+    setShowButton(true);
   };
 
   return (
-    <div className='flex justify-center'>
-      <SettingsIconButton onClick={handleClick}/>
+    <div style={{display: 'flex', justifyContent: 'center'}}>
+      {showButton && <SettingsIconButton onClick={handleClick} />}
       <BasePopup id={id} open={open} anchor={anchor}>
         <PopupBody>
           <Settings handleClosePopup={handleClosePopup} />

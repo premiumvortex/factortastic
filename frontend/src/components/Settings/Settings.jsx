@@ -19,29 +19,29 @@ function Settings({ handleClosePopup}) {
     setCurrentPopUp(null);
  }
 
-    return (
-        <>
-            <div>
-                {currentPopUp === null && (<SoundProvider>
-                        <div>
-                            <BackButton onClick={handleClosePopup}/>
+return (
+    <>
+        <div style={{width: '100%'}}>
+            {currentPopUp === null && (<SoundProvider>
+                    <div>
+                        <BackButton onClick={handleClosePopup}/>
+                    </div>
+                    <div className="setting-content">
+                        <div style={{marginTop: 40}}>
+                            <SettingTitles />
                         </div>
-                        <div className="setting-content">
-                            <div style={{marginTop: 40}}>
-                                <SettingTitles />
-                            </div>
-                            <SoundSettings/>
-                            <div style={{marginBottom: 40}}>
-                                <ActionKeys changePage={changePopUp}/>
-                            </div>
+                        <SoundSettings/>
+                        <div style={{marginBottom: 40}}>
+                            <ActionKeys changePage={changePopUp}/>
                         </div>
-                    </SoundProvider>
-                )}
-                {currentPopUp === 'Key' && <KeyPage changePage={changePopUp}/>}
-                {currentPopUp === 'Contact Us' && <ContactUsPage changePage={changePopUp} />}
-            </div>
-        </>
-    );
+                    </div>
+                </SoundProvider>
+            )}
+            {currentPopUp === 'Key' && <KeyPage changePage={changePopUp}/>}
+            {currentPopUp === 'Contact Us' && <ContactUsPage changePage={changePopUp} />}
+        </div>
+    </>
+);
 }
 
 export default Settings;
