@@ -3,7 +3,8 @@ import '../../../../index.css';
 
 export default function ContactTitle() {
   return (
-    <div className='justify-center secondary-text' style={{gap: '2%'}}>
+    // secondary-text
+    <div className='justify-center tutorial-text' style={{gap: '1%', paddingBottom: 50}}>
       <span style={{ color: 'var(--cyan)' }}>Get</span>
       <span style={{ color: 'var(--pink)' }}>In</span>
       <span style={{ color: 'var(--cyan)' }}>Touch</span>

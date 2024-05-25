@@ -1,28 +1,22 @@
-.key,
-.title,
-.submit,
 .octipi-img {
+  width: 15rem;
+  padding-top: 1rem;
   display: flex;
   justify-content: center;
   margin: 0 auto;
-}
-
-.octipi-img {
-  width: 185px;
-  padding-top: 20px;
 }
 
 label,
 p {
   color: white;
   display: block;
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 input {
-  height: 20px;
-  min-width: 200px;
+  height: 2.5rem;
+  min-width: 13rem;
   margin-bottom: 10px;
 }
 

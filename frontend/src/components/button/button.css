@@ -16,6 +16,7 @@ button:hover {
   display: block;
   padding: 1.5%; /*changed by Faraz*/
   width: 100%; /*changed by Faraz*/
+  max-height: 100%;
   border-radius: 50px;
   border: none;
   font-size: 2.4rem;

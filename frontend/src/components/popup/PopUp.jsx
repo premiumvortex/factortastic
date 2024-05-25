@@ -22,19 +22,11 @@ export default function PopUp() {
   };
 
   return (
-    <div style={{display: 'flex', justifyContent: 'center'}}>
+    <div style={{display: 'flex', justifyContent: 'end'}}>
       {showButton && <SettingsIconButton onClick={handleClick} />}
       <BasePopup id={id} open={open} anchor={anchor}>
-        <PopupBody>
           <Settings handleClosePopup={handleClosePopup} />
-        </PopupBody>
       </BasePopup>
     </div>
   );
 }
-
-const PopupBody = styled('a')(
-  ({ theme }) => `
-  width: 1000px;
-  min-width: 600px;`
-)
