@@ -1,111 +1,94 @@
 .photo-container {
-    position: relative;
+    position: absolute;
     width: 95%;
     height: 0;
     padding-bottom: 56.25%; 
-    max-height: 95vh;
+}
+
+.photo-container > div {
+    position: absolute;
 }
 
 .shoes-container {
-    position: absolute;
-    width: 10%;
-    
-    top: 80%;
-    left: 80%;
+    width: 14%; 
+    top: 85%;
+    left: 68%;
     transform: rotate(-49.46deg);
+    z-index: -1;
 }
 
 .mice-container {
-    position: absolute;
-    width: 35%;
-
-    top: 55%;
-    left: 0%;
+    width: 33%;
+    top: 60%;
+    left: 7.5%;
     transform: scaleX(-1);
     z-index: -1;
 }
 
 .leaf-container {
-    position: absolute;
-    width: 7%;
-
-    top: 44%;
-    left: 92%;
+    width: 8%;
+    top: 45%;
+    left: 83%;
     transform: scaleX(-1);
     z-index: -3;
 }
 
 .star-container {
-    position: absolute;
-    width: 45%;
-
-    top: -10%;
+    width: 42%;
+    top: -8%;
     left: 60%;
     transform: rotate(12.92deg);
     z-index: -1;
 }
 
 .cans-container {
-    position: absolute;
-    width: 16%;
-
-    top: 70%;
-    left: 85%;
+    width: 15%;
+    top: 72%;
+    left: 75%;
     transform: rotate(-15.9deg);
-}
-
-.rainbow-container {
-    position: absolute;
-    width: 70%;
-    
-    top: -10%;
-    left: 15%;
-}
-
-.octopus-container {
-    position: absolute;
-    width: 30%;
-
-    top: 30%;
-    left: 70%;
-    transform: rotate(-.73deg);
     z-index: -2;
 }
 
-.fox-container {
-    position: absolute;
-    width: 40%;
+.rainbow-container {
+    width: 60%;
+    top: 0%;
+    left: 20%;
+}
 
-    top: -5%;
-    left: 0%;
+.octopus-container {
+    width: 33%;
+    top: 29%;
+    left: 59%;
+    transform: rotate(-.73deg);
+    z-index: -3;
+}
+
+.fox-container {
+    width: 40%;
+    top: -3%;
+    left: 3%;
     transform: rotate(-5.08deg);
     z-index: -1;
 } 
 
 .toes-container {
-    position: absolute;
-    width: 35%;
-
-    top: 25%;
-    left: -5%;
+    width: 30%;
+    top: 30%;
+    left: 5%;
     z-index: -2;
 }
 
 .frogs-container {
-    position: absolute;
-    width: 44%;
-
-    top: 50%;
-    left: 28%;
+    width: 40%;
+    top: 53%;
+    left: 30%;
     z-index: -2;
 }
 
 .eggs-container {
-    position: absolute;
-    width: 25%;
-
-    top: 66%;
-    left: 60%;
+    width: 18%;
+    top: 70%;
+    left: 61%;
     transform: rotate(-5.08deg);
-    z-index: -1;
+    z-index: -2;
 }
