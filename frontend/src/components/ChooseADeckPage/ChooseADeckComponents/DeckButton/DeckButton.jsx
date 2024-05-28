@@ -5,7 +5,7 @@ import Lock from './Lock.svg';
 import './DeckButton.css';
 import '../../../../index.css';
 
-// DeckButton component takes in deck button arguments and displays the button
+// DeckButton component takes in arguments and displays the button accordingly
 export const DeckButton = ({ deckName, status, color, onClick }) => {
     // Adjust styling based on color and status
     const buttonStyle = {
@@ -18,7 +18,7 @@ export const DeckButton = ({ deckName, status, color, onClick }) => {
     // Determine content: Show deckName for 'unlocked' and 'disabled', lock icon for 'locked'
     const buttonContent = status === 'locked' ? <img className="lock-icon" src={Lock} alt="Locked Icon"/> : deckName;
 
-    // Adjust onClick: Only invoke onClick if not 'disabled'
+    // Only call onClick() if button is enabled
     const handleClick = () => {
         if (status !== 'disabled') {
             onClick();
@@ -30,11 +30,9 @@ export const DeckButton = ({ deckName, status, color, onClick }) => {
             className="deck-button" 
             aria-disabled={status === 'disabled'} 
             onClick={handleClick} 
-            style={buttonStyle}>
-                <div className="button-name">
-                <p className="secondary">{buttonContent}</p>
-                </div>
-                
+            style={buttonStyle}
+        >
+            <p className="button-name secondary">{buttonContent}</p>
         </button>
     );
 };
