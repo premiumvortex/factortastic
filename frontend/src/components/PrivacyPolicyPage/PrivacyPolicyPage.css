@@ -12,22 +12,22 @@
     overflow: hidden;
 
     background-image: url('../../assets/artwork/Individual_Assets/Game_Background.PNG');
-
-    z-index: 9999;
+    z-index: 5;
 }
 
 .privacy-policy-content {
-    width: 80%;
-    height: 60%;
-    padding: 5%;
-
-    overflow-y: scroll; 
-
+    position: absolute;
+    width: 85%;
+    top: 100px;
+    bottom: 20px;
+    padding: 10px 20px;
+    
     border-radius: 10px;
     box-shadow: var(--setting-drop-shadow);
-
     background-color: var(--setting-background);
-    color: white;
+    color: var(--variable-collection-white);
+
+    overflow-y: scroll; 
 }
 
 .privacy-policy-content::-webkit-scrollbar {
@@ -37,25 +37,39 @@
 /* someone will be making the back button later */
 .back-button {
     position: fixed;
+    height: 40px;
+    width: 100px;
     top: 20px;
     left: 20px;
-    height: auto;
-    width: auto;
-    max-width: 100px;
-    max-height: 40px;
-    padding: 10px 20px;
-
-    cursor: pointer;
-
+   
+    color: var(--variable-collection-white);
+    background-color: #007bff;
     border: none;
     border-radius: 5px;
-    
-    color: #fff;
-    background-color: #007bff;
+
+    cursor: pointer;
+}
+
+.back-button:hover {
+    opacity: 0.8;
 }
   
 .back-button:disabled {
     cursor: not-allowed;
-    background-color: #ccc;
+    background-color: var(--setting-2nd-gray);
 }
 
+.back-button:disabled:hover::after {
+    content: "Read through the entire privacy policy first";
+
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 5px 10px;
+
+    background-color: rgba(0, 0, 0, 0.75);
+    color: var(--variable-collection-white);
+    border-radius: 5px;
+    white-space: nowrap;
+}

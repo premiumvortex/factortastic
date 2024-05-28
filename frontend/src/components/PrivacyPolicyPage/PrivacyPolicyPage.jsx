@@ -5,9 +5,23 @@ import './PrivacyPolicyPage.css';
 import '../../index.css';
 
 // PrivacyPolicyPage shows the privacy policy and forces the user to scroll to the bottom before closing
-export const PrivacyPolicyPage = ({onClose}) => {
-    const [scrollPosition, setScrollPosition] = useState(false);
-  
+export const PrivacyPolicyPage = ({ onClose }) => {
+    const [reachedBottom, setReachedBottom] = useState(false);
+
+    const date = "05/07/2024";
+    const gameName = "Factortastic";
+    const contactInfo = "info@factortastic.com";
+
+    // Create scroll event listener in privacy-policy-content 
+    useEffect(() => {
+        const privacyPolicyContent = document.querySelector('.privacy-policy-content');
+        if (privacyPolicyContent) {
+            privacyPolicyContent.addEventListener('scroll', handleScroll);
+
+            return () => privacyPolicyContent.removeEventListener('scroll', handleScroll);
+        }
+    }, []);
+
    // Track scroll position within privacy-policy-content 
    const handleScroll = (event) => {
         const target = event.target;
@@ -15,59 +29,72 @@ export const PrivacyPolicyPage = ({onClose}) => {
         const maxScroll = target.scrollHeight - target.clientHeight;
         
         if (currentPosition + 50 >= maxScroll) {
-            setScrollPosition(true);
+            setReachedBottom(true);
         }
     };
 
-    useEffect(() => {
-        const privacyPolicyContent = document.querySelector('.privacy-policy-content');
-        privacyPolicyContent.addEventListener('scroll', handleScroll);
-
-        return () => privacyPolicyContent.removeEventListener('scroll', handleScroll);
-    }, []);
-
     return (
         <div className="privacy-policy-page">
-            <button className="back-button" onClick={onClose} disabled={!scrollPosition}>
+            <button 
+                className="settings-text back-button" 
+                onClick={onClose} 
+                disabled={!reachedBottom}
+                aria-label="Close Privacy Policy"
+            >
                 Back
             </button>
 
             <div className="privacy-policy-content" onScroll={handleScroll}>
                 <p className="settings-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor elit sed vulputate mi sit amet mauris commodo. Vel facilisis volutpat est velit egestas dui. Quis enim lobortis scelerisque fermentum dui faucibus. Sit amet justo donec enim. Ut enim blandit volutpat maecenas volutpat blandit. Viverra aliquet eget sit amet tellus. Sed turpis tincidunt id aliquet risus feugiat in. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices. Mi in nulla posuere sollicitudin aliquam ultrices sagittis. Sem et tortor consequat id porta. Massa eget egestas purus viverra. Nam aliquam sem et tortor consequat. Odio eu feugiat pretium nibh ipsum consequat nisl vel. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Maecenas ultricies mi eget mauris pharetra et ultrices neque. Vehicula ipsum a arcu cursus vitae congue mauris. Imperdiet proin fermentum leo vel orci porta non pulvinar. Nullam eget felis eget nunc lobortis mattis. Auctor augue mauris augue neque gravida in fermentum et.
-                    Mauris sit amet massa vitae tortor condimentum. Elementum eu facilisis sed odio. Euismod lacinia at quis risus. Imperdiet proin fermentum leo vel orci porta. Vitae congue mauris rhoncus aenean vel elit scelerisque. Nibh ipsum consequat nisl vel pretium lectus quam. Elit ullamcorper dignissim cras tincidunt. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Risus pretium quam vulputate dignissim suspendisse in est. At urna condimentum mattis pellentesque id nibh. Facilisis volutpat est velit egestas. Eleifend mi in nulla posuere sollicitudin aliquam. Egestas diam in arcu cursus euismod quis viverra nibh cras. Laoreet sit amet cursus sit amet dictum sit amet justo. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Aliquam sem fringilla ut morbi tincidunt augue interdum velit. Velit laoreet id donec ultrices. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum. Sagittis orci a scelerisque purus semper eget duis at tellus. Amet porttitor eget dolor morbi.
-                    Quam lacus suspendisse faucibus interdum. Quam nulla porttitor massa id. 
-                    <br/><br/>
+                    Privacy Policy for {gameName} <br />
+                    Last Updated: {date} <br /><br /><br />
 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor elit sed vulputate mi sit amet mauris commodo. Vel facilisis volutpat est velit egestas dui. Quis enim lobortis scelerisque fermentum dui faucibus. Sit amet justo donec enim. Ut enim blandit volutpat maecenas volutpat blandit. Viverra aliquet eget sit amet tellus. Sed turpis tincidunt id aliquet risus feugiat in. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices. Mi in nulla posuere sollicitudin aliquam ultrices sagittis. Sem et tortor consequat id porta. Massa eget egestas purus viverra. Nam aliquam sem et tortor consequat. Odio eu feugiat pretium nibh ipsum consequat nisl vel. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Maecenas ultricies mi eget mauris pharetra et ultrices neque. Vehicula ipsum a arcu cursus vitae congue mauris. Imperdiet proin fermentum leo vel orci porta non pulvinar. Nullam eget felis eget nunc lobortis mattis. Auctor augue mauris augue neque gravida in fermentum et.
-                    Mauris sit amet massa vitae tortor condimentum. Elementum eu facilisis sed odio. Euismod lacinia at quis risus. Imperdiet proin fermentum leo vel orci porta. Vitae congue mauris rhoncus aenean vel elit scelerisque. Nibh ipsum consequat nisl vel pretium lectus quam. Elit ullamcorper dignissim cras tincidunt. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Risus pretium quam vulputate dignissim suspendisse in est. At urna condimentum mattis pellentesque id nibh. Facilisis volutpat est velit egestas. Eleifend mi in nulla posuere sollicitudin aliquam. Egestas diam in arcu cursus euismod quis viverra nibh cras. Laoreet sit amet cursus sit amet dictum sit amet justo. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Aliquam sem fringilla ut morbi tincidunt augue interdum velit. Velit laoreet id donec ultrices. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum. Sagittis orci a scelerisque purus semper eget duis at tellus. Amet porttitor eget dolor morbi.
-                    Quam lacus suspendisse faucibus interdum. Quam nulla porttitor massa id.
-                    <br/><br/>
+                    1. Introduction <br />
+                    {gameName} is a fun, engaging, and educational web game designed to teach multiplication to children aged 5-8 years. This Privacy Policy outlines our commitment to the privacy and protection of the personal information of our young users and their guardians. <br /><br /><br />
+
+                    2. Compliance with Children’s Privacy Laws <br />
+                    Our game fully complies with the Children's Online Privacy Protection Act (COPPA) in the United States, the General Data Protection Regulation (GDPR) in Europe, and other relevant child privacy laws worldwide.<br /><br /><br />
+
+                    3. Information Collection and Use <br />
+
+                    a. Non-Personal Information:<br />
+
+                    Data Collected: Includes game scores, user progress, interaction data, device type, browser type, and IP address for technical purposes. <br />
+                    Purpose: To enhance user experience, improve game functionality, and for analytical purposes.<br /><br /><br />
                     
-                    Pretium quam vulputate dignissim suspendisse in est. Ut lectus arcu bibendum at. Ut porttitor leo a diam. Vel elit scelerisque mauris pellentesque. A cras semper auctor neque vitae tempus quam pellentesque. Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Eu facilisis sed odio morbi quis commodo odio. Nisl pretium fusce id velit ut tortor pretium.
-                    Sit amet consectetur adipiscing elit. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. Sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Convallis convallis tellus id interdum velit laoreet. Dictum fusce ut placerat orci nulla. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Urna porttitor rhoncus dolor purus non. Fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque. Rhoncus mattis rhoncus urna neque. Commodo viverra maecenas accumsan lacus vel. Ultrices vitae auctor eu augue ut lectus. At auctor urna nunc id cursus. Integer quis auctor elit sed vulputate.
-                    Consequat interdum varius sit amet mattis vulputate enim. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Odio facilisis mauris sit amet massa vitae tortor. Consectetur lorem donec massa sapien faucibus et molestie ac. Aliquet porttitor lacus luctus accumsan tortor posuere. Velit laoreet id donec ultrices tincidunt arcu non. Id aliquet lectus proin nibh. Integer feugiat scelerisque varius morbi enim. Neque gravida in fermentum et sollicitudin ac. Nibh praesent tristique magna sit amet purus gravida quis. Id velit ut tortor pretium viverra suspendisse potenti nullam. Viverra justo nec ultrices dui. Sit amet volutpat consequat mauris nunc.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor elit sed vulputate mi sit amet mauris commodo. Vel facilisis volutpat est velit egestas dui. Quis enim lobortis scelerisque fermentum dui faucibus. Sit amet justo donec enim. Ut enim blandit volutpat maecenas volutpat blandit. Viverra aliquet eget sit amet tellus. Sed turpis tincidunt id aliquet risus feugiat in. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices. Mi in nulla posuere sollicitudin aliquam ultrices sagittis. Sem et tortor consequat id porta. Massa eget egestas purus viverra. Nam aliquam sem et tortor consequat. Odio eu feugiat pretium nibh ipsum consequat nisl vel. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Maecenas ultricies mi eget mauris pharetra et ultrices neque. Vehicula ipsum a arcu cursus vitae congue mauris. Imperdiet proin fermentum leo vel orci porta non pulvinar. Nullam eget felis eget nunc lobortis mattis. Auctor augue mauris augue neque gravida in fermentum et.
-                    Mauris sit amet massa vitae tortor condimentum. Elementum eu facilisis sed odio. Euismod lacinia at quis risus. Imperdiet proin fermentum leo vel orci porta. Vitae congue mauris rhoncus aenean vel elit scelerisque. Nibh ipsum consequat nisl vel pretium lectus quam. Elit ullamcorper dignissim cras tincidunt. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Risus pretium quam vulputate dignissim suspendisse in est. At urna condimentum mattis pellentesque id nibh. Facilisis volutpat est velit egestas. Eleifend mi in nulla posuere sollicitudin aliquam. Egestas diam in arcu cursus euismod quis viverra nibh cras. Laoreet sit amet cursus sit amet dictum sit amet justo. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Aliquam sem fringilla ut morbi tincidunt augue interdum velit. Velit laoreet id donec ultrices. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum. Sagittis orci a scelerisque purus semper eget duis at tellus. Amet porttitor eget dolor morbi.
-                    Quam lacus suspendisse faucibus interdum. Quam nulla porttitor massa id.
-                    <br/><br/>
+                    b. Personal Information:<br />
+
+                    Data Collected: Limited to username (not the child's real name), parent’s email address, and age verification.<br />
+                    Parental Consent: Obtained through a verifiable method. Parents/guardians are required to provide consent and can review the information provided by their child.<br /><br /><br />
                     
-                    Pretium quam vulputate dignissim suspendisse in est. Ut lectus arcu bibendum at. Ut porttitor leo a diam. Vel elit scelerisque mauris pellentesque. A cras semper auctor neque vitae tempus quam pellentesque. Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Eu facilisis sed odio morbi quis commodo odio. Nisl pretium fusce id velit ut tortor pretium.
-                    Sit amet consectetur adipiscing elit. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. Sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Convallis convallis tellus id interdum velit laoreet. Dictum fusce ut placerat orci nulla. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Urna porttitor rhoncus dolor purus non. Fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque. Rhoncus mattis rhoncus urna neque. Commodo viverra maecenas accumsan lacus vel. Ultrices vitae auctor eu augue ut lectus. At auctor urna nunc id cursus. Integer quis auctor elit sed vulputate.
-                    Consequat interdum varius sit amet mattis vulputate enim. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Odio facilisis mauris sit amet massa vitae tortor. Consectetur lorem donec massa sapien faucibus et molestie ac. Aliquet porttitor lacus luctus accumsan tortor posuere. Velit laoreet id donec ultrices tincidunt arcu non. Id aliquet lectus proin nibh. Integer feugiat scelerisque varius morbi enim. Neque gravida in fermentum et sollicitudin ac. Nibh praesent tristique magna sit amet purus gravida quis. Id velit ut tortor pretium viverra suspendisse potenti nullam. Viverra justo nec ultrices dui. Sit amet volutpat consequat mauris nunc.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Auctor elit sed vulputate mi sit amet mauris commodo. Vel facilisis volutpat est velit egestas dui. Quis enim lobortis scelerisque fermentum dui faucibus. Sit amet justo donec enim. Ut enim blandit volutpat maecenas volutpat blandit. Viverra aliquet eget sit amet tellus. Sed turpis tincidunt id aliquet risus feugiat in. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices. Mi in nulla posuere sollicitudin aliquam ultrices sagittis. Sem et tortor consequat id porta. Massa eget egestas purus viverra. Nam aliquam sem et tortor consequat. Odio eu feugiat pretium nibh ipsum consequat nisl vel. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt. Maecenas ultricies mi eget mauris pharetra et ultrices neque. Vehicula ipsum a arcu cursus vitae congue mauris. Imperdiet proin fermentum leo vel orci porta non pulvinar. Nullam eget felis eget nunc lobortis mattis. Auctor augue mauris augue neque gravida in fermentum et.
-                    Mauris sit amet massa vitae tortor condimentum. Elementum eu facilisis sed odio. Euismod lacinia at quis risus. Imperdiet proin fermentum leo vel orci porta. Vitae congue mauris rhoncus aenean vel elit scelerisque. Nibh ipsum consequat nisl vel pretium lectus quam. Elit ullamcorper dignissim cras tincidunt. Rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Risus pretium quam vulputate dignissim suspendisse in est. At urna condimentum mattis pellentesque id nibh. Facilisis volutpat est velit egestas. Eleifend mi in nulla posuere sollicitudin aliquam. Egestas diam in arcu cursus euismod quis viverra nibh cras. Laoreet sit amet cursus sit amet dictum sit amet justo. Nulla porttitor massa id neque aliquam vestibulum morbi blandit. Aliquam sem fringilla ut morbi tincidunt augue interdum velit. Velit laoreet id donec ultrices. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum. Sagittis orci a scelerisque purus semper eget duis at tellus. Amet porttitor eget dolor morbi.
-                    Quam lacus suspendisse faucibus interdum. Quam nulla porttitor massa id.
-                    <br/><br/>
+                    c. Cookies and Similar Technologies:<br />
+
+                    Use: We use cookies to maintain user session integrity and collect aggregate data on platform usage.<br />
+                    Control: Parents/guardians can disable cookies through browser settings, though this may affect game functionality.<br /><br /><br />
+
+                    4. Parental Rights<br />
+
+                    Review and Deletion: Parents can review their child’s personal information, ask to have it deleted, and refuse to allow any further collection.<br />
+                    Consent Revocation: At any time, parents can revoke their consent and request the deletion of their child’s information.<br /><br /><br />
+
+                    5. Data Sharing and Disclosure<br />
+
+                    Limited Sharing: Only shared with third-party service providers for essential services (e.g., hosting, data analysis) under strict confidentiality agreements.<br />
+                    Legal Requirements: Information may be disclosed if required by law or if necessary to protect the safety and security of users.<br /><br /><br />
                     
-                    Pretium quam vulputate dignissim suspendisse in est. Ut lectus arcu bibendum at. Ut porttitor leo a diam. Vel elit scelerisque mauris pellentesque. A cras semper auctor neque vitae tempus quam pellentesque. Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Eu facilisis sed odio morbi quis commodo odio. Nisl pretium fusce id velit ut tortor pretium.
-                    Sit amet consectetur adipiscing elit. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. Sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Convallis convallis tellus id interdum velit laoreet. Dictum fusce ut placerat orci nulla. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Urna porttitor rhoncus dolor purus non. Fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque. Rhoncus mattis rhoncus urna neque. Commodo viverra maecenas accumsan lacus vel. Ultrices vitae auctor eu augue ut lectus. At auctor urna nunc id cursus. Integer quis auctor elit sed vulputate.
-                    Consequat interdum varius sit amet mattis vulputate enim. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Odio facilisis mauris sit amet massa vitae tortor. Consectetur lorem donec massa sapien faucibus et molestie ac. Aliquet porttitor lacus luctus accumsan tortor posuere. Velit laoreet id donec ultrices tincidunt arcu non. Id aliquet lectus proin nibh. Integer feugiat scelerisque varius morbi enim. Neque gravida in fermentum et sollicitudin ac. Nibh praesent tristique magna sit amet purus gravida quis. Id velit ut tortor pretium viverra suspendisse potenti nullam. Viverra justo nec ultrices dui. Sit amet volutpat consequat mauris nunc.
-                    <br/><br/>
+                    6. Data Security<br />
+
+                    Measures Taken: We employ industry-standard encryption and security measures to protect against unauthorized access, alteration, disclosure, or destruction.<br />
+                    Data Breach Protocol: In the event of a data breach, we will take immediate steps to mitigate harm and notify affected users and regulatory authorities as required by law.<br /><br /><br />
                     
-                    Pretium quam vulputate dignissim suspendisse in est. Ut lectus arcu bibendum at. Ut porttitor leo a diam. Vel elit scelerisque mauris pellentesque. A cras semper auctor neque vitae tempus quam pellentesque. Diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Eu facilisis sed odio morbi quis commodo odio. Nisl pretium fusce id velit ut tortor pretium.
-                    Sit amet consectetur adipiscing elit. Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend donec. Sit amet luctus venenatis lectus magna fringilla urna porttitor rhoncus. Convallis convallis tellus id interdum velit laoreet. Dictum fusce ut placerat orci nulla. Suspendisse potenti nullam ac tortor vitae purus faucibus ornare suspendisse. Urna porttitor rhoncus dolor purus non. Fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque. Rhoncus mattis rhoncus urna neque. Commodo viverra maecenas accumsan lacus vel. Ultrices vitae auctor eu augue ut lectus. At auctor urna nunc id cursus. Integer quis auctor elit sed vulputate.
-                    Consequat interdum varius sit amet mattis vulputate enim. In fermentum posuere urna nec tincidunt praesent semper feugiat nibh. Odio facilisis mauris sit amet massa vitae tortor. Consectetur lorem donec massa sapien faucibus et molestie ac. Aliquet porttitor lacus luctus accumsan tortor posuere. Velit laoreet id donec ultrices tincidunt arcu non. Id aliquet lectus proin nibh. Integer feugiat scelerisque varius morbi enim. Neque gravida in fermentum et sollicitudin ac. Nibh praesent tristique magna sit amet purus gravida quis. Id velit ut tortor pretium viverra suspendisse potenti nullam. Viverra justo nec ultrices dui. Sit amet volutpat consequat mauris nunc.
+                    7. Updates to This Policy<br />
+
+                    Notifications: Any significant changes to our privacy practices will be communicated through our website and, where appropriate, through direct communication with users.<br /><br />
+                    
+                    8. Contact Information<br />
+                    For questions, concerns, or to exercise parental rights related to this policy, please contact us at {contactInfo}.<br /><br /><br /><br />
+
+                    End Of User Agreement
                 </p>
             </div>
         </div>
