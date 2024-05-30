@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Checkbox from '@mui/material/Checkbox';
 
 import { AgreementAlert } from '../AgreementAlert/AgreementAlert.jsx';
 import { AgreementCheckbox } from '../AgreementCheckbox/AgreementCheckbox.jsx';
@@ -13,7 +12,6 @@ import './Agreement.css';
 // Agreement component shows the agreement pop up, which forces users to agree to terms and conditions before continuing
 // It controls the checkbox, PrivacyPolicyPage visibility, and AgreementAlert visibility
 export const Agreement = ({ onClose }) => {
-
     // state variables
     const [isChecked, setIsChecked] = useState(false);              
     const [isDisabled, setIsDisabled] = useState(true);                 
@@ -32,7 +30,7 @@ export const Agreement = ({ onClose }) => {
     };
 
     // shows PrivacyPolicyPage and enables checkbox
-    const handlePrivacyPolicyClick = () => {
+    const openPrivacyPolicy = () => {
         setShowPrivacyPage(true);
         setIsDisabled(false)
     };
@@ -40,24 +38,22 @@ export const Agreement = ({ onClose }) => {
     // functions to close the popups
     const closePrivacyPolicy = () => { setShowPrivacyPage(false); }
     const closeAlert = () => { setShowAlert(false); }
-    const closeAgreement = () => { onClose(); }
 
     return (
         <div className="agreement-container">
             <div className="agreement-content">
                 <div>
                     <AgreementCheckbox id="checkbox" checked={isChecked} onChange={toggleCheckbox} />
-
                     <span className="settings-text">I have read and agreed to the terms and conditions</span>
                 </div>
 
-                <p className="privacy-policy-link settings-text" onClick={handlePrivacyPolicyClick}>privacy policy</p>
-            
-                <SettingLongButton message="Agree" isDisabled={!isChecked} onClick={closeAgreement} />
+                <p className="privacy-policy-link settings-text" onClick={openPrivacyPolicy}>privacy policy</p>
+                <SettingLongButton message="Agree" isDisabled={!isChecked} onClick={onClose} />
+                
+                { showAlert && <AgreementAlert onClose={closeAlert} message={alertMessage} /> }
             </div>
 
             { showPrivacyPage && <PrivacyPolicyPage onClose={closePrivacyPolicy} /> }
-            { showAlert && <AgreementAlert onClose={closeAlert} message={alertMessage} /> }
         </div>
     );
 };

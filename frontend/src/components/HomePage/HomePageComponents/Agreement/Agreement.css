@@ -15,22 +15,22 @@
     transition: 0.25s ease;
 }
 
-.agreement-popup {
-    height: 25vh;
-    width: 35vw;
+.agreement-content {
+    position: relative;
+    height: 25%;
+    width: 30%;
     min-height: 200px;
     min-width: 300px;
     padding: 30px 20px;
 
     border: 4px solid var(--black); 
-    border-radius: 30pt;
+    border-radius: 20pt;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     background-color: var(--settings-gray-color);  
     
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
-
     text-align: center;   
 }
 
