@@ -3,7 +3,6 @@
     margin: 0 auto;
 }
 
-/* make each cell a square */
 .grid-item {
     display: flex;
 }

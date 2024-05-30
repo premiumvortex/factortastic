@@ -5,7 +5,6 @@ import Lock from './Lock.svg';
 import './DeckButton.css';
 import '../../../../index.css';
 
-// DeckButton component takes in arguments and displays the button accordingly
 export const DeckButton = ({ deckName, status, color, onClick }) => {
     // Adjust styling based on color and status
     const buttonStyle = {
