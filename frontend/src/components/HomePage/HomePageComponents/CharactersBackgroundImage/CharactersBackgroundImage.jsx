@@ -9,14 +9,17 @@ const characters = ['shoes','mice','leaf','star','cans','rainbow','octopus','fox
 
 // Characters component displays the background image of the HomePage
 // Displays each character and positions them as needed
+// someone will make setting icon button
 export const CharactersBackgroundImage = () => {
     return (
-        <div className='photo-container'>
-            {characters.map(character => (
-                <div key={character} className={`${character}-container`}>
-                    <CharacterImage character={character} />
-                </div>
-            ))}
+        <div className='background-image-container'>
+            <div className='photo-container'>
+                {characters.map(character => (
+                    <div key={character} className={`${character}-container`}>
+                        <CharacterImage character={character} />
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

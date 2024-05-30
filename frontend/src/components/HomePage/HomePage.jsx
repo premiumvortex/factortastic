@@ -9,7 +9,7 @@ import './HomePage.css';
 import '../../index.css';
 
 // HomePage component displays title and a start button
-// need to add setting icon button
+// someone will make setting icon button
 export const HomePage = () => {
     const [showAgreement, setShowAgreement] = useState(false);
 
@@ -17,7 +17,7 @@ export const HomePage = () => {
         setShowAgreement(true);
     };
 
-    const handleCloseAgreement = () => {
+    const closeAgreement = () => {
         setShowAgreement(false);
     };
 
@@ -25,9 +25,8 @@ export const HomePage = () => {
         <div className="home-page">
             <HomePageTitle />
             <StartButton handleClick={handleStartButtonClick}/>
-            <div className="background-image"><CharactersBackgroundImage /></div>
-            
-            {showAgreement && <Agreement onClose={handleCloseAgreement} />}      
+            <CharactersBackgroundImage />
+            {showAgreement && <Agreement onClose={closeAgreement} />}      
         </div>
     );
 }
