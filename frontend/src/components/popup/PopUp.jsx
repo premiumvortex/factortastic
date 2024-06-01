@@ -24,7 +24,7 @@ export default function PopUp() {
   return (
     <div style={{display: 'flex', justifyContent: 'end'}}>
       {showButton && <SettingsIconButton onClick={handleClick} />}
-      <BasePopup id={id} open={open} anchor={anchor}>
+      <BasePopup id={id} open={open} anchor={anchor} style={{margin: '1.5rem'}}>
           <Settings handleClosePopup={handleClosePopup} />
       </BasePopup>
     </div>

@@ -29,7 +29,7 @@ export default function ContactForm({formData, handleChange, handleSubmit}) {
               </div>
               <div>
                 <label>Message* :</label>
-                <textarea placeholder='Enter your message' className='message-box' name="message" value={formData.message} onChange={handleChange}></textarea>
+                <textarea required minLength={10} placeholder='Enter your message' className='message-box' name="message" value={formData.message} onChange={handleChange}></textarea>
               </div>
             </div>
           </div>
