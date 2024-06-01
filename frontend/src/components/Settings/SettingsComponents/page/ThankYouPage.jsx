@@ -12,13 +12,13 @@ function handleBack() {
 };
   return (
     <>
-    <div style={{marginTop: '5vh', backgroundColor: '#999'}}>
+    <div style={{ backgroundColor: '#999'}}>
       <div style={{display: 'flex', flexDirection: 'column'}}>
         <ThankYouChatacters/>
         <ThankYouMsg/>
       </div>
-      <div style={{display: 'flex', justifyContent: 'center', paddingTop: '5vh'}} >
-        <div>
+      <div style={{display: 'flex', justifyContent: 'center', paddingTop: '1rem'}} >
+        <div style={{ justifyContent: 'center', margin: '0 auto', width: '15rem' }}>
             <SettingButton onClick={handleBack} text={'Back'}/>
         </div>
       </div>
