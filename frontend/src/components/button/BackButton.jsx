@@ -1,12 +1,29 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import '../../components/button/button.css';
+import React from 'react';
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
 
-export default function BackButton({ onClick }) {
+const StyledBtn = styled(Button)({
+  minHeight: '64px',
+  alignContent: 'center',
+  borderRadius: '15px',
+  border: 'none',
+  backgroundColor: '#516EBE',
+  color: 'black',
+  boxShadow: '4px 4px 8px rgba(0, 0, 0, .8)',
+  cursor: 'pointer',
+  '&:hover': {
+    backgroundColor: '#516EBE',
+    boxShadow: '4px 4px 8px rgba(0, 0, 0, 1)',
+  },
+});
+
+export default function BackButton({onClick}) {
   return (
     <>
-      <button className='back-button' onClick={onClick}>
-      <ArrowBackIcon fontSize="large" />
-    </button>
-   </>
+      <StyledBtn variant="contained" onClick={onClick}>
+        <ArrowBackIcon fontSize="large"/>
+      </StyledBtn>
+    </>
   );
-};
+}
