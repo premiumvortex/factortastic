@@ -12,7 +12,7 @@ function ActionKeys({ changePage }) {
                 'fullWidth fullWidth'
             `,
             gap: '1%',
-            rowGap: '10%' // Space between grid items
+            rowGap: '6%' // Space between grid items
         }}>
             {/* First Column */}
             <div style={{ gridArea: 'firstColumn' }}>

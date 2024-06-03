@@ -13,7 +13,7 @@
   background-color: #516EBE;
   display: grid;
   grid-template-columns: 1fr; /* Single column layout */
-  grid-gap: 10vh;
+  grid-gap: 8vh;
 }
 
 .setting-title {
@@ -26,7 +26,7 @@
 
 .sound-labels {
   text-align: end;
-  font-size: 7vh;
+  font-size: clamp(.5rem, 3rem, 4.5rem);
 }
 
 .justify-center {

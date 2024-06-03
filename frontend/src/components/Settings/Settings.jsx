@@ -21,7 +21,7 @@ function Settings({ handleClosePopup}) {
 
 return (
     <>
-        <div style={{width: '100vw'}}>
+        <div style={{width: '100vw' }}>
             {currentPopUp === null && (<SoundProvider>
                     <div>
                         <BackButton onClick={handleClosePopup}/>
@@ -31,7 +31,7 @@ return (
                             <SettingTitles />
                         </div>
                         <SoundSettings/>
-                        <div style={{marginBottom: 35}}>
+                        <div style={{marginBottom: 40}}>
                             <ActionKeys changePage={changePopUp}/>
                         </div>
                     </div>
