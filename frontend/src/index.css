@@ -15,7 +15,7 @@
   --setting-drop-shadow: 0px 8px 25px 0px rgba(150, 252, 253, 1);
   --setting-drop-shadow-hover: 3px 13px 6px 3px rgba(0, 0, 0, 0.55);
   --strong-shadow: 3px 13px 6px rgba(0, 0, 0, 0.8);
-  --startnstop-drop-shadow: 0px 8px 30px 0px rgba(53, 252, 17, 1);
+  --startnstop-drop-shadow: 0px 8px 30px rgba(53, 252, 17, 1);
 
   /* Typography */
   --heading-font-family: "League Gothic", Helvetica;
@@ -190,22 +190,27 @@ button:focus-visible {
   }
 }
 
+/* Font Styles */
 @font-face {
   font-family: 'ABeeZee';
   src: url('./assets/fonts/ABeeZee-Regular.ttf') format('truetype');
+  font-display: block;
 }
 
 @font-face {
   font-family: 'Acme';
   src: url('./assets/fonts/Acme-Regular.ttf') format('truetype');
+  font-display: block;
 }
 
 @font-face {
   font-family: 'Akaya Telivigala';
   src: url('./assets/fonts/AkayaTelivigala-Regular.ttf') format('truetype');
+  font-display: block;
 }
 
 @font-face {
   font-family: 'League Gothic';
   src: url('./assets/fonts/LeagueGothic-Regular-VariableFont_wdth.ttf') format('truetype');
+  font-display: block;
 }
