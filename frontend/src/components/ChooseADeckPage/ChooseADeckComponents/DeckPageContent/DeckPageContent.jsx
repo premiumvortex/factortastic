@@ -35,7 +35,7 @@ export const DeckPageContent = () => {
             <h1 className="page-title" style={{color: 'var(--cyan)'}}>Choose a Deck</h1>
             
             <div className="buttons-grid">
-                <Grid container spacing={{ xs: 6, md: 9, lg: 12 }}>
+                <Grid container spacing={{ xs: 3, md: 6, lg: 10 }}>
                     {decks.map(({name, status, color}, index) => (
                         <Grid item key={index} xs={3} className="grid-item">
                             <DeckButton

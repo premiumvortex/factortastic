@@ -1,7 +1,11 @@
 .deck-button {
     position: relative; 
-    width: 100%;
-    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 14vw; 
+    height: 14vw;
 
     border-radius: 40px;
     border-width: 7px;
@@ -11,6 +15,15 @@
     
     transition: 0.25s ease;
     overflow: hidden;
+    outline: none;
+}
+
+.deck-button:focus {
+    outline: none; 
+}
+
+.deck-button:active {
+    outline: none; 
 }
 
 .deck-button[aria-disabled='true'] {
@@ -26,18 +39,19 @@
 }
 
 .deck-button.gamut {
-    
     border-image-slice: 1;
     border-image-source: linear-gradient(90deg, #B62F32, #4E41BC, #81B850, #96FCFD, #BF6C2F, #E9CC47);
 }
 
 .deck-button:hover {
+    border-color: var(--color);
     box-shadow: none;
 }
 
+
 @media screen and (max-width: 1000px) {
     .deck-button {
-        border-width: 5px;
+        border-width: 5px; 
         border-radius: 30px;
     }
 }

@@ -5,10 +5,6 @@
 
 .grid-item {
     display: flex;
-}
-
-.grid-item::before {
-    display: block;
-    padding-top: 100%; 
-    content: '';
+    align-items: center;
+    justify-content: center;
 }
