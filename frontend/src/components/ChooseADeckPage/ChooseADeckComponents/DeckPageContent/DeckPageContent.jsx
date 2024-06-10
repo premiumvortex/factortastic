@@ -10,14 +10,14 @@ import '../../../../index.css';
 // Displays the DeckButtons
 export const DeckPageContent = () => {
     const [decks, setDecks] = useState([
-        { name: 'red', status: 'unlocked', color: '#B62F32' },
-        { name: 'purple', status: 'locked', color: '#4E41BC'},
-        { name: 'green', status: 'locked', color: '#81B850' },
-        { name: 'blue', status: 'locked', color: '#96FCFD' },
-        { name: 'orange', status: 'locked', color: '#BF6C2F' },
-        { name: 'yellow', status: 'locked', color: '#E9CC47' },
-        { name: 'gamut', status: 'locked', color: '#C2C2C2'},
-        { name: 'coming soon', status: 'disabled', color: '#C2C2C2' },
+        { name: 'red', status: 'unlocked', color: 'var(--red)' },
+        { name: 'blue', status: 'locked', color: 'var(--blue)'},
+        { name: 'green', status: 'locked', color: 'var(--green)' },
+        { name: 'aqua', status: 'locked', color: 'var(--aqua)' },
+        { name: 'orange', status: 'locked', color: 'var(--orange)' },
+        { name: 'yellow', status: 'locked', color: 'var(--yellow)' },
+        { name: 'gamut', status: 'locked', color: 'var(--gray)'},
+        { name: 'coming soon', status: 'disabled', color: 'var(--gray)' }
     ]);
 
     // toggle unlocked and locked status 
@@ -36,12 +36,10 @@ export const DeckPageContent = () => {
             
             <div className="buttons-grid">
                 <Grid container spacing={{ xs: 3, md: 6, lg: 10 }}>
-                    {decks.map(({name, status, color}, index) => (
+                    {decks.map((deck, index) => (
                         <Grid item key={index} xs={3} className="grid-item">
                             <DeckButton
-                                deckName={name}
-                                status={status}
-                                color={color}
+                                deck={deck}
                                 onClick={() => handleDeckClick(index)}
                             />
                         </Grid>

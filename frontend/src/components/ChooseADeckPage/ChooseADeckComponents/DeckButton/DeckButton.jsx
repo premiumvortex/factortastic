@@ -6,13 +6,12 @@ import { MyLockIcon } from '../LockIcon/LockIcon';
 import './DeckButton.css';
 import '../../../../index.css';
 
-// gradient border is covered by background image on the corners
-
-
-export const DeckButton = ({ deckName, status, color, onClick }) => {
+export const DeckButton = ({deck, onClick}) => {
+    const { name, status, color } = deck;
+    
     const isDisabled = status === 'disabled';
     const isLocked = status === 'locked';
-    const isGamut = deckName === 'gamut';
+    const gradient = name === 'gamut';
 
     // Only call onClick() if button is enabled
     const handleClick = () => {
@@ -23,20 +22,18 @@ export const DeckButton = ({ deckName, status, color, onClick }) => {
 
     return (
         <button 
-            className={`deck-button ${isGamut ? 'gamut' : 'solid'}`} 
+            className={`deck-button ${gradient ? 'gradient' : 'solid'}`} 
             aria-disabled={isDisabled} 
             onClick={handleClick} 
             style={{'--color': color }}
         >
-            {isLocked && <MyLockIcon color={color} gradient={isGamut} /> }
-            {isDisabled && <p className="secondary">{deckName}</p>}
+            {isLocked && <MyLockIcon color={color} gradient={gradient} /> }
+            {isDisabled && <p className="secondary">{name}</p>}
         </button>
     );
 };
 
 DeckButton.propTypes = {
-    deckName: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
+    deck: PropTypes.object.isRequired,
     onClick: PropTypes.func.isRequired,
 };
