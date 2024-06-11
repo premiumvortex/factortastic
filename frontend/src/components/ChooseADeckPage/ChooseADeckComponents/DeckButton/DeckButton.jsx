@@ -1,17 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { MyLockIcon } from '../LockIcon/LockIcon';
+import { Lock } from '../Lock';
 
 import './DeckButton.css';
 import '../../../../index.css';
 
-export const DeckButton = ({deck, onClick}) => {
+/*
+ * DeckButton Component: renders the individual deck button
+ * 
+ * Props:
+ * - deck (object): holds deck info (name, status, and color)
+ * - onClick (function): called when user clicks on the button
+ */
+
+export const DeckButton = ({ deck, onClick }) => {
+    // Destructure deck and create state variables
     const { name, status, color } = deck;
     
     const isDisabled = status === 'disabled';
     const isLocked = status === 'locked';
     const gradient = name === 'gamut';
+
+    // Define button styles
+    const buttonStyle = {
+        '--width': '13vw',
+        '--color': color,
+        background: gradient ? 'linear-gradient(90deg, var(--red), var(--blue),var(--green),var(--aqua),var(--orange),var(--yellow))' : color,
+        pointerEvents: isDisabled ? 'none' : 'auto',
+        // opacity: isDisabled ? 0.5 : 1,
+    };
 
     // Only call onClick() if button is enabled
     const handleClick = () => {
@@ -22,12 +40,12 @@ export const DeckButton = ({deck, onClick}) => {
 
     return (
         <button 
-            className={`deck-button ${gradient ? 'gradient' : 'solid'}`} 
+            className="deck-button"
             aria-disabled={isDisabled} 
             onClick={handleClick} 
-            style={{'--color': color }}
+            style={buttonStyle}
         >
-            {isLocked && <MyLockIcon color={color} gradient={gradient} /> }
+            {isLocked && <Lock gradient={gradient} color={color} /> }     
             {isDisabled && <p className="secondary">{name}</p>}
         </button>
     );
