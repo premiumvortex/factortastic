@@ -4,6 +4,15 @@ import PropTypes from 'prop-types';
 
 import '../../../../index.css';
 
+/*
+ * AgreementCheckbox Component: displays MUI checkbox in Agreement component
+ * 
+ * Props:
+ * - id (string): id
+ * - checked (bool): current state of checkbox
+ * - onChange (function): toggles checkbox unless user has not opened privacy policy
+ */
+
 export const AgreementCheckbox = ({ id, checked, onChange }) => {
     return (
         <Checkbox

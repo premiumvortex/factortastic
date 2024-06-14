@@ -8,8 +8,15 @@ import IconButton from '@mui/material/IconButton';
 import '../../../../index.css';
 import './AgreementAlert.css';
 
-// AgreementAlert component displays an error alert with a close button
-// Currently only notifies user that they neeed to read privacy policy 
+/*
+ * AgreementAlert Component: displays an error alert with a close button
+ * Currently only notifies user that they neeed to read privacy policy 
+ * 
+ * Props:
+ * - onClose (function): closes the alert
+ * - message (string) : message to display in alert 
+ */
+
 export const AgreementAlert = ({ onClose, message }) => {
     return (
         <div className="alert-container">

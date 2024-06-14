@@ -6,8 +6,14 @@ import StartButtonImage from '../../../../assets/artwork/Individual_Assets/Start
 import './StartButton.css';
 import '../../../../index.css';
 
-// StartButton shows agreement component on click
-export const StartButton = ({handleClick}) => {
+/*
+ * StartButton Component: displays start button in home page
+ * 
+ * Props: 
+ * - handleClick (function): shows Agreement component
+ */
+
+export const StartButton = ({ handleClick }) => {
     return (
         <div className="oval-image-wrapper" >
             <img 

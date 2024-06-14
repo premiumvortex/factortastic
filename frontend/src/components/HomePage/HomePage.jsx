@@ -8,8 +8,11 @@ import { StartButton } from './HomePageComponents/StartButton/StartButton';
 import './HomePage.css';
 import '../../index.css';
 
-// HomePage component displays title and a start button
-// someone will make setting icon button
+/*
+ * HomePage Component: displays title and a start button
+ * Props: none
+ */
+
 export const HomePage = () => {
     const [showAgreement, setShowAgreement] = useState(false);
 
@@ -30,3 +33,5 @@ export const HomePage = () => {
         </div>
     );
 }
+
+// someone will make setting icon button

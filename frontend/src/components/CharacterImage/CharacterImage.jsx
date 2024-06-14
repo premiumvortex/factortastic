@@ -31,9 +31,14 @@ const images = {
     eggs: EggsImage
 };
 
-// CharacterImage component takes in the character name and displays its image
-// maybe take in number instead?
-export const CharacterImage = ( {character} ) => {
+/*
+ * CharacterImage Component: displays an image of given character
+ * 
+ * Props:
+ * - character (string): determines which character is shown
+ */
+
+export const CharacterImage = ({ character}) => {
     const image = images[character];
 
     return (

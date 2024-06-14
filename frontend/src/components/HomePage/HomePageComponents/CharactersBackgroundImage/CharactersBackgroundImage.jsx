@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CharacterImage } from '../../../CharacterImage/CharacterImage';
 
 import './CharactersBackgroundImage.css';
-// import './test.css';
 
-// list of character strings to loop through
+// list of character names
 const characters = ['shoes','mice','leaf','star','cans','rainbow','octopus','fox','toes','frogs','eggs'];
 
-// Characters component displays the background image of the HomePage
-// Displays each character and positions them as needed
-// someone will make setting icon button
+/*
+ * CharactersBackgroundImage Component: displays background image of the HomePage and positions each character image
+ * Props: none
+ */
+
 export const CharactersBackgroundImage = () => {
     return (
         <div className='background-image-container'>
@@ -24,3 +25,8 @@ export const CharactersBackgroundImage = () => {
     );
 };
 
+
+
+
+
+// someone will make setting icon button

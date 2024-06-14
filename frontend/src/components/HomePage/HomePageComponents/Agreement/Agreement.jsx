@@ -9,8 +9,14 @@ import { SettingLongButton } from '../../../SettingLongButton/SettingLongButton.
 import '../../../../index.css';
 import './Agreement.css';
 
-// Agreement component shows the agreement pop up, which forces users to agree to terms and conditions before continuing
-// It controls the checkbox, PrivacyPolicyPage visibility, and AgreementAlert visibility
+/*
+ * Agreement Component: shows the agreement pop up, which forces users to agree to terms and conditions before continuing,
+ * It controls the checkbox, PrivacyPolicyPage visibility, and AgreementAlert visibility
+ * 
+ * Props:
+ * - onClose (function): closes the agreement pop up, called when user presses agree button
+ */
+
 export const Agreement = ({ onClose }) => {
     // state variables
     const [isChecked, setIsChecked] = useState(false);              
@@ -48,7 +54,7 @@ export const Agreement = ({ onClose }) => {
                 </div>
 
                 <p className="privacy-policy-link settings-text" onClick={openPrivacyPolicy}>privacy policy</p>
-                <SettingLongButton message="Agree" isDisabled={!isChecked} onClick={onClose} />
+                <SettingLongButton text="Agree" isDisabled={!isChecked} onClick={onClose} />
                 
                 { showAlert && <AgreementAlert onClose={closeAlert} message={alertMessage} /> }
             </div>

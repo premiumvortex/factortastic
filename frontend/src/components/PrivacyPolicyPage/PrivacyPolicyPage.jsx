@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 import './PrivacyPolicyPage.css';
 import '../../index.css';
 
-// PrivacyPolicyPage shows the privacy policy and forces the user to scroll to the bottom before closing
+/*
+ * PrivacyPolicyPage Component: shows the privacy policy and forces the user to scroll to the bottom before closing
+ * 
+ * Props: 
+ * - onClose (function): hides privacy policy
+ */
+
 export const PrivacyPolicyPage = ({ onClose }) => {
     const [reachedBottom, setReachedBottom] = useState(false);
 
