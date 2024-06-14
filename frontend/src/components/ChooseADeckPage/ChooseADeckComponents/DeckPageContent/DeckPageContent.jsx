@@ -17,7 +17,7 @@ export const DeckPageContent = () => {
         { name: 'aqua', status: 'locked', color: 'var(--aqua)' },
         { name: 'orange', status: 'locked', color: 'var(--orange)' },
         { name: 'yellow', status: 'locked', color: 'var(--yellow)' },
-        { name: 'gamut', status: 'locked', color: 'var(--gray)'},
+        { name: 'gamut', status: 'locked', color: 'var(--gradient)'},
         { name: 'coming soon', status: 'disabled', color: 'var(--gray)' }
     ]);
 

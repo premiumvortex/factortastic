@@ -22,13 +22,14 @@ export const DeckButton = ({ deck, onClick }) => {
     
     const isDisabled = status === 'disabled';
     const isLocked = status === 'locked';
-    const gradient = name === 'gamut';
+    const gradient = color === 'var(--gradient)';
 
     // Define button styles
     const buttonStyle = {
         '--width': '13vw',
         '--color': color,
-        background: gradient ? 'var(--gradient)' : color,
+        background: color,
+        boxShadow: gradient ? '0px 8px 25px 0px var(--gray)' : '0px 8px 25px 0px var(--color)',
         pointerEvents: isDisabled ? 'none' : 'auto',
         // opacity: isDisabled ? 0.5 : 1,
     };
