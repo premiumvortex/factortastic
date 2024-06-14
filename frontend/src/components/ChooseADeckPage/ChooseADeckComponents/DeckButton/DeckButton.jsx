@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Lock } from '../Lock';
+import { LockIcon } from '../LockIcon/LockIcon';
+import { MUILockIcon } from '../LockIcon/MUILockIcon';
+
 
 import './DeckButton.css';
 import '../../../../index.css';
@@ -26,7 +28,7 @@ export const DeckButton = ({ deck, onClick }) => {
     const buttonStyle = {
         '--width': '13vw',
         '--color': color,
-        background: gradient ? 'linear-gradient(90deg, var(--red), var(--blue),var(--green),var(--aqua),var(--orange),var(--yellow))' : color,
+        background: gradient ? 'var(--gradient)' : color,
         pointerEvents: isDisabled ? 'none' : 'auto',
         // opacity: isDisabled ? 0.5 : 1,
     };
@@ -45,7 +47,8 @@ export const DeckButton = ({ deck, onClick }) => {
             onClick={handleClick} 
             style={buttonStyle}
         >
-            {isLocked && <Lock gradient={gradient} color={color} /> }     
+            {isLocked && <LockIcon gradient={gradient} color={color} /> }     
+            {/* {isLocked && <MUILockIcon gradient={gradient} color={color} /> }      */}
             {isDisabled && <p className="secondary">{name}</p>}
         </button>
     );
