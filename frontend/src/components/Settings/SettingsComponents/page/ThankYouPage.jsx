@@ -1,14 +1,14 @@
-import Fox from '../../../../assets/artwork/Individual_Assets/Characters/9-tail-fox.png';
-import Rainbow from '../../../../assets/artwork/Individual_Assets/Characters/7-rainbow.png';
-import Star from '../../../../assets/artwork/Individual_Assets/Characters/5-point-star.png';
+// import Fox from '../../../../assets/artwork/Individual_Assets/Characters/9-tail-fox.png';
+// import Rainbow from '../../../../assets/artwork/Individual_Assets/Characters/7-rainbow.png';
+// import Star from '../../../../assets/artwork/Individual_Assets/Characters/5-point-star.png';
 import SettingButton from '../../../button/SettingButton.jsx';
 import ThankYouChatacters from './ThankYouCharacters';
 import ThankYouMsg from './ThankYouMsg';
 
-export default function ThankYouPage({ giveThanks, setGiveThanks }) {
-
+export default function ThankYouPage({ changePopUp, setGiveThanks, giveThanks }) {
 function handleBack() {
   setGiveThanks(!giveThanks);
+  changePopUp(null);
 };
   return (
     <>

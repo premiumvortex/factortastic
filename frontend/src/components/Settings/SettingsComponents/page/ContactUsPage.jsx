@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import BackButton from '../../../button/BackButton.jsx';
-//import './contactUs.css';
 import ThankYouPage from './ThankYouPage.jsx';
 import ContactTitle from './ContactTitle.jsx';
 import ContactForm from './ContactForm.jsx';
 
-export default function ContactUsPage({ changePage }) {
+export default function ContactUsPage({ changePopUp }) {
   const [giveThanks, setGiveThanks] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -24,7 +23,7 @@ export default function ContactUsPage({ changePage }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
   e.preventDefault();
   console.log('Form Data:', formData);
   // Convert formData to JSON
@@ -49,7 +48,7 @@ export default function ContactUsPage({ changePage }) {
     {!giveThanks && (
     <div style={{alignContent: 'center'}}>
       <div style={{display: 'flex'}} >
-            <BackButton onClick={() => changePage(null)} />
+            <BackButton onClick={() => changePopUp(null)} />
       </div>
         <ContactTitle/>
         <div style={{backgroundColor: 'rgb(38, 105, 105)'}}>
@@ -57,7 +56,7 @@ export default function ContactUsPage({ changePage }) {
         </div>
     </div>
     )}
-    {giveThanks && <ThankYouPage giveThanks={giveThanks} setGiveThanks={setGiveThanks}/>}
+    {giveThanks && <ThankYouPage changePopUp={changePopUp} setGiveThanks={setGiveThanks} />}
     </>
   );
 }

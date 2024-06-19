@@ -1,6 +1,6 @@
 import SettingButton from '../../button/SettingButton';
 
-function ActionKeys({ changePage }) {
+function ActionKeys({ changePopUp }) {
     return (
         <div style={{
             display: 'grid',
@@ -16,7 +16,7 @@ function ActionKeys({ changePage }) {
         }}>
             {/* First Column */}
             <div style={{ gridArea: 'firstColumn' }}>
-                <SettingButton text={'Key'} onClick={() => changePage('Key')} />
+                <SettingButton text={'Key'} onClick={() => changePopUp('Key')} />
             </div>
             {/* Second Column */}
             <div style={{ gridArea: 'secondColumn' }}>
@@ -28,7 +28,7 @@ function ActionKeys({ changePage }) {
             </div>
             {/* Fourth Column */}
             <div style={{ gridArea: 'fourthColumn' }}>
-                <SettingButton text={'Contact Us'} onClick={() => changePage('Contact Us')}/>
+                <SettingButton text={'Contact Us'} onClick={() => changePopUp('Contact Us')}/>
             </div>
             {/* Full width row */}
             <div style={{ gridArea: 'fullWidth' }}>

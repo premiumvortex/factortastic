@@ -8,7 +8,7 @@ import ContactUsPage from './SettingsComponents/page/ContactUsPage';
 import SettingTitles from './SettingsComponents/SettingTitles.jsx';
 import ActionKeys from "./SettingsComponents/ActionKeys.jsx";
 
-function Settings({ handleClosePopup}) {
+export default function Settings({ handleClosePopup }) {
  const [currentPopUp, setCurrentPopUp] = useState(null);
 
  let changePopUp = (pageName) => {
@@ -22,7 +22,8 @@ function Settings({ handleClosePopup}) {
 return (
     <>
         <div style={{width: '100vw' }}>
-            {currentPopUp === null && (<SoundProvider>
+            {currentPopUp === null && (
+            <SoundProvider>
                     <div>
                         <BackButton onClick={handleClosePopup}/>
                     </div>
@@ -32,16 +33,14 @@ return (
                         </div>
                         <SoundSettings/>
                         <div style={{marginBottom: 40}}>
-                            <ActionKeys changePage={changePopUp}/>
+                            <ActionKeys changePopUp={changePopUp}/>
                         </div>
                     </div>
                 </SoundProvider>
             )}
-            {currentPopUp === 'Key' && <KeyPage changePage={changePopUp}/>}
-            {currentPopUp === 'Contact Us' && <ContactUsPage changePage={changePopUp} />}
+            {currentPopUp === 'Key' && <KeyPage changePopUp={changePopUp}/>}
+            {currentPopUp === 'Contact Us' && <ContactUsPage changePopUp={changePopUp} />}
         </div>
     </>
 );
 }
-
-export default Settings;

@@ -1,31 +1,21 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
-import { styled } from '@mui/system';
-import Settings from '../Settings/Settings';
-import SettingsIconButton from '../button/SettingIconButton';
 
-export default function PopUp() {
-  const [anchor, setAnchor] = useState(null);
-  const [showButton, setShowButton] = useState(true);
-
-  function handleClick(event) {
-    setAnchor(anchor ? null : event.currentTarget);
-    setShowButton(!showButton);
-  };
-
+export default function PopUp({ Component, componentProps, anchor, setAnchor }) {
   const open = Boolean(anchor);
-  const id = open ? 'setting-popup' : undefined;
+  const id = open ? 'popup' : undefined;
 
   function handleClosePopup() {
     setAnchor(null);
-    setShowButton(true);
+    if (componentProps.handleClosePopup) {
+      componentProps.handleClosePopup();
+    }
   };
 
   return (
-    <div style={{display: 'flex', justifyContent: 'end'}}>
-      {showButton && <SettingsIconButton onClick={handleClick} />}
-      <BasePopup id={id} open={open} anchor={anchor} style={{margin: '1.5rem'}}>
-          <Settings handleClosePopup={handleClosePopup} />
+    <div>
+      <BasePopup id={id} open={open} anchor={anchor} style={{ margin: '1.5rem' }}>
+        <Component {...componentProps} handleClosePopup={handleClosePopup} />
       </BasePopup>
     </div>
   );

@@ -20,9 +20,9 @@ const StyledBtn = styled(Button) ({
   }
 })
 
-export default function SettingButton({text, onClick}) {
+export default function SettingButton({ text, onClick, type = 'button' }) {
   return (
-    <StyledBtn className="setting-long-button" onClick={onClick}>
+    <StyledBtn type={type} className="setting-long-button" onClick={onClick}>
       {text}
     </StyledBtn>
   )
