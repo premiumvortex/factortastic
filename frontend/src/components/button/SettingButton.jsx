@@ -9,7 +9,7 @@ const StyledBtn = styled(Button) ({
  maxHeight: '100%',
  borderRadius: '50px',
  boarder: 'none',
- fontSize: '2rem',
+ fontSize: '2vw',
  color: 'black',
   backgroundColor: '#FF54E5',
   boxShadow: '0px 8px 8px rgba(96, 252, 253, 0.5)',

@@ -48,7 +48,8 @@ const SoundSettings = () => {
                      display: 'flex',
                      alignItems: 'center',
                      justifyContent: 'flex-end',
-                     padding: '8px'
+                     padding: '8px',
+                     fontSize: '4vw'
                  }}>
                 Music:
             </div>
@@ -67,7 +68,8 @@ const SoundSettings = () => {
                      display: 'flex',
                      alignItems: 'center',
                      justifyContent: 'flex-end',
-                     padding: '8px'
+                     padding: '8px',
+                     fontSize: '4vw'
                  }}>
                 SoundFx:
             </div>
