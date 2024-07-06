@@ -7,13 +7,12 @@ import '../../../../index.css'
  * LockIcon Component: renders custom lock svg in the deck buttons
  * 
  * Props:
- * - gradient (boolean): Determines if lock is solid or gradient color
- * - color (string): fill if gradient is false
+ * - color (string): color to fill lock icon
  */
 
-export const LockIcon = ({ gradient, color }) => {
+export const LockIcon = ({ color }) => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="45%" height="auto" viewBox="0 0 54 68">
+        <svg xmlns="http://www.w3.org/2000/svg" width="41%" height="100%" viewBox="0 0 54 68">
             <defs>
                 <linearGradient id="lock-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" style={{ stopColor: 'var(--red)' }} />
@@ -41,7 +40,7 @@ export const LockIcon = ({ gradient, color }) => {
                 41.781 24.2444 41.1046 25.5567 40.8193C26.5314 40.6038 27.5421 40.6098 28.5142 40.837C29.4863 41.0641 
                 30.395 41.5065 31.1733 42.1316C31.9517 42.7567 32.5797 43.5485 33.0113 44.4487C33.4428 45.3489 33.6668 46.3344 
                 33.6667 47.3327C33.6648 48.4985 33.3557 49.6432 32.7705 50.6515C32.1853 51.6598 31.3447 52.496 30.3334 53.076Z" 
-                fill={gradient ? 'url(#lock-gradient)' : color}  
+                fill={color === 'var(--gradient)' ? 'url(#lock-gradient)' : color}  
                 filter="url(#drop-shadow)"
             />
         </svg>
@@ -49,6 +48,5 @@ export const LockIcon = ({ gradient, color }) => {
 }
 
 LockIcon.propTypes = {
-    gradient: PropTypes.bool.isRequired,
     color: PropTypes.string.isRequired,
 };

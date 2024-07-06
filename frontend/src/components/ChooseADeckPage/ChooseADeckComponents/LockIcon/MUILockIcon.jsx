@@ -9,11 +9,10 @@ import '../../../../index.css';
  * MyLockIcon Component: renders MUI lock icon used in the deck buttons
  * 
  * Props:
- * - gradient (boolean): Determines if lock is solid or gradient color
  * - color (string): color to fill if gradient is false
  */
 
-export const MUILockIcon = ({ gradient, color }) => {
+export const MUILockIcon = ({ color }) => {
     return (
         <SvgIcon sx= {{ fontSize: '7vw' }}>
             <defs>
@@ -25,13 +24,17 @@ export const MUILockIcon = ({ gradient, color }) => {
                     <stop offset="80%" style={{stopColor: 'var(--orange)'}} />
                     <stop offset="100%" style={{stopColor: 'var(--yellow)'}} />
                 </linearGradient>
+
+                <filter id="drop-shadow">
+                    <feDropShadow dx="0" dy="0" stdDeviation="4" floodColor='var(--black)' />
+                </filter>
             </defs>
-            <LockIcon sx={{ fill: gradient ? 'url(#lock-gradient)' : color }} /> 
+
+            <LockIcon sx={{ fill: color === 'var(--gradient)' ? 'url(#lock-gradient)' : color, filter: "url(#drop-shadow)" }} /> 
         </SvgIcon>  
     );
 }
 
 MUILockIcon.propTypes = {
-    gradient: PropTypes.bool.isRequired,
     color: PropTypes.string.isRequired,
 };
