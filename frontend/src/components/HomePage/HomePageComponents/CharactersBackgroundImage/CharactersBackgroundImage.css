@@ -13,30 +13,26 @@
     background-repeat: no-repeat; 
 }
 
-.photo-container {
+.characters-container {
     position: absolute;
-    width: 95%;
-    height: 0;
-    padding-bottom: 56.25%; 
-    
 }
 
-.photo-container > div {
+.characters-container > div {
     position: absolute;
 }
 
 .shoes-container {
     width: 14%; 
     top: 85%;
-    left: 68%;
+    left: 74%;
     transform: rotate(-49.46deg);
     z-index: -1;
 }
 
 .mice-container {
-    width: 33%;
-    top: 60%;
-    left: 7.5%;
+    width: 42%;
+    top: 53%;
+    left: -2%;
     transform: scaleX(-1);
     z-index: -1;
 }
@@ -44,67 +40,74 @@
 .leaf-container {
     width: 8%;
     top: 44%;
-    left: 83%;
+    left: 92%;
     transform: scaleX(-1);
     z-index: -3;
 }
 
 .star-container {
-    width: 42%;
+    width: 45%;
     top: -8%;
-    left: 60%;
+    left: 65%;
     transform: rotate(12.92deg);
     z-index: -1;
 }
 
 .cans-container {
-    width: 15%;
-    top: 72%;
-    left: 75%;
+    width: 17%;
+    top: 76%;
+    left: 83%;
     transform: rotate(-15.9deg);
     z-index: -2;
 }
 
 .rainbow-container {
-    width: 60%;
-    top: 0%;
-    left: 20%;
+    width: 72%;
+    top: -5%;
+    left: 14%;
 }
 
 .octopus-container {
-    width: 33%;
-    top: 29%;
-    left: 59%;
+    width: 37%;
+    top: 28%;
+    left: 64%;
     transform: rotate(-.73deg);
     z-index: -3;
 }
 
 .fox-container {
-    width: 40%;
+    width: 45%;
     top: -3%;
-    left: 3%;
+    left: -7%;
     transform: rotate(-5.08deg);
     z-index: -1;
 } 
 
 .toes-container {
-    width: 30%;
-    top: 30%;
-    left: 5%;
+    width: 33%;
+    top: 28%;
+    left: 8%;
     z-index: -2;
 }
 
 .frogs-container {
-    width: 40%;
+    width: 44%;
     top: 53%;
-    left: 30%;
+    left: 28%;
     z-index: -2;
 }
 
 .eggs-container {
-    width: 18%;
-    top: 70%;
-    left: 61%;
+    width: 20%;
+    top: 74%;
+    left: 63%;
     transform: rotate(-5.08deg);
     z-index: -2;
 }
+
+/* @media screen and (max-width: 1200px) {
+    .photo-container {
+        width: 110%;
+        padding-bottom: 61.89%; 
+    }
+} */
