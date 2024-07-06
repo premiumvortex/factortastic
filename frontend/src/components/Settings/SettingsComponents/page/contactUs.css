@@ -1,5 +1,5 @@
 .octipi-img {
-  width: 15rem;
+  width: 20vw;
   padding-top: 1rem;
   display: flex;
   justify-content: center;
@@ -16,7 +16,8 @@ p {
 
 input {
   height: 2.5rem;
-  min-width: 13rem;
+  width: 20vw;
+  /* min-width: 13rem; */
   margin-bottom: 10px;
 }
 
@@ -26,8 +27,10 @@ input {
 }
 
 .message-box {
-  min-width: 500px;
-  min-height: 150px;
+  /* min-width: 500px;
+  min-height: 150px; */
+  width: 50vw;
+  height: 20vh;
   resize: vertical;
 }
 

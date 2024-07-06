@@ -8,7 +8,7 @@ export default function ContactForm({formData, handleChange, handleSubmit}) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className='justify-center'>
+        <div className='justify-center' style={{ minWidth: '50rem', margin: '0 2rem' }}>
           <div>
             <div style={{display: 'flex', flexDirection: 'column', marginBottom: '8%'}}>
               <div>
@@ -40,7 +40,7 @@ export default function ContactForm({formData, handleChange, handleSubmit}) {
                 <p className='email-text'>email@example.com</p>
               </div>
               <div>
-                <img className='octipi-img' src={Octipi} alt='Octipi' />
+                <img className='octipi-img' src={Octipi} alt='Octipi' style={{ maxWidth: '25vw', minWidth: '10vw' }} />
               </div>
             </div>
           </div>
