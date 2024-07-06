@@ -1,36 +1,34 @@
 .alert-container {
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .alert-container .agreement-alert {
-    position: absolute;
-    
-    height: 100%;
-    width: 100%;
-
-    margin: 0;
-    padding: 0;
+    width: 40vw;
+    height: 30vh;
+    min-height: 200px;
+    min-width: 300px;
+    padding: 30px 20px;
 
     border: 4px solid var(--black); 
     border-radius: 20pt;
-
-}
-
-.alert-container .agreement-alert .MuiAlert-message {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 .alert-container .agreement-alert .MuiAlert-icon {
-    margin: 10px 0 0 10px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
 }
+
+.alert-container .agreement-alert .MuiAlert-action {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.alert-container .agreement-alert .MuiAlert-message {
+    font-size: 120%;
+    text-align: center;
+    margin: auto;
+}  

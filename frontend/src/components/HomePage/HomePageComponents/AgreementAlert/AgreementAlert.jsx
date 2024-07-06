@@ -32,18 +32,13 @@ export const AgreementAlert = ({ onClose, message }) => {
                         aria-labelledby="close-alert-label"
                         onClick={onClose}
                     >
-                        <CloseIcon />
+                        <CloseIcon sx={{ fontSize: 30 }}/>
                     </IconButton>
                 }
             >
                 {/* Hidden divs for accessibility labels */}
-                <div id="alert-dialog-title" style={{ display: 'none' }}>
-                    Agreement Alert
-                </div>
-
-                <div id="close-alert-label" style={{ display: 'none' }}>
-                    Close Agreement Alert
-                </div>
+                <div id="alert-dialog-title" style={{ display: 'none' }}>Agreement Alert</div>
+                <div id="close-alert-label" style={{ display: 'none' }}>Close Agreement Alert</div>
 
                 <p className="settings-text">{message}</p>
             </Alert>

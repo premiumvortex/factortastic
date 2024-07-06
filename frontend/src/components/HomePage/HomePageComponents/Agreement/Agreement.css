@@ -1,15 +1,14 @@
 .agreement-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; 
+
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-
-    display: flex;
-    position: fixed;
-
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
 
     z-index: 2;
     transition: 0.25s ease;
@@ -17,8 +16,13 @@
 
 .agreement-content {
     position: relative;
-    height: 25%;
-    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    text-align: center; 
+
+    width: 40vw;
+    height: 30vh;
     min-height: 200px;
     min-width: 300px;
     padding: 30px 20px;
@@ -27,19 +31,14 @@
     border-radius: 20pt;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     background-color: var(--settings-gray-color);  
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    text-align: center;   
 }
 
 .privacy-policy-link {
     width: fit-content;
     margin: 0 auto;
 
-    cursor: pointer;
-
     color: var(--variable-collection-link);
     text-decoration: underline;
+
+    cursor: pointer;
 }
