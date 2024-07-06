@@ -26,7 +26,7 @@ export const SettingLongButton = ({ text, isDisabled, onClick }) => {
 };
 
 SettingLongButton.propTypes = {
-    message: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
     isDisabled: PropTypes.bool.isRequired,
     onClick: PropTypes.func.isRequired,
 };
