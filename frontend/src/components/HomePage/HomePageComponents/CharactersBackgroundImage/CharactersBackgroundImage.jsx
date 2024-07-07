@@ -15,11 +15,12 @@ export const CharactersBackgroundImage = () => {
     const aspectRatio = 1.6;
     const [dimensions, setDimensions] = useState({ width: '100%', height: '100%' });
 
+    // Sets dimensions of characters-container to maintain aspectRatio and fit on screen
     const resizeContainer = () => {
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
     
-        // If window is taller relative to the desired aspect ratio
+        // If window is taller than aspectRatio
         if (windowWidth / windowHeight < aspectRatio) {
             setDimensions({
                 width: `${windowWidth}px`,
@@ -27,7 +28,7 @@ export const CharactersBackgroundImage = () => {
             });
         } 
 
-        // If window is wider relative to the desired aspect ratio
+        // If window is wider than aspectRatio
         else {
             setDimensions({
                 width: `${windowHeight * aspectRatio}px`,
@@ -36,6 +37,7 @@ export const CharactersBackgroundImage = () => {
         }
     };
     
+    // Call resizeContainer when user screen size changes
     useEffect(() => {
         window.addEventListener('resize', resizeContainer);
         resizeContainer(); 
@@ -47,7 +49,8 @@ export const CharactersBackgroundImage = () => {
 
     return (
         <div className='background-image-container'>
-            <div className='characters-container'
+            <div 
+                className='characters-container'
                 style={{
                     width: dimensions.width,
                     height: dimensions.height,

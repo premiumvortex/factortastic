@@ -30,7 +30,12 @@ export const MUILockIcon = ({ color }) => {
                 </filter>
             </defs>
 
-            <LockIcon sx={{ fill: color === 'var(--gradient)' ? 'url(#lock-gradient)' : color, filter: "url(#drop-shadow)" }} /> 
+            <LockIcon 
+                sx={{ 
+                    fill: color === 'var(--gradient)' ? 'url(#lock-gradient)' : color, 
+                    filter: "url(#drop-shadow)" 
+                }}  
+            /> 
         </SvgIcon>  
     );
 }

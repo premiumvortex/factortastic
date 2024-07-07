@@ -24,10 +24,9 @@ export const DeckButton = ({ deck, onClick }) => {
 
     // Define button styles
     const buttonStyle = {
-        '--width': '13vw',
-        '--color': color,
+        '--width': '13vw',                  // create width var to calculate inset and border radius         
         background: color,
-        boxShadow: gradient ? '0px 8px 25px 0px var(--gray)' : '0px 8px 25px 0px var(--color)',
+        boxShadow: gradient ? '0px 8px 25px 0px var(--gray)' : `0px 8px 25px 0px ${color}`,
         pointerEvents: isDisabled ? 'none' : 'auto',
         // opacity: isDisabled ? 0.5 : 1,
     };
@@ -46,8 +45,8 @@ export const DeckButton = ({ deck, onClick }) => {
             onClick={handleClick} 
             style={buttonStyle}
         >
-            {isLocked && <LockIcon color={color} /> }     
-            {isDisabled && <p className="secondary">{name}</p>}
+            { isLocked && <LockIcon color={color} /> }     
+            { isDisabled && <p className="deck-name secondary">{name}</p> }
         </button>
     );
 };
