@@ -3,21 +3,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     width: 100%;
     height: 100%;
     z-index: -1;
- 
-    background-image: url('../../../../assets/artwork/Individual_Assets/Game_Background.PNG');
-    background-position: center; 
-    background-size: cover; 
-    background-repeat: no-repeat; 
+
+    background: url('../../../../assets/artwork/Individual_Assets/Game_Background.PNG') center / cover no-repeat; 
 }
 
-.characters-container {
-    position: absolute;
-}
-
-.characters-container > div {
+.characters-container, .characters-container > div {
     position: absolute;
 }
 
@@ -104,10 +98,3 @@
     transform: rotate(-5.08deg);
     z-index: -2;
 }
-
-/* @media screen and (max-width: 1200px) {
-    .photo-container {
-        width: 110%;
-        padding-bottom: 61.89%; 
-    }
-} */
