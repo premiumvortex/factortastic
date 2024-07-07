@@ -1,7 +1,6 @@
-.agreement-container {
+.agreement-page {
     position: fixed;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center; 
 
@@ -11,34 +10,61 @@
     height: 100%;
 
     z-index: 2;
-    transition: 0.25s ease;
 }
 
-.agreement-content {
-    position: relative;
+.agreement-popup {
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
-    text-align: center; 
+    
+    box-sizing: border-box;
 
     width: 40vw;
-    height: 30vh;
-    min-height: 200px;
-    min-width: 300px;
-    padding: 30px 20px;
-
+    height: 20vw;
+    min-width: 450px;
+    min-height: 270px;
+    padding: 40px 0px;
+    border-radius: 50px;
+    
     border: 4px solid var(--black); 
-    border-radius: 20pt;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     background-color: var(--settings-gray-color);  
 }
 
-.privacy-policy-link {
-    width: fit-content;
+.acknowledgement {
+    display: flex;
+    align-items: center;
+    text-align: center; 
+
+    width: 80%;
     margin: 0 auto;
+}
+
+.privacy-policy-link {
+    margin: 3px auto 15px;
 
     color: var(--variable-collection-link);
     text-decoration: underline;
 
     cursor: pointer;
+}
+
+@media (max-width: 1400px) {
+    .agreement-popup { 
+        padding: 35px 0px;
+    }
+
+    .settings-text {
+        font-size: 22px;
+    }
+}
+  
+@media (max-width: 1200px) {
+    .agreement-popup { 
+        padding: 25px 0px;
+    }
+
+    .settings-text {
+        font-size: 20px;
+    }
 }

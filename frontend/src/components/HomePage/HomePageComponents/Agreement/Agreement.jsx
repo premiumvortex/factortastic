@@ -26,7 +26,7 @@ export const Agreement = ({ onClose }) => {
 
     const alertMessage = "Please read the privacy policy before agreeing to the terms and conditions";
 
-    // toggle checkbox unless user has not opened privacy policy
+    // only toggle checkbox if user read privacy policy
     const toggleCheckbox = () => {
         if (isDisabled) {
             setShowAlert(true); 
@@ -38,7 +38,7 @@ export const Agreement = ({ onClose }) => {
     // shows PrivacyPolicyPage and enables checkbox
     const openPrivacyPolicy = () => {
         setShowPrivacyPage(true);
-        setIsDisabled(false)
+        setIsDisabled(false);
     };
 
     // functions to close the popups
@@ -46,11 +46,11 @@ export const Agreement = ({ onClose }) => {
     const closeAlert = () => { setShowAlert(false); }
 
     return (
-        <div className="agreement-container">
-            <div className="agreement-content">
-                <div>
+        <div className="agreement-page">
+            <div className="agreement-popup">
+                <div className="acknowledgement">
                     <AgreementCheckbox id="checkbox" checked={isChecked} onChange={toggleCheckbox} />
-                    <span className="settings-text">I have read and agreed to the terms and conditions</span>
+                    <p className="settings-text">I have read and agree with the terms and conditions</p>
                 </div>
 
                 <p className="privacy-policy-link settings-text" onClick={openPrivacyPolicy}>terms and conditions</p>

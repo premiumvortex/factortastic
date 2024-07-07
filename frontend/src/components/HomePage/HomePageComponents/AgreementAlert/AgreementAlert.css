@@ -3,14 +3,15 @@
 }
 
 .alert-container .agreement-alert {
+    box-sizing: border-box;
+
     width: 40vw;
-    height: 30vh;
-    min-height: 200px;
-    min-width: 300px;
-    padding: 30px 20px;
+    height: 20vw;
+    min-width: 450px;
+    min-height: 270px;
+    border-radius: 50px;
 
     border: 4px solid var(--black); 
-    border-radius: 20pt;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
@@ -28,7 +29,8 @@
 }
 
 .alert-container .agreement-alert .MuiAlert-message {
-    font-size: 120%;
+    width: 75%;
     text-align: center;
     margin: auto;
 }  
+
