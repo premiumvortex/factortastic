@@ -5,7 +5,6 @@ import Alert from '@mui/material/Alert';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 
-import '../../../../index.css';
 import './AgreementAlert.css';
 
 /*
@@ -23,23 +22,13 @@ export const AgreementAlert = ({ onClose, message }) => {
             <Alert
                 className="agreement-alert"
                 severity="error"
-                role="alertdialog"
-                aria-labelledby="alert-dialog-title"
 
                 action={
-                    <IconButton
-                        aria-label="close agreement alert"
-                        aria-labelledby="close-alert-label"
-                        onClick={onClose}
-                    >
-                        <CloseIcon sx={{ fontSize: 30 }}/>
+                    <IconButton aria-label="close error message" onClick={onClose} >
+                        <CloseIcon />
                     </IconButton>
                 }
             >
-                {/* Hidden divs for accessibility labels */}
-                <div id="alert-dialog-title" style={{ display: 'none' }}>Agreement Alert</div>
-                <div id="close-alert-label" style={{ display: 'none' }}>Close Agreement Alert</div>
-
                 <p className="settings-text">{message}</p>
             </Alert>
         </div>
