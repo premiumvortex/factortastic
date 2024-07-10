@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { LockIcon } from '../LockIcon/LockIcon';
 
 import './DeckButton.css';
-import '../../../../index.css';
 
 /*
  * DeckButton Component: renders the individual deck button
@@ -24,25 +23,18 @@ export const DeckButton = ({ deck, onClick }) => {
 
     // Define button styles
     const buttonStyle = {
-        '--width': '13vw',                  // create width var to calculate inset and border radius         
+        '--width': '13vw',                  // used to calculate inset and border radius         
         background: color,
         boxShadow: gradient ? '0px 8px 25px 0px var(--gray)' : `0px 8px 25px 0px ${color}`,
         pointerEvents: isDisabled ? 'none' : 'auto',
         // opacity: isDisabled ? 0.5 : 1,
     };
 
-    // Only call onClick() if button is enabled
-    const handleClick = () => {
-        if (!isDisabled) {
-            onClick();
-        }
-    };
-
     return (
         <button 
             className="deck-button"
             aria-disabled={isDisabled} 
-            onClick={handleClick} 
+            onClick={onClick} 
             style={buttonStyle}
         >
             { isLocked && <LockIcon color={color} /> }     

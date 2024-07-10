@@ -1,30 +1,35 @@
 .deck-button {
     position: relative; 
+    z-index: 1;
+
     display: flex;
-    justify-content: center;
-    align-items: center;
+
+    transition: box-shadow 0.25s ease;
 
     width: var(--width); 
     height: var(--width);
-
     border: none;
     border-radius: calc(0.25 * var(--width));
 
+    justify-content: center;
+    align-items: center;
+}
+
+.deck-name {
+    font-size: 4vw;
     text-transform: capitalize;
-    
-    transition: box-shadow 0.25s ease;
-    z-index: 1;
 }
 
 .deck-button[aria-disabled='false']::before {
     content: '';
+
     position: absolute;
+    z-index: -1;
+
     inset: calc(0.04 * var(--width));
 
     border-radius: calc(0.25 * var(--width));
     background: url('../../../../assets/artwork/Individual_Assets/Card-Background_With_Boarders.png') center/ auto 150% no-repeat;
-
-    z-index: -1;
 }
 
 .deck-button:hover {
