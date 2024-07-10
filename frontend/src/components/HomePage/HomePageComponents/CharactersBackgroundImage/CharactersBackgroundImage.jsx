@@ -37,7 +37,7 @@ export const CharactersBackgroundImage = () => {
         }
     };
     
-    // Call resizeContainer when user screen size changes
+    // Call resizeContainer when screen size changes
     useEffect(() => {
         window.addEventListener('resize', resizeContainer);
         resizeContainer(); 
@@ -48,20 +48,18 @@ export const CharactersBackgroundImage = () => {
     }, []);
 
     return (
-        <div className='background-image-container'>
-            <div 
-                className='characters-container'
-                style={{
-                    width: dimensions.width,
-                    height: dimensions.height,
-                }}
-            >
-                {characters.map(character => (
-                    <div key={character} className={`${character}-container`}>
-                        <CharacterImage character={character} />
-                    </div>
-                ))}
-            </div>
+        <div 
+            className='characters-container'
+            style={{
+                width: dimensions.width,
+                height: dimensions.height,
+            }}
+        >
+            {characters.map(character => (
+                <div key={character} className={`${character}-container`}>
+                    <CharacterImage character={character} />
+                </div>
+            ))}
         </div>
     );
 };

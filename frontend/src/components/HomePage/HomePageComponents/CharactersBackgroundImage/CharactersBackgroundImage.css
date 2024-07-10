@@ -1,100 +1,97 @@
-.background-image-container {
+.characters-container {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-    height: 100%;
     z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-    background: url('../../../../assets/artwork/Individual_Assets/Game_Background.PNG') center / cover no-repeat; 
+    display: block;
 }
 
-.characters-container, .characters-container > div {
+.characters-container > div {
     position: absolute;
 }
 
 .shoes-container {
-    width: 14%; 
+    z-index: -1;
     top: 85%;
     left: 74%;
     transform: rotate(-49.46deg);
-    z-index: -1;
+    width: 14%; 
 }
 
 .mice-container {
-    width: 42%;
+    z-index: -1;
     top: 53%;
     left: -2%;
+    width: 42%;
     transform: scaleX(-1);
-    z-index: -1;
 }
 
 .leaf-container {
-    width: 8%;
+    z-index: -3;
     top: 44%;
     left: 92%;
+    width: 8%;
     transform: scaleX(-1);
-    z-index: -3;
 }
 
 .star-container {
-    width: 45%;
+    z-index: -1;
     top: -8%;
     left: 65%;
+    width: 45%;
     transform: rotate(12.92deg);
-    z-index: -1;
 }
 
 .cans-container {
-    width: 17%;
+    z-index: -2;
     top: 76%;
     left: 83%;
+    width: 17%;
     transform: rotate(-15.9deg);
-    z-index: -2;
 }
 
 .rainbow-container {
-    width: 72%;
     top: -5%;
     left: 14%;
+    width: 72%;
 }
 
 .octopus-container {
-    width: 37%;
+    z-index: -3;
     top: 28%;
     left: 64%;
+    width: 37%;
     transform: rotate(-.73deg);
-    z-index: -3;
 }
 
 .fox-container {
-    width: 45%;
+    z-index: -1;
     top: -3%;
     left: -7%;
+    width: 45%;
     transform: rotate(-5.08deg);
-    z-index: -1;
 } 
 
 .toes-container {
-    width: 33%;
+    z-index: -2;
     top: 28%;
     left: 8%;
-    z-index: -2;
+    width: 33%;
 }
 
 .frogs-container {
-    width: 44%;
+    z-index: -2;
     top: 53%;
     left: 28%;
-    z-index: -2;
+    width: 44%;
 }
 
 .eggs-container {
-    width: 20%;
+    z-index: -2;
     top: 74%;
     left: 63%;
+    width: 20%;
     transform: rotate(-5.08deg);
-    z-index: -2;
 }
