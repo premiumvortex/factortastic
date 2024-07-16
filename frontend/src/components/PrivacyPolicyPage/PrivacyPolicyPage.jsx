@@ -8,10 +8,10 @@ import '../../index.css';
  * PrivacyPolicyPage Component: shows the privacy policy and forces the user to scroll to the bottom before closing
  * 
  * Props: 
- * - onClose (function): hides privacy policy
+ * - closePrivacyPolicy (function): hides privacy policy
  */
 
-export const PrivacyPolicyPage = ({ onClose }) => {
+export const PrivacyPolicyPage = ({ closePrivacyPolicy }) => {
     const [reachedBottom, setReachedBottom] = useState(false);
 
     const date = "05/07/2024";
@@ -43,9 +43,8 @@ export const PrivacyPolicyPage = ({ onClose }) => {
         <div className="privacy-policy-page">
             <button 
                 className="settings-text back-button" 
-                onClick={onClose} 
+                onClick={closePrivacyPolicy} 
                 disabled={!reachedBottom}
-                aria-label="Close Privacy Policy"
             >
                 Back
             </button>
@@ -108,5 +107,5 @@ export const PrivacyPolicyPage = ({ onClose }) => {
 };
 
 PrivacyPolicyPage.propTypes = {
-    onClose: PropTypes.func.isRequired
+    closePrivacyPolicy: PropTypes.func.isRequired
 };

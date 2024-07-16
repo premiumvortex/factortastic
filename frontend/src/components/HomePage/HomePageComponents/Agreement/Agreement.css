@@ -1,15 +1,15 @@
 .agreement-page {
     position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-
     top: 0;
     left: 0;
+
+    display: flex;
+
     width: 100%;
     height: 100%;
 
-    z-index: 2;
+    align-items: center;
+    justify-content: center; 
 }
 
 .agreement-popup {
@@ -18,53 +18,26 @@
     justify-content: space-between; 
     
     box-sizing: border-box;
-
     width: 40vw;
     height: 20vw;
     min-width: 450px;
     min-height: 270px;
-    padding: 40px 0px;
-    border-radius: 50px;
-    
+    padding: clamp(30px, 2vw, 40px) 0;
     border: 4px solid var(--black); 
+    border-radius: 50px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+
+    text-align: center;
+
     background-color: var(--settings-gray-color);  
 }
 
 .acknowledgement {
     display: flex;
     align-items: center;
-    text-align: center; 
-
+   
     width: 80%;
     margin: 0 auto;
-}
 
-.privacy-policy-link {
-    margin: 3px auto 15px;
-
-    color: var(--variable-collection-link);
-    text-decoration: underline;
-
-    cursor: pointer;
-}
-
-@media (max-width: 1400px) {
-    .agreement-popup { 
-        padding: 35px 0px;
-    }
-
-    .settings-text {
-        font-size: 22px;
-    }
-}
-  
-@media (max-width: 1200px) {
-    .agreement-popup { 
-        padding: 25px 0px;
-    }
-
-    .settings-text {
-        font-size: 20px;
-    }
+    text-align: center; 
 }

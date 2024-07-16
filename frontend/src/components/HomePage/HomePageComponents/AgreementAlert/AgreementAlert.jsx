@@ -12,11 +12,11 @@ import './AgreementAlert.css';
  * Currently only notifies user that they neeed to read privacy policy 
  * 
  * Props:
- * - onClose (function): closes the alert
+ * - closeAlert (function): closes the alert
  * - message (string) : message to display in alert 
  */
 
-export const AgreementAlert = ({ onClose, message }) => {
+export const AgreementAlert = ({ closeAlert, message }) => {
     return (
         <div className="alert-container">
             <Alert
@@ -24,7 +24,7 @@ export const AgreementAlert = ({ onClose, message }) => {
                 severity="error"
 
                 action={
-                    <IconButton aria-label="close error message" onClick={onClose} >
+                    <IconButton onClick={closeAlert} >
                         <CloseIcon />
                     </IconButton>
                 }
@@ -36,6 +36,6 @@ export const AgreementAlert = ({ onClose, message }) => {
 };
 
 AgreementAlert.propTypes = {
-    onClose: PropTypes.func.isRequired,             
+    closeAlert: PropTypes.func.isRequired,             
     message: PropTypes.string.isRequired,
 };

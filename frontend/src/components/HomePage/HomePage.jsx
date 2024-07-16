@@ -27,9 +27,9 @@ export const HomePage = () => {
     return (
         <div className="home-page">
             <HomePageTitle />
-            <StartButton handleClick={handleStartButtonClick}/>
             <CharactersBackgroundImage />
-            {showAgreement && <Agreement onClose={closeAgreement} />}      
+            <StartButton handleClick={handleStartButtonClick}/>
+            {showAgreement && <Agreement closeAgreement={closeAgreement} />} 
         </div>
     );
 }
