@@ -8,6 +8,8 @@
   --settings-pink: rgba(238, 102, 200, 1);
   --variable-collection-green: rgba(88, 173, 69, 1);
   --variable-collection-link: rgba(2, 25, 230, 1);
+  --variable-collection-link-hover: rgb(83, 91, 242, 1);
+  --variable-collection-link-visited: rgb(128, 0, 128, 1);
   --variable-collection-white: rgba(255, 255, 255, 1);
 
   /* Deck Colors */
@@ -42,7 +44,7 @@
   --math-equations-letter-spacing: 0px;
   --math-equations-line-height: 100%;
   --page-title-font-family: "Akaya Telivigala", Helvetica;
-  --page-title-font-size: 7vw;
+  --page-title-font-size:  clamp(54px, 7vw, 128px);;
   --page-title-font-style: normal;
   --page-title-font-weight: 400;
   --page-title-letter-spacing: 0px;
@@ -54,13 +56,13 @@
   --regular-text-letter-spacing: 0px;
   --regular-text-line-height: 100%;
   --secondary-font-family: "Akaya Telivigala", Helvetica;
-  --secondary-font-size: 3vw;
+  --secondary-font-size: 64px;
   --secondary-font-style: normal;
   --secondary-font-weight: 400;
   --secondary-letter-spacing: 0px;
   --secondary-line-height: 100%;
   --settings-font-family: "ABeeZee", Helvetica;
-  --settings-font-size: 120%;
+  --settings-font-size: clamp(18px, 1.6vw, 24px);;
   --settings-font-style: normal;
   --settings-font-weight: 400;
   --settings-gray-color: rgb(207, 207, 207);
@@ -147,13 +149,14 @@
   box-shadow: var(--strong-shadow);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+a { 
+  color: var(--variable-collection-link);
+  background-color: transparent;
 }
-a:hover {
-  color: #535bf2;
+
+a:focus, a:hover {
+  color: var(--variable-collection-link-hover);
+  text-decoration: none;
 }
 
 body {
@@ -181,7 +184,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: rgb(100, 108, 255);
 }
 button:focus,
 button:focus-visible {
