@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { DeckPageContent } from './ChooseADeckComponents/DeckPageContent/DeckPageContent';
 
 import '../../index.css';
