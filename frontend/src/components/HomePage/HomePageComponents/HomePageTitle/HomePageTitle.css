@@ -1,0 +1,18 @@
+.home-page-title {
+    text-transform: uppercase;
+}
+
+@media screen and (orientation: portrait) {
+    .home-page-title { 
+        position: absolute;
+        /* margin-top: calc(.67em / var(--aspect-ratio)); */
+        /* margin-top: calc(10vh / var(--aspect-ratio)); */
+        margin-top: 10vh;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .home-page-title { 
+       display: none;
+    }
+}
