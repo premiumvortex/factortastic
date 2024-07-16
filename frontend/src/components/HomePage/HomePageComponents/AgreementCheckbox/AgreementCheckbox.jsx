@@ -2,8 +2,6 @@ import React from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import PropTypes from 'prop-types';
 
-import '../../../../index.css';
-
 /*
  * AgreementCheckbox Component: displays MUI checkbox in Agreement component
  * 
@@ -22,7 +20,11 @@ export const AgreementCheckbox = ({ id, checked, onChange }) => {
             sx={{
                 color: 'black',
                 '&.Mui-checked': { color: 'var(--cyan)' },
-                '& .MuiSvgIcon-root': { fontSize: '48px' }
+                '& .MuiSvgIcon-root': { 
+                    fontSize: '5vw',
+                    minWidth: '60px',
+                    minHeight: '60px'
+                }
             }}
         />
     );
