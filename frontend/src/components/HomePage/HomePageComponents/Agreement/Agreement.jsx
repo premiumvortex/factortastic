@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { AgreementAlert } from '../AgreementAlert/AgreementAlert.jsx';
-import { AgreementCheckbox } from '../AgreementCheckbox/AgreementCheckbox.jsx';
-import { PrivacyPolicyPage } from '../../../PrivacyPolicyPage/PrivacyPolicyPage.jsx';
-import { SettingLongButton } from '../../../SettingLongButton/SettingLongButton.jsx';
+import { AgreementAlert } from '../AgreementAlert/AgreementAlert';
+import { AgreementCheckbox } from '../AgreementCheckbox/AgreementCheckbox';
+import { PrivacyPolicyPage } from '../../../PrivacyPolicyPage/PrivacyPolicyPage';
+import { SettingLongButton } from '../../../SettingLongButton/SettingLongButton';
 
-import '../../../../index.css';
 import './Agreement.css';
 
 /*
@@ -17,7 +16,7 @@ import './Agreement.css';
  * - onClose (function): closes the agreement pop up, called when user presses agree button
  */
 
-export const Agreement = ({ onClose }) => {
+export const Agreement = ({ closeAgreement }) => {
     // state variables
     const [isChecked, setIsChecked] = useState(false);              
     const [isDisabled, setIsDisabled] = useState(true);                 
@@ -49,20 +48,20 @@ export const Agreement = ({ onClose }) => {
         <div className="agreement-page">
             <div className="agreement-popup">
                 <div className="acknowledgement">
-                    <AgreementCheckbox id="checkbox" checked={isChecked} onChange={toggleCheckbox} />
+                    <AgreementCheckbox id="acknowledgement checkbox" checked={isChecked} onChange={toggleCheckbox} />
                     <p className="settings-text">I have read and agree with the terms and conditions</p>
                 </div>
 
-                <p className="privacy-policy-link settings-text" onClick={openPrivacyPolicy}>terms and conditions</p>
-                <SettingLongButton text="Agree" isDisabled={!isChecked} onClick={onClose} />
+                <a href="#" className="settings-text" onClick={openPrivacyPolicy}>terms and conditions</a>
+                <SettingLongButton text="Agree" isDisabled={!isChecked} onClick={closeAgreement} />
             </div>
-            
-            { showAlert && <AgreementAlert onClose={closeAlert} message={alertMessage} /> }
-            { showPrivacyPage && <PrivacyPolicyPage onClose={closePrivacyPolicy} /> }
+       
+            { showAlert && <AgreementAlert closeAlert={closeAlert} message={alertMessage} /> }
+            { showPrivacyPage && <PrivacyPolicyPage closePrivacyPolicy={closePrivacyPolicy} /> }
         </div>
     );
 };
 
 Agreement.propTypes = {
-    onClose: PropTypes.func.isRequired
+    closeAgreement: PropTypes.func.isRequired
 };
