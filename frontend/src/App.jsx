@@ -1,31 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
-import { Loading } from "./components/Loading.jsx";
-import RandomPlacer from './components/RandomPlacer'; // Adjust the import path based on your file structure
+import React, { useState } from 'react';
+import PopUp from './components/popup/PopUp';
+import Settings from './components/Settings/Settings';
+import SettingsIconButton from './components/button/SettingIconButton';
 
-function App() {
-    const [loadingDone, setLoadingDone] = useState(false);
+export default function App() {
+  const [anchor, setAnchor] = useState(null);
+  const [showButton, setShowButton] = useState(true);
+  const [currentComponent, setCurrentComponent] = useState(null);
 
-    const handleLoadingDone = () => {
-        setLoadingDone(true);
-    };
+  const handleOpenSettings = (event) => {
+    setAnchor(event.currentTarget);
+    setShowButton(false);
+    setCurrentComponent(<Settings handleClosePopup={handleClosePopup} />);
+  };
 
-    if (!loadingDone) {
-        return <Loading onDone={handleLoadingDone} />;
-    }
+  const handleClosePopup = () => {
+    setAnchor(null);
+    setShowButton(true);
+    setCurrentComponent(null);
+  };
 
-    return (
-        <div>
-            {/* The content that should be displayed after the loading screen */}
-            <h1>Welcome to the app!</h1>
-            <RandomPlacer />
-            <img src={reactLogo} alt="React logo" />
-            <img src={viteLogo} alt="Vite logo" />
-            {/* Other components or content */}
-        </div>
-    );
+
+  return (
+    <div style={{ display: 'flex', justifyContent: 'end' }}>
+      {showButton && <SettingsIconButton onClick={handleOpenSettings} />}
+      {currentComponent && (
+        <PopUp
+          Component={currentComponent.type}
+          componentProps={currentComponent.props}
+          anchor={anchor}
+          setAnchor={setAnchor}
+        />
+      )}
+    </div>
+  );
 }
-
-export default App;

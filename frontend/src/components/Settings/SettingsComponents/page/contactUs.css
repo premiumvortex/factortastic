@@ -1,0 +1,41 @@
+.octipi-img {
+  width: 20vw;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+label,
+p {
+  color: white;
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+input {
+  height: 2.5rem;
+  width: 20vw;
+  /* min-width: 13rem; */
+  margin-bottom: 10px;
+}
+
+.contact-content {
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.message-box {
+  /* min-width: 500px;
+  min-height: 150px; */
+  width: 50vw;
+  height: 20vh;
+  resize: vertical;
+}
+
+.email-text {
+  margin: 0;
+  padding-left: 10px;
+  align-content: center;
+}

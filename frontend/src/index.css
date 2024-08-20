@@ -1,12 +1,12 @@
-:root {
+/* :root { */
   :root {
     /* Color Palette */
-    --black: rgba(0, 0, 0, 1);
-    --cyan: rgba(38, 219, 179, 1);
-    --pink: rgba(255, 84, 229, 1);
+    --black: #000000;
+    --cyan: #26DBB3;
+    --pink: #FF54E5;
     --setting-2nd-gray: rgba(181, 181, 181, 1);
     --setting-background: rgba(81, 110, 190, 1);
-    --settings-pink: rgba(238, 102, 200, 1);
+    --settings-pink: #FF54E5;
     --variable-collection-green: rgba(88, 173, 69, 1);
     --variable-collection-link: rgba(2, 25, 230, 1);
     --variable-collection-white: rgba(255, 255, 255, 1);
@@ -100,6 +100,14 @@
     line-height: var(--tutorial-text-line-height);
   }
 
+  .secondary-text {
+    font-family: var(--secondary-font-family);
+    font-size: var(--secondary-font-size);
+    font-style: var(--secondary-font-style);
+    font-weight: var(--secondary-font-weight);
+    letter-spacing: var(--secondary-letter-spacing);
+    line-height: var(--tutorial-text-line-height);
+  }
   /* Using Color Variables */
   .background-cyan {
     background-color: var(--cyan);
@@ -109,24 +117,19 @@
     color: var(--pink);
   }
 
-  /* Applying Shadows */
-  .shadow-strong {
-    box-shadow: var(--strong-shadow);
+  .text-cyan {
+    color: var(--cyan);
   }
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  .text-black {
+    color: var(--black);
+  }
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: black;
+  /*!* Applying Shadows *!*/
+  /*.shadow-strong {*/
+  /*  box-shadow: var(--strong-shadow);*/
+  /*}*/
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 a {
   font-weight: 500;
