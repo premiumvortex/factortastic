@@ -16,7 +16,7 @@ const RandomPlacer = () => {
                     left: Math.random() * (window.innerWidth - 100), // Adjust 100 based on your animation's width
                 },
             ]);
-        }, 999999); // 5 per second (1000 ms / 5)
+        }, 200000000); // 5 per second (1000 ms / 5)
 
         return () => clearInterval(interval);
     }, []);

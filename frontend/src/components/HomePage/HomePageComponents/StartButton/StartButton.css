@@ -1,0 +1,35 @@
+.start-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: block;
+
+    height: auto;
+    width: auto; 
+    max-width: 35vw;
+    max-height: 90vh;
+    border-radius: 50%; 
+
+    background-color: transparent;
+    cursor: pointer;
+    
+    filter: drop-shadow(var(--startnstop-drop-shadow));
+    transition: filter 0.3s ease;
+}
+
+.start-button:hover {
+    filter: none; 
+} 
+
+@media screen and (max-width: 1200px) {
+    .start-button { max-width: 40vw; }
+}
+
+@media screen and (max-width: 800px) {
+    .start-button { max-width: 45vw; }
+}
+
+
+  

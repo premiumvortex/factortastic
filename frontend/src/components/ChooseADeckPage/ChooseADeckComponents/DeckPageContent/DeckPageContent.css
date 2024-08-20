@@ -1,0 +1,10 @@
+.buttons-grid {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

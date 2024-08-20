@@ -1,0 +1,97 @@
+.characters-container {
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: block;
+}
+
+.characters-container > div {
+    position: absolute;
+}
+
+.shoes-container {
+    z-index: -1;
+    top: 85%;
+    left: 74%;
+    transform: rotate(-49.46deg);
+    width: 14%; 
+}
+
+.mice-container {
+    z-index: -1;
+    top: 53%;
+    left: -2%;
+    width: 42%;
+    transform: scaleX(-1);
+}
+
+.leaf-container {
+    z-index: -3;
+    top: 44%;
+    left: 92%;
+    width: 8%;
+    transform: scaleX(-1);
+}
+
+.star-container {
+    z-index: -1;
+    top: -8%;
+    left: 65%;
+    width: 45%;
+    transform: rotate(12.92deg);
+}
+
+.cans-container {
+    z-index: -2;
+    top: 76%;
+    left: 83%;
+    width: 17%;
+    transform: rotate(-15.9deg);
+}
+
+.rainbow-container {
+    top: -5%;
+    left: 14%;
+    width: 72%;
+}
+
+.octopus-container {
+    z-index: -3;
+    top: 28%;
+    left: 64%;
+    width: 37%;
+    transform: rotate(-.73deg);
+}
+
+.fox-container {
+    z-index: -1;
+    top: -3%;
+    left: -7%;
+    width: 45%;
+    transform: rotate(-5.08deg);
+} 
+
+.toes-container {
+    z-index: -2;
+    top: 28%;
+    left: 8%;
+    width: 33%;
+}
+
+.frogs-container {
+    z-index: -2;
+    top: 53%;
+    left: 28%;
+    width: 44%;
+}
+
+.eggs-container {
+    z-index: -2;
+    top: 74%;
+    left: 63%;
+    width: 20%;
+    transform: rotate(-5.08deg);
+}

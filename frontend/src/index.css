@@ -1,126 +1,158 @@
-/* :root { */
-  :root {
-    /* Color Palette */
-    --black: #000000;
-    --cyan: #26DBB3;
-    --pink: #FF54E5;
-    --setting-2nd-gray: rgba(181, 181, 181, 1);
-    --setting-background: rgba(81, 110, 190, 1);
-    --settings-pink: #FF54E5;
-    --variable-collection-green: rgba(88, 173, 69, 1);
-    --variable-collection-link: rgba(2, 25, 230, 1);
-    --variable-collection-white: rgba(255, 255, 255, 1);
+:root {
+  /* Color Palette */
+  --black: rgba(0, 0, 0, 1);
+  --cyan: rgba(38, 219, 179, 1);
+  --pink: rgba(255, 84, 229, 1);
+  --setting-2nd-gray: rgb(181, 181, 181);
+  --setting-background: rgba(81, 110, 190, 1);
+  --settings-pink: rgba(238, 102, 200, 1);
+  --variable-collection-green: rgba(88, 173, 69, 1);
+  --variable-collection-link: rgba(2, 25, 230, 1);
+  --variable-collection-link-hover: rgb(83, 91, 242, 1);
+  --variable-collection-link-visited: rgb(128, 0, 128, 1);
+  --variable-collection-white: rgba(255, 255, 255, 1);
 
-    /* Shadows */
-    --drop-shadow: 3px 13px 6px 3px rgba(0, 0, 0, 0.25);
-    --setting-drop-shadow: 0px 8px 25px 0px rgba(150, 252, 253, 1);
-    --setting-drop-shadow-hover: 3px 13px 6px 3px rgba(0, 0, 0, 0.55);
-    --strong-shadow: 3px 13px 6px 0px rgba(0, 0, 0, 0.8);
-    --startnstop-drop-shadow: 0px 8px 30px 0px rgba(53, 252, 17, 1);
+  /* Deck Colors */
+  --red: rgb(182, 47, 50);
+  --blue: rgb(78, 65, 188);
+  --green: rgb(129, 184, 80);
+  --aqua: rgb(150, 252, 253);
+  --orange: rgb(191, 108, 47);
+  --yellow: rgb(233, 204, 71);
+  --gray: rgb(194, 194, 194);
 
-    /* Typography */
-    --heading-font-family: "League Gothic", Helvetica;
-    --heading-font-size: 170px;
-    --heading-font-style: normal;
-    --heading-font-weight: 400;
-    --heading-letter-spacing: 0px;
-    --heading-line-height: 100%;
-    --math-equations-font-family: "Acme", Helvetica;
-    --math-equations-font-size: 128px;
-    --math-equations-font-style: normal;
-    --math-equations-font-weight: 400;
-    --math-equations-letter-spacing: 0px;
-    --math-equations-line-height: 100%;
-    --page-title-font-family: "Akaya Telivigala", Helvetica;
-    --page-title-font-size: 128px;
-    --page-title-font-style: normal;
-    --page-title-font-weight: 400;
-    --page-title-letter-spacing: 0px;
-    --page-title-line-height: 100%;
-    --regular-text-font-family: "Akaya Telivigala", Helvetica;
-    --regular-text-font-size: 64px;
-    --regular-text-font-style: normal;
-    --regular-text-font-weight: 400;
-    --regular-text-letter-spacing: 0px;
-    --regular-text-line-height: 100%;
-    --secondary-font-family: "Akaya Telivigala", Helvetica;
-    --secondary-font-size: 64px;
-    --secondary-font-style: normal;
-    --secondary-font-weight: 400;
-    --secondary-letter-spacing: 0px;
-    --secondary-line-height: 100%;
-    --settings-font-family: "ABeeZee", Helvetica;
-    --settings-font-size: 24px;
-    --settings-font-style: normal;
-    --settings-font-weight: 400;
-    --settings-gray-color: rgba(207, 207, 207, 1);
-    --settings-letter-spacing: 0px;
-    --settings-line-height: 100%;
-    --tutorial-text-font-family: "Akaya Telivigala", Helvetica;
-    --tutorial-text-font-size: 52px;
-    --tutorial-text-font-style: normal;
-    --tutorial-text-font-weight: 400;
-    --tutorial-text-letter-spacing: 0px;
-    --tutorial-text-line-height: 100%;
-  }
-  /* Typography Classes */
-  .heading {
-    font-family: var(--heading-font-family);
-    font-size: var(--heading-font-size);
-    font-style: var(--heading-font-style);
-    font-weight: var(--heading-font-weight);
-    letter-spacing: var(--heading-letter-spacing);
-    line-height: var(--heading-line-height);
-  }
+  --gradient: linear-gradient(90deg, var(--red) 0%, var(--blue) 20%, var(--green) 40%, var(--aqua) 60%, var(--orange) 80%, var(--yellow) 100%);
 
-  .math-equations {
-    font-family: var(--math-equations-font-family);
-    font-size: var(--math-equations-font-size);
-    font-style: var(--math-equations-font-style);
-    font-weight: var(--math-equations-font-weight);
-    letter-spacing: var(--math-equations-letter-spacing);
-    line-height: var(--math-equations-line-height);
-  }
+  /* Shadows */
+  --drop-shadow: 3px 13px 6px 3px rgba(0, 0, 0, 0.25);
+  --setting-drop-shadow: 0px 8px 25px 0px rgba(150, 252, 253, 1);
+  --setting-drop-shadow-hover: 3px 13px 6px 3px rgba(0, 0, 0, 0.55);
+  --strong-shadow: 3px 13px 6px rgba(0, 0, 0, 0.8);
+  --startnstop-drop-shadow: 0px 8px 30px rgba(53, 252, 17, 1);
 
-  .page-title {
-    font-family: var(--page-title-font-family);
-    font-size: var(--page-title-font-size);
-    font-style: var(--page-title-font-style);
-    font-weight: var(--page-title-font-weight);
-    letter-spacing: var(--page-title-letter-spacing);
-    line-height: var(--page-title-line-height);
-  }
+  /* Typography */
+  --heading-font-family: "League Gothic", Helvetica;
+  --heading-font-size: 170px;
+  --heading-font-style: normal;
+  --heading-font-weight: 400;
+  --heading-letter-spacing: 0px;
+  --heading-line-height: 100%;
+  --math-equations-font-family: "Acme", Helvetica;
+  --math-equations-font-size: 128px;
+  --math-equations-font-style: normal;
+  --math-equations-font-weight: 400;
+  --math-equations-letter-spacing: 0px;
+  --math-equations-line-height: 100%;
+  --page-title-font-family: "Akaya Telivigala", Helvetica;
+  --page-title-font-size:  clamp(54px, 7vw, 128px);;
+  --page-title-font-style: normal;
+  --page-title-font-weight: 400;
+  --page-title-letter-spacing: 0px;
+  --page-title-line-height: 100%;
+  --regular-text-font-family: "Akaya Telivigala", Helvetica;
+  --regular-text-font-size: 64px;
+  --regular-text-font-style: normal;
+  --regular-text-font-weight: 400;
+  --regular-text-letter-spacing: 0px;
+  --regular-text-line-height: 100%;
+  --secondary-font-family: "Akaya Telivigala", Helvetica;
+  --secondary-font-size: 64px;
+  --secondary-font-style: normal;
+  --secondary-font-weight: 400;
+  --secondary-letter-spacing: 0px;
+  --secondary-line-height: 100%;
+  --settings-font-family: "ABeeZee", Helvetica;
+  --settings-font-size: clamp(18px, 1.6vw, 24px);;
+  --settings-font-style: normal;
+  --settings-font-weight: 400;
+  --settings-gray-color: rgb(207, 207, 207);
+  --settings-letter-spacing: 0px;
+  --settings-line-height: 100%;
+  --tutorial-text-font-family: "Akaya Telivigala", Helvetica;
+  --tutorial-text-font-size: 52px;
+  --tutorial-text-font-style: normal;
+  --tutorial-text-font-weight: 400;
+  --tutorial-text-letter-spacing: 0px;
+  --tutorial-text-line-height: 100%;
+}
+/* Typography Classes */
+.heading {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size);
+  font-style: var(--heading-font-style);
+  font-weight: var(--heading-font-weight);
+  letter-spacing: var(--heading-letter-spacing);
+  line-height: var(--heading-line-height);
+}
 
-  .tutorial-text {
-    font-family: var(--tutorial-text-font-family);
-    font-size: var(--tutorial-text-font-size);
-    font-style: var(--tutorial-text-font-style);
-    font-weight: var(--tutorial-text-font-weight);
-    letter-spacing: var(--tutorial-text-letter-spacing);
-    line-height: var(--tutorial-text-line-height);
-  }
+.math-equations {
+  font-family: var(--math-equations-font-family);
+  font-size: var(--math-equations-font-size);
+  font-style: var(--math-equations-font-style);
+  font-weight: var(--math-equations-font-weight);
+  letter-spacing: var(--math-equations-letter-spacing);
+  line-height: var(--math-equations-line-height);
+}
 
-  .secondary-text {
-    font-family: var(--secondary-font-family);
-    font-size: var(--secondary-font-size);
-    font-style: var(--secondary-font-style);
-    font-weight: var(--secondary-font-weight);
-    letter-spacing: var(--secondary-letter-spacing);
-    line-height: var(--tutorial-text-line-height);
-  }
-  /* Using Color Variables */
-  .background-cyan {
-    background-color: var(--cyan);
-  }
+.page-title {
+  font-family: var(--page-title-font-family);
+  font-size: var(--page-title-font-size);
+  font-style: var(--page-title-font-style);
+  font-weight: var(--page-title-font-weight);
+  letter-spacing: var(--page-title-letter-spacing);
+  line-height: var(--page-title-line-height);
+  text-shadow: var(--strong-shadow);
+}
 
-  .text-pink {
-    color: var(--pink);
-  }
+.tutorial-text {
+  font-family: var(--tutorial-text-font-family);
+  font-size: var(--tutorial-text-font-size);
+  font-style: var(--tutorial-text-font-style);
+  font-weight: var(--tutorial-text-font-weight);
+  letter-spacing: var(--tutorial-text-letter-spacing);
+  line-height: var(--tutorial-text-line-height);
+}
 
-  .text-cyan {
-    color: var(--cyan);
-  }
+.settings-text {
+  font-family: var(--settings-font-family);
+  font-size: var(--settings-font-size);
+  font-style: var(--settings-font-style);
+  font-weight: var(--settings-font-weight);
+  letter-spacing: var(--settings-letter-spacing);
+  line-height: var(--settings-line-height);
+}
 
+.secondary {
+  font-family: var(--secondary-font-family);
+  font-size: var(--secondary-font-size);
+  font-style: var(--secondary-font-style);
+  font-weight: var(--secondary-font-weight);
+  letter-spacing: var(--secondary-letter-spacing);
+  line-height: var(--secondary-line-height);
+}
+
+/* Using Color Variables */
+.background-cyan {
+  background-color: var(--cyan);
+}
+
+.text-pink {
+  color: var(--pink);
+}
+
+.text-cyan {
+  color: var(--cyan);
+}
+
+/* Applying Shadows */
+.shadow-strong {
+  box-shadow: var(--strong-shadow);
+}
+
+a {
+  color: var(--variable-collection-link);
+  background-color: transparent;
+}
   .text-black {
     color: var(--black);
   }
@@ -131,13 +163,9 @@
   /*}*/
 
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+a:focus, a:hover {
+  color: var(--variable-collection-link-hover);
+  text-decoration: none;
 }
 
 body {
@@ -183,4 +211,29 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Font Styles */
+@font-face {
+  font-family: 'ABeeZee';
+  src: url('./assets/fonts/ABeeZee-Regular.ttf') format('truetype');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Acme';
+  src: url('./assets/fonts/Acme-Regular.ttf') format('truetype');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Akaya Telivigala';
+  src: url('./assets/fonts/AkayaTelivigala-Regular.ttf') format('truetype');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'League Gothic';
+  src: url('./assets/fonts/LeagueGothic-Regular-VariableFont_wdth.ttf') format('truetype');
+  font-display: block;
 }
