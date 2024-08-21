@@ -51,7 +51,7 @@ export default function ContactUsPage({ changePopUp }) {
             <BackButton onClick={() => changePopUp(null)} />
       </div>
         <ContactTitle/>
-        <div style={{backgroundColor: 'rgb(38, 105, 105)'}}>
+        <div>
           <ContactForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>
         </div>
     </div>

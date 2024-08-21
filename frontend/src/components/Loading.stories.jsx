@@ -1,5 +1,4 @@
 import React from "react";
-import "./loading.css";
 import { Loading } from "./Loading"; // Assuming you have this component
 
 // Default export that describes the component
@@ -12,3 +11,8 @@ export default {
 export const DefaultLoading = () => (
     <Loading />
 );
+
+DefaultLoading.parameters = {
+    backgroundColor: 'black', // Sets the background color to black
+    background: 'black',      // Ensures the decorator applies the black background
+};

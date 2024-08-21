@@ -10,6 +10,9 @@ COPY package*.json ./
 # Install any dependencies
 RUN npm install
 
+# Install Jest and Storybook testing libraries
+RUN npm install --save-dev @storybook/testing-library @storybook/jest
+
 # Copy the rest of your frontend's source code from your host to your image filesystem.
 # Since the Dockerfile is already in the frontend directory, you don't need to specify './frontend' in the path.
 COPY . .

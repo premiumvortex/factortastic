@@ -11,7 +11,13 @@ import '../../../../index.css';
 
 export const LockIcon = ({ color }) => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="41%" viewBox="0 0 54 68" style={{ overflow: 'visible' }}>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="41%"
+            viewBox="0 0 54 68"
+            style={{overflow: 'visible'}}
+            data-testid="lock-icon"  // Add data-testid here
+        >
             <defs>
                 <linearGradient id="lock-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" style={{ stopColor: 'var(--red)' }} />

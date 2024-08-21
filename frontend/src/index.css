@@ -149,10 +149,6 @@
   box-shadow: var(--strong-shadow);
 }
 
-a {
-  color: var(--variable-collection-link);
-  background-color: transparent;
-}
   .text-black {
     color: var(--black);
   }
@@ -168,8 +164,17 @@ a:focus, a:hover {
   text-decoration: none;
 }
 
+a {
+  color: var(--variable-collection-link);
+  background-color: transparent;
+}
+
 body {
+  height: 100%;
+  width: 100%;
   margin: 0;
+  padding: 0;
+  overflow: hidden;
   display: flex;
   place-items: center;
   min-width: 320px;

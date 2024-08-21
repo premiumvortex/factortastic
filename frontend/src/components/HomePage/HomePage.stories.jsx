@@ -1,6 +1,6 @@
 import React from "react";
 import "./HomePage.css";
-import { HomePage } from "./HomePage"; 
+import { HomePage } from "./HomePage";
 
 // Default export that describes the component
 export default {

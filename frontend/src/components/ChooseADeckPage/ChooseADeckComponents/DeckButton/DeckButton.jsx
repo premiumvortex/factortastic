@@ -37,7 +37,7 @@ export const DeckButton = ({ deck, onClick }) => {
             onClick={onClick} 
             style={buttonStyle}
         >
-            { isLocked && <LockIcon color={color} /> }     
+            { isLocked && <LockIcon data-testid="lock-icon" color={color} /> }
             { isDisabled && <p className="deck-name secondary">{name}</p> }
         </button>
     );
