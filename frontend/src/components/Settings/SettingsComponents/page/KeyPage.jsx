@@ -9,7 +9,7 @@ export default function KeyPage({ changePopUp }) {
           <BackButton onClick={() => changePopUp(null)}/>
         </div>
         <div style={{display: 'flex', justifyContent: 'center', margin: '0 auto'}}>
-          <img style={{width: '80%'}} src={Key} alt="Key" />
+          <img style={{width: '65%'}} src={Key} alt="Key" />
         </div>
       </div>
     </>

@@ -32,7 +32,7 @@ return (
                             <SettingTitles />
                         </div>
                         <SoundSettings/>
-                        <div style={{marginBottom: 40}}>
+                        <div style={{marginBottom: 40, marginTop: 40}}>
                             <ActionKeys changePopUp={changePopUp}/>
                         </div>
                     </div>

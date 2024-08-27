@@ -4,6 +4,9 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
 const StyledBtn = styled(Button)({
+  position: 'absolute',
+  top: '10px',
+  left: '10px',
   minHeight: '64px',
   alignContent: 'center',
   borderRadius: '15px',

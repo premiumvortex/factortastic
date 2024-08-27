@@ -3,7 +3,7 @@
   flex-direction: column;
 }
 
-.setting-content {
+.setting-contents { /* remove s at the end */
   width: 50vw;
   height: 85vh;
   padding: 10px;
@@ -14,6 +14,16 @@
   display: grid;
   grid-template-columns: 1fr; /* Single column layout */
   grid-gap: 8vh;
+}
+
+.setting-content {
+  width: 50%;
+  height: 85vh;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 40px;
+  border: none;
+  background-color: #516EBE;
 }
 
 .setting-title {

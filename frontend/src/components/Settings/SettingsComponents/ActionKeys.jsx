@@ -4,6 +4,7 @@ function ActionKeys({ changePopUp }) {
     return (
         <div style={{
             display: 'grid',
+            height: '100%',
             gridTemplateColumns: '1fr 1fr', // Two equal columns
             gridTemplateRows: 'auto auto auto', // Three rows, height determined by content
             gridTemplateAreas: `
