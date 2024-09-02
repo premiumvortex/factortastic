@@ -7,6 +7,7 @@ import KeyPage from './SettingsComponents/page/KeyPage';
 import ContactUsPage from './SettingsComponents/page/ContactUsPage';
 import SettingTitles from './SettingsComponents/SettingTitles.jsx';
 import ActionKeys from "./SettingsComponents/ActionKeys.jsx";
+import {PrivacyPolicyPage} from "../PrivacyPolicyPage/PrivacyPolicyPage.jsx";
 
 export default function Settings({ handleClosePopup }) {
  const [currentPopUp, setCurrentPopUp] = useState(null);
@@ -40,6 +41,13 @@ return (
             )}
             {currentPopUp === 'Key' && <KeyPage changePopUp={changePopUp}/>}
             {currentPopUp === 'Contact Us' && <ContactUsPage changePopUp={changePopUp} />}
+            {currentPopUp === 'Privacy Policy' &&
+                <PrivacyPolicyPage
+                    changePopUp={changePopUp}
+                    requireScroll={false}
+                    closePrivacyPolicy={backToSettings}
+                />
+            }
         </div>
     </>
 );

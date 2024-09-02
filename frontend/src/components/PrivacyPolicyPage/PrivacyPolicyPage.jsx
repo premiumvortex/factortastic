@@ -11,22 +11,22 @@ import '../../index.css';
  * - closePrivacyPolicy (function): hides privacy policy
  */
 
-export const PrivacyPolicyPage = ({ closePrivacyPolicy }) => {
-    const [reachedBottom, setReachedBottom] = useState(false);
+export const PrivacyPolicyPage = ({ closePrivacyPolicy, requireScroll = true }) => {
+    const [reachedBottom, setReachedBottom] = useState(!requireScroll);
 
     const date = "05/07/2024";
     const gameName = "Factortastic";
     const contactInfo = "info@factortastic.com";
 
-    // Create scroll event listener in privacy-policy-content 
+    // Create scroll event listener in privacy-policy-content
     useEffect(() => {
+        if (!requireScroll) return;
         const privacyPolicyContent = document.querySelector('.privacy-policy-content');
         if (privacyPolicyContent) {
             privacyPolicyContent.addEventListener('scroll', handleScroll);
-
             return () => privacyPolicyContent.removeEventListener('scroll', handleScroll);
         }
-    }, []);
+    }, [requireScroll]);
 
    // Track scroll position within privacy-policy-content 
    const handleScroll = (event) => {
@@ -107,5 +107,6 @@ export const PrivacyPolicyPage = ({ closePrivacyPolicy }) => {
 };
 
 PrivacyPolicyPage.propTypes = {
-    closePrivacyPolicy: PropTypes.func.isRequired
+    closePrivacyPolicy: PropTypes.func.isRequired,
+    requireScroll: PropTypes.bool,
 };

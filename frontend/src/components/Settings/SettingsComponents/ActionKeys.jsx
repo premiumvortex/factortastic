@@ -24,7 +24,7 @@ function ActionKeys({ changePopUp }) {
             </div>
             {/* Third Column */}
             <div style={{ gridArea: 'thirdColumn' }}>
-                <SettingButton text={'Privacy Policy'} onClick={() => alert('Nothing here yet!')}/>
+                <SettingButton text={'Privacy Policy'} onClick={() => changePopUp('Privacy Policy')}/>
             </div>
             {/* Fourth Column */}
             <div style={{ gridArea: 'fourthColumn' }}>
