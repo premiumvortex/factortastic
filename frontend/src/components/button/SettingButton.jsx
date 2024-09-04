@@ -18,7 +18,6 @@ const StyledBtn = styled(Button) ({
     maxHeight: '100%',
     borderRadius: '50px',
     boarder: 'none',
-    // fontSize: '2vw',
     color: 'var(--black)',
     backgroundColor: 'var(--pink)',
     boxShadow: "var(--setting-drop-shadow)",

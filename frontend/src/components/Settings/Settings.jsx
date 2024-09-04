@@ -32,15 +32,17 @@ return (
                         <BackButton onClick={handleClosePopup}/>
                     </div>
                     <div className="setting-content secondary">
-                        <div style={{marginTop: 40}}>
+                        <div style={{marginTop: "5vh"}}>
                             <SettingTitles />
+                        </div >
+                        <div style={{marginTop: "5vh"}}>
+                            <SoundSettings />
                         </div>
-                        <SoundSettings/>
-                        <div style={{marginBottom: 40, marginTop: 40}}>
+                        <div style={{marginBottom: "5vh", marginTop: "5vh"}}>
                             <ActionKeys changePopUp={changePopUp}/>
                         </div>
                     </div>
-                </SoundProvider>
+            </SoundProvider>
             )}
             {currentPopUp === 'Key' && <KeyPage changePopUp={changePopUp}/>}
             {currentPopUp === 'Contact Us' && <ContactUsPage changePopUp={changePopUp} />}

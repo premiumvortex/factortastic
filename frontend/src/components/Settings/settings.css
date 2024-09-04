@@ -17,8 +17,14 @@
 }
 
 .setting-content {
-  width: 50%;
-  height: 85vh;
+  width: auto;
+  max-width: 50vw;
+  min-height: auto; /* Let the container grow with content */
+  max-height: 100vh; /* Prevent it from growing too tall */
+  display: flex; /* Flex layout to center the content */
+  flex-direction: column;
+  justify-content: center; /* Center the grid vertically */
+  overflow: hidden;   /* [Faraz]: Remove later on */
   padding: 10px;
   margin: 0 auto;
   border-radius: 40px;
@@ -33,6 +39,10 @@
   /*text-shadow: 5px 10px 6px rgba(0, 0, 0, .5);*/
   stroke: black;
   gap: 2%
+}
+
+.action-keys-container{
+  font-size: clamp(.1rem, 0.1rem, 0.1rem);
 }
 
 .sound-labels {
