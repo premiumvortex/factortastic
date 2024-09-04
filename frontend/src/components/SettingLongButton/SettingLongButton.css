@@ -1,16 +1,16 @@
 .agree-button {
-    display: flex; 
-    justify-content: center; 
+    display: inline-block;
+    justify-content: center;
     align-items: center;
     text-align: center;
 
     height: 30%;
-    width: 90%; 
+    width: 90%;
     margin: 0 auto;
     border: none;
     border-radius: 25px;
     box-shadow: var(--setting-drop-shadow);
-    transition: 0.25s ease;    
+    transition: 0.25s ease;
 
     cursor: pointer;
     background-color: var(--pink);
@@ -23,11 +23,12 @@
     cursor: not-allowed;
     background-color: var(--setting-2nd-gray);
 }
-  
+
 .agree-button:hover {
     box-shadow: none;
 }
 
 .button-text {
+    margin: 0 auto;
     font-size: clamp(48px, 4vw, 64px);
 }

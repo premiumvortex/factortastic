@@ -1,4 +1,5 @@
 import SettingButton from '../../button/SettingButton';
+import '../../../index.css'
 
 function ActionKeys({ changePopUp }) {
     return (
@@ -21,11 +22,11 @@ function ActionKeys({ changePopUp }) {
             </div>
             {/* Second Column */}
             <div style={{ gridArea: 'secondColumn' }}>
-                <SettingButton text={'Menu'} onClick={() => alert('Nothing here yet!')} />
+                <SettingButton text={'Menu'} onClick={() => changePopUp('Home')} />
             </div>
             {/* Third Column */}
             <div style={{ gridArea: 'thirdColumn' }}>
-                <SettingButton text={'Privacy Policy'} onClick={() => alert('Nothing here yet!')}/>
+                <SettingButton text={'Privacy Policy'} onClick={() => changePopUp('Privacy Policy')}/>
             </div>
             {/* Fourth Column */}
             <div style={{ gridArea: 'fourthColumn' }}>
