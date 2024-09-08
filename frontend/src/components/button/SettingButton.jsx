@@ -1,11 +1,9 @@
-import '../button/button.css';
 import React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import "../../index.css"
 
 const StyledBtn = styled(Button) ({
-     // padding: '1.5%',
     fontFamily: 'var(--secondary-font-family)',
     fontSize: 'var(--secondary-font-size)',
     fontStyle: 'var(--secondary-font-style)',
@@ -30,8 +28,9 @@ const StyledBtn = styled(Button) ({
 
 export default function SettingButton({ text, onClick, type = 'button' }) {
   return (
-    <StyledBtn type={type} className="setting-long-button" onClick={onClick}>
+    <StyledBtn type={type} onClick={onClick}>
       {text}
     </StyledBtn>
   )
 }
+// className="setting-long-button" Removed from StyledBtn. Not in use?

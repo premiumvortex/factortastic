@@ -1,5 +1,4 @@
 import '../page/contactUs.css';
-import '../../settings.css';
 import EmailIcon from '@mui/icons-material/Email';
 import Octipi from '../../../../assets/artwork/Individual_Assets/Characters/8-octopus.png';
 import SettingButton from '../../../button/SettingButton.jsx';
@@ -8,7 +7,7 @@ export default function ContactForm({formData, handleChange, handleSubmit}) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className='justify-center' style={{ minWidth: '50rem', margin: '0 2rem' }}>
+        <div style={{ minWidth: '50rem', margin: '0 2rem', display: 'flex', justifyContent: 'center' }}>
           <div>
             <div style={{display: 'flex', flexDirection: 'column', marginBottom: '8%'}}>
               <div>
@@ -35,7 +34,7 @@ export default function ContactForm({formData, handleChange, handleSubmit}) {
           </div>
           <div style={{width: '50vh'}}>
             <div style={{display: 'flex', flexDirection: 'column'}}>
-              <div className='flex justify-center'>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <EmailIcon fontSize='large' />
                 <p className='email-text'>email@example.com</p>
               </div>

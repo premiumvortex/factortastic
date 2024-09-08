@@ -27,8 +27,3 @@
 .agree-button:hover {
     box-shadow: none;
 }
-
-.button-text {
-    margin: 0 auto;
-    font-size: clamp(48px, 4vw, 64px);
-}

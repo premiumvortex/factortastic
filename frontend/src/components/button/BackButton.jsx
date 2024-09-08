@@ -2,22 +2,21 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import '../../index.css';
 
 const StyledBtn = styled(Button)({
   position: 'absolute',
-  top: '10px',
-  left: '10px',
-  minHeight: '64px',
+  top: '2vh',
+  left: '1vw',
+  minHeight: '4rem',
   alignContent: 'center',
   borderRadius: '15px',
-  border: 'none',
-  backgroundColor: '#516EBE',
-  color: 'black',
-  boxShadow: '4px 4px 8px rgba(0, 0, 0, .8)',
-  cursor: 'pointer',
+  backgroundColor: 'var(--setting-background)',
+  color: 'var(--black)',
+  boxShadow: 'var(--drop-shadow)',
   '&:hover': {
-    backgroundColor: '#516EBE',
-    boxShadow: '4px 4px 8px rgba(0, 0, 0, 1)',
+    backgroundColor: 'var(--setting-background)',
+    boxShadow: 'var(--strong-shadow)',
   },
 });
 

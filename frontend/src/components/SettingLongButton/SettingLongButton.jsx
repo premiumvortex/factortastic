@@ -6,8 +6,8 @@ import '../../index.css'
 
 /*
  * SettingLongButton Component
- * 
- * Props: 
+ *
+ * Props:
  * - message (string): displayed on button
  * - isDisabled (bool): indicated if user can click on button
  * - onClick (function): called when user clicks on button
@@ -20,7 +20,7 @@ export const SettingLongButton = ({ text, isDisabled, onClick }) => {
             onClick={onClick}
             disabled={isDisabled}
         >
-            <p className='button-text secondary'>{text}</p>
+            <p className='secondary' style={{margin: '0 auto', fontSize: 'clamp(2rem, 6vh, 8rem)'}}>{text}</p>
         </button>
     );
 };
