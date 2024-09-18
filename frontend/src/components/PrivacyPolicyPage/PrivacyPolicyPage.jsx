@@ -41,7 +41,7 @@ export const PrivacyPolicyPage = ({changePopUp, closePrivacyPolicy, requireScrol
 
     return (
         <div className="privacy-policy-page">
-            <BackButton onClick={() => changePopUp(null)}/>
+            <BackButton onClick={() => changePopUp(null)} onClick={closePrivacyPolicy} disabled={!reachedBottom} />
             {/* Anna: PrivacyPolicy will eventually direct users to the page using router,
                 but for now as informed by Faraz, it will act as a popup.
                 Here is the old button incase it will need to be referred back to at a later date:
@@ -53,6 +53,13 @@ export const PrivacyPolicyPage = ({changePopUp, closePrivacyPolicy, requireScrol
             >
                 Back
             </button>
+
+            NOTE: One css property on .back-button:disabled:hover::after that needs to be implmented
+            into the BackButton is...
+
+               .back-button:disabled:hover::after {
+                content: "Read through the entire privacy policy first";
+               }
                 */}
 
             <div className="privacy-policy-content" onScroll={handleScroll}>

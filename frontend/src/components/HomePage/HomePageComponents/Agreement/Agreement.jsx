@@ -11,24 +11,24 @@ import './Agreement.css';
 /*
  * Agreement Component: shows the agreement pop up, which forces users to agree to terms and conditions before continuing,
  * It controls the checkbox, PrivacyPolicyPage visibility, and AgreementAlert visibility
- * 
+ *
  * Props:
  * - onClose (function): closes the agreement pop up, called when user presses agree button
  */
 
 export const Agreement = ({ closeAgreement }) => {
     // state variables
-    const [isChecked, setIsChecked] = useState(false);              
-    const [isDisabled, setIsDisabled] = useState(true);                 
-    const [showPrivacyPage, setShowPrivacyPage] = useState(false);      
-    const [showAlert, setShowAlert] = useState(false);                
+    const [isChecked, setIsChecked] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [showPrivacyPage, setShowPrivacyPage] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
 
     const alertMessage = "Please read the privacy policy before agreeing to the terms and conditions";
 
     // only toggle checkbox if user read privacy policy
     const toggleCheckbox = () => {
         if (isDisabled) {
-            setShowAlert(true); 
+            setShowAlert(true);
         } else {
             setIsChecked(!isChecked);
         }
@@ -55,7 +55,7 @@ export const Agreement = ({ closeAgreement }) => {
                 <a href="#" className="settings-text" onClick={openPrivacyPolicy}>terms and conditions</a>
                 <SettingLongButton text="Agree" isDisabled={!isChecked} onClick={closeAgreement} />
             </div>
-       
+
             { showAlert && <AgreementAlert closeAlert={closeAlert} message={alertMessage} /> }
             { showPrivacyPage && <PrivacyPolicyPage closePrivacyPolicy={closePrivacyPolicy} /> }
         </div>

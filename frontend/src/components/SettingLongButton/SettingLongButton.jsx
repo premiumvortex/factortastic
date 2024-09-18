@@ -20,7 +20,7 @@ export const SettingLongButton = ({ text, isDisabled, onClick }) => {
             onClick={onClick}
             disabled={isDisabled}
         >
-            <p className='secondary' style={{margin: '0 auto', fontSize: 'clamp(2rem, 6vh, 8rem)'}}>{text}</p>
+            <p className='secondary' style={{ margin: '0 auto'}}>{text}</p>
         </button>
     );
 };

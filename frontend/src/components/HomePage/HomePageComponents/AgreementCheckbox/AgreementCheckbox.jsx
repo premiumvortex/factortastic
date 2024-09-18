@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 /*
  * AgreementCheckbox Component: displays MUI checkbox in Agreement component
- * 
+ *
  * Props:
  * - id (string): id
  * - checked (bool): current state of checkbox
@@ -20,10 +20,10 @@ export const AgreementCheckbox = ({ id, checked, onChange }) => {
             sx={{
                 color: 'black',
                 '&.Mui-checked': { color: 'var(--cyan)' },
-                '& .MuiSvgIcon-root': { 
+                '& .MuiSvgIcon-root': {
                     fontSize: '5vw',
-                    minWidth: '60px',
-                    minHeight: '60px'
+                    minWidth: '5rem',
+                    minHeight: '5rem'
                 }
             }}
         />
