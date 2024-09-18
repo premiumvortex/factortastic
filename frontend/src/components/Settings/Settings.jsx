@@ -25,7 +25,7 @@ export default function Settings({ handleClosePopup }) {
 
 return (
     <>
-        <div style={{width: '100vw' }}>
+        <div style={{width: '100vw'}}>
             {currentPopUp === null && (
             <SoundProvider>
                     <div>

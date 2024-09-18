@@ -18,7 +18,7 @@ const StyledBtn = styled(Button)({
     },
 });
 
-export default function SettingsIconButton({ top = '5%', right = '5%' }) {
+export default function SettingsIconButton({ top = '2%', right = '2%' }) {
     const [anchor, setAnchor] = useState(null);
     const [openPopup, setOpenPopup] = useState(false);
 
