@@ -17,23 +17,23 @@ function ActionKeys({ changePopUp }) {
         }}>
             {/* First Column */}
             <div style={{ gridArea: 'firstColumn' }}>
-                <SettingButton text={'Key'} onClick={() => changePopUp('Key')} />
+                <SettingButton text={'Key'} onClick={() => changePopUp('Key')} soundEffect={'click'}/>
             </div>
             {/* Second Column */}
             <div style={{ gridArea: 'secondColumn' }}>
-                <SettingButton text={'Menu'} onClick={() => changePopUp('Home')} />
+                <SettingButton text={'Menu'} onClick={() => changePopUp('Home')} soundEffect={'click'}/>
             </div>
             {/* Third Column */}
             <div style={{ gridArea: 'thirdColumn' }}>
-                <SettingButton text={'Privacy Policy'} onClick={() => changePopUp('Privacy Policy')}/>
+                <SettingButton text={'Privacy Policy'} onClick={() => changePopUp('Privacy Policy')} soundEffect={'click'}/>
             </div>
             {/* Fourth Column */}
             <div style={{ gridArea: 'fourthColumn' }}>
-                <SettingButton text={'Contact Us'} onClick={() => changePopUp('Contact Us')}/>
+                <SettingButton text={'Contact Us'} onClick={() => changePopUp('Contact Us')} soundEffect={'click'}/>
             </div>
             {/* Full width row */}
             <div style={{ gridArea: 'fullWidth' }}>
-                <SettingButton text={'Tutorial'} onClick={() => alert('Nothing here yet!')}/>
+                <SettingButton text={'Tutorial'} onClick={() => alert('Nothing here yet!')} soundEffect={'click'}/>
             </div>
         </div>
     );

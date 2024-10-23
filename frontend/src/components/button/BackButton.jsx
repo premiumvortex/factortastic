@@ -2,6 +2,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
+import { useSound } from '../Sound/SoundContext.jsx';
 
 const StyledBtn = styled(Button)({
   minHeight: '64px',
@@ -18,10 +19,19 @@ const StyledBtn = styled(Button)({
   },
 });
 
-export default function BackButton({onClick}) {
+export default function BackButton({text, type = 'button', onClick, soundEffect}) {
+  const { playSoundEffect } = useSound(); // Use the sound context
+
+  const handleClick = (e) => {
+    if (soundEffect) {
+      playSoundEffect(soundEffect); // Play the sound effect passed as a prop
+    }
+    onClick(e); // Execute the original onClick logic
+  };
+
   return (
     <>
-      <StyledBtn variant="contained" onClick={onClick}>
+      <StyledBtn variant="contained" onClick={handleClick}>
         <ArrowBackIcon fontSize="large"/>
       </StyledBtn>
     </>

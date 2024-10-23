@@ -6,7 +6,7 @@ export default function KeyPage({ changePopUp }) {
     <>
       <div style={{display: 'flex'}}>
         <div>
-          <BackButton onClick={() => changePopUp(null)}/>
+          <BackButton onClick={() => changePopUp(null)} soundEffect={'click'}/>
         </div>
         <div style={{display: 'flex', justifyContent: 'center', margin: '0 auto'}}>
           <img style={{width: '80%'}} src={Key} alt="Key" />

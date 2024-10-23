@@ -48,7 +48,7 @@ export default function ContactUsPage({ changePopUp }) {
     {!giveThanks && (
     <div style={{alignContent: 'center'}}>
       <div style={{display: 'flex'}} >
-            <BackButton onClick={() => changePopUp(null)} />
+            <BackButton onClick={() => changePopUp(null)} soundEffect={'click'} />
       </div>
         <ContactTitle/>
         <div>
