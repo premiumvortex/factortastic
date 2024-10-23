@@ -35,7 +35,8 @@ export const Agreement = ({ closeAgreement }) => {
     };
 
     // shows PrivacyPolicyPage and enables checkbox
-    const openPrivacyPolicy = () => {
+    const openPrivacyPolicy = (e) => {
+        e.preventDefault();  // Prevent the default link behavior
         setShowPrivacyPage(true);
         setIsDisabled(false);
     };
