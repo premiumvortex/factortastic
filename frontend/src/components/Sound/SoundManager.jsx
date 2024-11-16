@@ -1,10 +1,12 @@
 // SoundManager.js
 import { Howl } from 'howler';
 import clickSound from '../../assets/sound/SoundEffects/Sample_Click.mp3';
+import SettingClickSound from '../../assets/sound/SoundEffects/settingsClick.mp3';
 import frog11 from '../../assets/sound/BackgroundMusic/11frogs_Theme_Music.mp3';
 
 // Predefined sound effect paths
 const soundEffects = {
+    click2: SettingClickSound,
     click: clickSound,
     // success: '/path/to/success/sound.mp3',
     // error: '/path/to/error/sound.mp3',
