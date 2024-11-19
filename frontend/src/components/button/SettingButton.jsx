@@ -18,6 +18,7 @@ const StyledBtn = styled(Button)({
     maxHeight: '100%',
     borderRadius: '50px',
     border: 'none',
+    // fontSize: '2vw',
     color: 'var(--black)',
     backgroundColor: 'var(--pink)',
     boxShadow: "var(--setting-drop-shadow)",
@@ -44,3 +45,4 @@ export default function SettingButton({ text, onClick, type = 'button', soundEff
         </StyledBtn>
     );
 }
+// className="setting-long-button" Removed from StyledBtn. Not in use?

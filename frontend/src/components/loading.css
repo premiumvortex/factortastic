@@ -2,7 +2,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1.5rem;
     justify-content: center;
     position: relative;
     width: auto; /* Full width */
