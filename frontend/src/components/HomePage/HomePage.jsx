@@ -7,6 +7,7 @@ import { StartButton } from './HomePageComponents/StartButton/StartButton';
 
 import './HomePage.css';
 import '../../index.css';
+import {SoundProvider} from "../Sound/SoundContext.jsx";
 
 /*
  * HomePage Component: displays title and a start button
@@ -25,11 +26,13 @@ export const HomePage = () => {
     };
 
     return (
-        <div className="home-page">
-            <HomePageTitle />
-            <CharactersBackgroundImage />
-            <StartButton handleClick={handleStartButtonClick}/>
-            {showAgreement && <Agreement closeAgreement={closeAgreement} />} 
-        </div>
+        <SoundProvider> //This needs to be removed once in production (This is here for rendering HomePage in storybook)
+            <div className="home-page">
+                <HomePageTitle />
+                <CharactersBackgroundImage />
+                <StartButton handleClick={handleStartButtonClick}/>
+                {showAgreement && <Agreement closeAgreement={closeAgreement} />}
+            </div>
+        </SoundProvider>
     );
 }
