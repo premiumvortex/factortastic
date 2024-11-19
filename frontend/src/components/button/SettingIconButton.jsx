@@ -1,6 +1,5 @@
 import React from 'react';
 import SettingsIcon from '@mui/icons-material/Settings';
-import '../button/button.css';
 import { useSound } from '../Sound/SoundContext.jsx';
 
 export default function SettingsIconButton({ onClick, soundEffect='click' }) {
