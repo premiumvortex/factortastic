@@ -12,7 +12,7 @@ function handleBack() {
 };
   return (
     <>
-    <div style={{ backgroundColor: '#999'}}>
+    <div>
       <div style={{display: 'flex', flexDirection: 'column'}}>
         <ThankYouChatacters/>
         <ThankYouMsg/>

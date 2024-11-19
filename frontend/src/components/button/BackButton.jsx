@@ -5,14 +5,15 @@ import { styled } from '@mui/material/styles';
 import { useSound } from '../Sound/SoundContext.jsx';
 
 const StyledBtn = styled(Button)({
+  position: 'fixed',
   minHeight: '64px',
-  alignContent: 'center',
   borderRadius: '15px',
   border: 'none',
   backgroundColor: '#516EBE',
   color: 'black',
   boxShadow: '4px 4px 8px rgba(0, 0, 0, .8)',
   cursor: 'pointer',
+  margin: '1.5rem 0 0 1.5rem',
   '&:hover': {
     backgroundColor: '#516EBE',
     boxShadow: '4px 4px 8px rgba(0, 0, 0, 1)',

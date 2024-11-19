@@ -23,38 +23,47 @@ export default function Settings({ handleClosePopup }) {
     setCurrentPopUp(null);
  }
 
-return (
-    <>
+    return (
         <SoundProvider>
-            <div style={{ width: '100vw' }}>
+            <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
                 {currentPopUp === null && (
-                    <>
-                        <div>
-                            <BackButton onClick={handleClosePopup} soundEffect={'click'} />
-                        </div>
+                    <BackButton onClick={handleClosePopup} soundEffect={'click'} />
+                )}
+
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        width: '100%',
+                        height: '100%'
+                    }}
+                >
+                    {currentPopUp === null && (
                         <div className="setting-content secondary">
                             <div style={{ marginTop: 40 }}>
                                 <SettingTitles />
                             </div>
+
                             <SoundSettings />
+
                             <div style={{ marginBottom: 40 }}>
                                 <ActionKeys changePopUp={changePopUp} />
                             </div>
                         </div>
-                    </>
-                )}
-                {currentPopUp === 'Key' && <KeyPage changePopUp={changePopUp} />}
-                {currentPopUp === 'Contact Us' && <ContactUsPage changePopUp={changePopUp} />}
-                {currentPopUp === 'Privacy Policy' && (
-                    <PrivacyPolicyPage
-                        changePopUp={changePopUp}
-                        requireScroll={false}
-                        closePrivacyPolicy={backToSettings}
-                    />
-                )}
-                {currentPopUp === 'Home' && <HomePage />}
+                    )}
+                    {currentPopUp === 'Key' && <KeyPage changePopUp={changePopUp} />}
+                    {currentPopUp === 'Contact Us' && <ContactUsPage changePopUp={changePopUp} />}
+                    {currentPopUp === 'Privacy Policy' && (
+                        <PrivacyPolicyPage
+                            changePopUp={changePopUp}
+                            requireScroll={false}
+                            closePrivacyPolicy={backToSettings}
+                        />
+                    )}
+                    {currentPopUp === 'Home' && <HomePage />}
+                </div>
             </div>
         </SoundProvider>
-    </>
-);
+    );
 }

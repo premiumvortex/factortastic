@@ -14,7 +14,7 @@ export default function PopUp({ Component, componentProps, anchor, setAnchor }) 
 
   return (
     <div>
-      <BasePopup id={id} open={open} anchor={anchor} style={{ margin: '1.5rem' }}>
+      <BasePopup id={id} open={open} anchor={anchor} >
         <Component {...componentProps} handleClosePopup={handleClosePopup} />
       </BasePopup>
     </div>

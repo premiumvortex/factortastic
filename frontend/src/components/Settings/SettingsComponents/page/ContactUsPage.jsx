@@ -46,17 +46,29 @@ export default function ContactUsPage({ changePopUp }) {
   return (
     <>
     {!giveThanks && (
-    <div style={{alignContent: 'center'}}>
-      <div style={{display: 'flex'}} >
-            <BackButton onClick={() => changePopUp(null)} soundEffect={'click'} />
-      </div>
-        <ContactTitle/>
-        <div>
-          <ContactForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>
+        <div style={{position: 'relative', width: '100vw', height: '100vh'}}>
+          <div style={{position: 'fixed'}}>
+            <BackButton onClick={() => changePopUp(null)} soundEffect={'click'}/>
+          </div>
+
+          <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                width: '100%',
+                height: '100%'
+              }}
+          >
+            <ContactTitle/>
+            <div>
+              <ContactForm formData={formData} handleChange={handleChange} handleSubmit={handleSubmit}/>
+            </div>
+          </div>
+
         </div>
-    </div>
     )}
-    {giveThanks && <ThankYouPage changePopUp={changePopUp} setGiveThanks={setGiveThanks} />}
+      {giveThanks && <ThankYouPage changePopUp={changePopUp} setGiveThanks={setGiveThanks}/>}
     </>
   );
 }
