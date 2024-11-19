@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 
 import './PrivacyPolicyPage.css';
 import '../../index.css';
-
-import BackButton from "../button/BackButton.jsx";
-
+import BackButton from '../button/BackButton'; // Anna
 /*
  * PrivacyPolicyPage Component: shows the privacy policy and forces the user to scroll to the bottom before closing
  *
@@ -43,12 +41,26 @@ export const PrivacyPolicyPage = ({changePopUp, closePrivacyPolicy, requireScrol
 
     return (
         <div className="privacy-policy-page">
+            <BackButton onClick={() => changePopUp(null)} onClick={closePrivacyPolicy} disabled={!reachedBottom} />
+            {/* Anna: PrivacyPolicy will eventually direct users to the page using router,
+                but for now as informed by Faraz, it will act as a popup.
+                Here is the old button incase it will need to be referred back to at a later date:
 
-            <div style={{ position: 'relative', width: '100vw', height: '100vh' }}>
-            <BackButton onClick={closePrivacyPolicy} disabled={!reachedBottom} />
-            </div>
+                <button
+                className="settings-text back-button"
+                onClick={closePrivacyPolicy}
+                disabled={!reachedBottom}
+            >
+                Back
+            </button>
 
+            NOTE: One css property on .back-button:disabled:hover::after that needs to be implmented
+            into the BackButton is...
 
+               .back-button:disabled:hover::after {
+                content: "Read through the entire privacy policy first";
+               }
+                */}
 
             <div className="privacy-policy-content" onScroll={handleScroll}>
                 <p className="settings-text">
