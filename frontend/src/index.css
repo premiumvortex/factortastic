@@ -56,7 +56,7 @@
   --regular-text-letter-spacing: 0px;
   --regular-text-line-height: 100%;
   --secondary-font-family: "Akaya Telivigala", Helvetica;
-  --secondary-font-size: clamp(1rem, 3.5vw - 2vh, 4rem);
+  --secondary-font-size: 2.5rem;
   --secondary-font-style: normal;
   --secondary-font-weight: 400;
   --secondary-letter-spacing: 0px;

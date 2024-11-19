@@ -33,8 +33,8 @@ export const AgreementCheckbox = ({ id, checked, onChange, soundEffect='click' }
                 '&.Mui-checked': { color: 'var(--cyan)' },
                 '& .MuiSvgIcon-root': {
                     fontSize: '5vw',
-                    minWidth: '5rem',
-                    minHeight: '5rem'
+                    minWidth: '60px',
+                    minHeight: '60px'
                 }
             }}
         />

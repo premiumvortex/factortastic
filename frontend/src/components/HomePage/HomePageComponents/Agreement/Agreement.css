@@ -20,13 +20,12 @@
     box-sizing: border-box;
     width: 40vw;
     height: 20vw;
-
-    min-width: 30rem;
-    min-height: 15rem;
-    padding: clamp(1rem, 2rem, 3rem) 0;
-
-    border: .2rem solid var(--black);
+    min-width: 450px;
+    min-height: 270px;
+    padding: clamp(30px, 2vw, 40px) 0;
+    border: 4px solid var(--black);
     border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 
     text-align: center;
 
@@ -36,11 +35,11 @@
 .acknowledgement {
     display: flex;
     align-items: center;
-
+   
     width: 80%;
     margin: 0 auto;
 
-    text-align: center;
+    text-align: center; 
 }
 
 .background-hidden .agreement-popup {

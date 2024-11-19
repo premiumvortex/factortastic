@@ -17,6 +17,7 @@ p {
 input {
   height: 2.5rem;
   width: 20vw;
+  /* min-width: 13rem; */
   margin-bottom: 10px;
 }
 
@@ -26,6 +27,8 @@ input {
 }
 
 .message-box {
+  /* min-width: 500px;
+  min-height: 150px; */
   width: 50vw;
   height: 20vh;
   resize: vertical;

@@ -3,18 +3,20 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { useSound } from '../Sound/SoundContext.jsx';
-import '../../index.css';
 
 const StyledBtn = styled(Button)({
   position: 'fixed',
   minHeight: '64px',
   borderRadius: '15px',
-  backgroundColor: 'var(--setting-background)',
-  color: 'var(--black)',
-  boxShadow: 'var(--drop-shadow)',
+  border: 'none',
+  backgroundColor: '#516EBE',
+  color: 'black',
+  boxShadow: '4px 4px 8px rgba(0, 0, 0, .8)',
+  cursor: 'pointer',
+  margin: '1.5rem 0 0 1.5rem',
   '&:hover': {
-    backgroundColor: 'var(--setting-background)',
-    boxShadow: 'var(--strong-shadow)',
+    backgroundColor: '#516EBE',
+    boxShadow: '4px 4px 8px rgba(0, 0, 0, 1)',
   },
 });
 
