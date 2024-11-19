@@ -12,7 +12,8 @@
     
     border-radius: 50px;
     border: 4px solid var(--black); 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: var(--settings-gray-color);
 }
 
 .MuiAlert-icon {
@@ -29,7 +30,7 @@
 }
 
 .MuiAlert-message {
-    width: 75%;
+    width: 80%;
     margin: auto;
     text-align: center;
 }  

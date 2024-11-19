@@ -4,6 +4,7 @@ import { Agreement } from './HomePageComponents/Agreement/Agreement';
 import { CharactersBackgroundImage } from './HomePageComponents/CharactersBackgroundImage/CharactersBackgroundImage';
 import { HomePageTitle } from './HomePageComponents/HomePageTitle/HomePageTitle';
 import { StartButton } from './HomePageComponents/StartButton/StartButton';
+import { useSound } from '..//Sound/SoundContext.jsx';
 
 import './HomePage.css';
 import '../../index.css';
@@ -33,5 +34,3 @@ export const HomePage = () => {
         </div>
     );
 }
-
-// someone will make setting icon button

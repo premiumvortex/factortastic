@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import LinkButton from "../../../button/LinkButton.jsx";
 
 import { AgreementAlert } from '../AgreementAlert/AgreementAlert';
 import { AgreementCheckbox } from '../AgreementCheckbox/AgreementCheckbox';
@@ -18,17 +19,17 @@ import './Agreement.css';
 
 export const Agreement = ({ closeAgreement }) => {
     // state variables
-    const [isChecked, setIsChecked] = useState(false);              
-    const [isDisabled, setIsDisabled] = useState(true);                 
-    const [showPrivacyPage, setShowPrivacyPage] = useState(false);      
-    const [showAlert, setShowAlert] = useState(false);                
+    const [isChecked, setIsChecked] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(true);
+    const [showPrivacyPage, setShowPrivacyPage] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
 
     const alertMessage = "Please read the privacy policy before agreeing to the terms and conditions";
 
     // only toggle checkbox if user read privacy policy
     const toggleCheckbox = () => {
         if (isDisabled) {
-            setShowAlert(true); 
+            setShowAlert(true);
         } else {
             setIsChecked(!isChecked);
         }
@@ -46,19 +47,25 @@ export const Agreement = ({ closeAgreement }) => {
     const closeAlert = () => { setShowAlert(false); }
 
     return (
-        <div className="agreement-page">
+        <div className={`agreement-page ${showAlert ? 'background-hidden' : ''}`}>
             <div className="agreement-popup">
                 <div className="acknowledgement">
-                    <AgreementCheckbox id="acknowledgement checkbox" checked={isChecked} onChange={toggleCheckbox} />
-                    <p className="settings-text">I have read and agree with the terms and conditions</p>
+                    <AgreementCheckbox id="acknowledgement-checkbox" checked={isChecked} onChange={toggleCheckbox}/>
+                    <p className="settings-text">
+                        I have read and agree with the
+                        <LinkButton
+                            onClick={openPrivacyPolicy}
+                            text="terms and conditions"
+                            ariaLabel="Read the terms and conditions"
+                        />
+                    </p>
                 </div>
 
-                <a href="#" className="settings-text" onClick={openPrivacyPolicy}>terms and conditions</a>
-                <SettingLongButton text="Agree" isDisabled={!isChecked} onClick={closeAgreement} />
+                <SettingLongButton text="Agree" isDisabled={!isChecked} onClick={closeAgreement} soundEffect={'click'}/>
             </div>
-       
-            { showAlert && <AgreementAlert closeAlert={closeAlert} message={alertMessage} /> }
-            { showPrivacyPage && <PrivacyPolicyPage closePrivacyPolicy={closePrivacyPolicy} /> }
+
+            {showAlert && <AgreementAlert closeAlert={closeAlert} message={alertMessage}/>}
+            {showPrivacyPage && <PrivacyPolicyPage closePrivacyPolicy={closePrivacyPolicy}/>}
         </div>
     );
 };

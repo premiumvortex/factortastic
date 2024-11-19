@@ -15,7 +15,7 @@
 .agreement-popup {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: space-evenly;
     
     box-sizing: border-box;
     width: 40vw;
@@ -29,7 +29,7 @@
 
     text-align: center;
 
-    background-color: var(--settings-gray-color);  
+    background-color: var(--settings-gray-color);
 }
 
 .acknowledgement {
@@ -40,4 +40,16 @@
     margin: 0 auto;
 
     text-align: center; 
+}
+
+.background-hidden .agreement-popup {
+    filter: blur(2px); /* Optional: you can blur or add other effects to the background content */
+    pointer-events: none; /* Prevents interaction with the background content */
+    opacity: 0.5; /* Dim the background content */
+}
+
+.background-hidden .agreement-popup,
+.background-hidden .acknowledgement,
+.background-hidden .LinkButton {
+    visibility:hidden;
 }

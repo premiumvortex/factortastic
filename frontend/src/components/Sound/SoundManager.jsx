@@ -6,8 +6,8 @@ import frog11 from '../../assets/sound/BackgroundMusic/11frogs_Theme_Music.mp3';
 
 // Predefined sound effect paths
 const soundEffects = {
-    click2: SettingClickSound,
-    click: clickSound,
+    click: SettingClickSound,
+    click2: clickSound,
     // success: '/path/to/success/sound.mp3',
     // error: '/path/to/error/sound.mp3',
     // Add more sound effects as needed

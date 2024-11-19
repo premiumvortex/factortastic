@@ -5,17 +5,24 @@ import CircularIndeterminate from './Progress.jsx';
 
 export const Loading = ({ onDone }) => {
     useEffect(() => {
-        const timer = setTimeout(() => {
-            onDone(); // Call the callback after 8 seconds
-        }, 8000);
+        let isMounted = true; // Track if the component is mounted
 
-        return () => clearTimeout(timer);
+        const timer = setTimeout(() => {
+            if (isMounted) {
+                onDone(); // Only call the callback if the component is still mounted
+            }
+        }, 800);
+
+        return () => {
+            isMounted = false; // Mark as unmounted
+            clearTimeout(timer); // Cleanup the timer
+        };
     }, [onDone]);
 
     return (
         <div className="loading">
-            <img className="Card-Background_With_Boarders" alt="Factortastic Card" src={factortasticCard}/>
-            <CircularIndeterminate/>
+            <img className="Card-Background_With_Boarders" alt="Factortastic Card" src={factortasticCard} />
+            <CircularIndeterminate />
         </div>
     );
 };
