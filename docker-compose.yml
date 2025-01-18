@@ -1,9 +1,9 @@
-version: '3.8'
+version: '0.3'
 services:
   frontend:
     build: ./frontend
     ports:
-    - "3000:3000"
+    - "3001:3001"
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -21,41 +21,45 @@ services:
     environment:
       - NODE_ENV=development
 
-  db:
-    image: postgres:latest
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=mydatabase
-      - POSTGRES_USER=myuser
-      - POSTGRES_PASSWORD=mypassword
-
-  backend:
-    build: ./backend
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./backend:/code
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
-    environment:
-      - DATABASE_URL=postgres://myuser:mypassword@db/mydatabase
-      - DJANGO_SETTINGS_MODULE=myproject.settings
-      - PYTHONUNBUFFERED=1
-      - PYTHONDONTWRITEBYTECODE=1
-      - DJANGO_ALLOWED_HOSTS=0.0.0.0,localhost
-
-volumes:
-  postgres_data:
-
-#  OLD (Node.js)
 #  backend:
-#    build: ./backend
+#    build: backend
 #    ports:
-#      - "3001:3001"
+#      - "3000:3000"  # SAM CLI server
+#      - "8080:8080"  # Lambda runtime container
 #    volumes:
-#      - ./backend:/app
-#      - /app/node_modules
+#      - ./backend/backend:/var/task
+#      - /var/run/docker.sock:/var/run/docker.sock
 #    environment:
-#      - CHOKIDAR_USEPOLLING=true
+#      - DOCKER_LAMBDA_USE_STABLE_PORTS=true
+#      - AWS_DEFAULT_REGION=us-east-1
+#      - SAM_CLI_TELEMETRY=0
+
+
+# OLD DATABASE(Postgres)
+#  db:
+#    image: postgres:latest
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+#    environment:
+#      - POSTGRES_DB=mydatabase
+#      - POSTGRES_USER=myuser
+#      - POSTGRES_PASSWORD=mypassword
+
+#  OLD BACKEND(Django)
+#    build: ./backend_old
+#    command: python manage.py runserver 0.0.0.0:8000
+#    volumes:
+#      - ./backend_old:/code
+#    ports:
+#      - "8000:8000"
+#    depends_on:
+#      - db
+#    environment:
+#      - DATABASE_URL=postgres://myuser:mypassword@db/mydatabase
+#      - DJANGO_SETTINGS_MODULE=myproject.settings
+#      - PYTHONUNBUFFERED=1
+#      - PYTHONDONTWRITEBYTECODE=1
+#      - DJANGO_ALLOWED_HOSTS=0.0.0.0,localhost
+#
+#volumes:
+#  postgres_data:
