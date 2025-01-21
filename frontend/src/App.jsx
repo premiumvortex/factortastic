@@ -5,6 +5,7 @@ import { HomePage } from './components/HomePage/HomePage';
 import PopUp from './components/popup/PopUp';
 import Settings from './components/Settings/Settings.jsx';
 import SettingsIconButton from './components/button/SettingIconButton';
+import APITest from "./components/APITest/APITest.jsx";
 
 export default function App() {
     const [anchor, setAnchor] = useState(null);
@@ -26,29 +27,30 @@ export default function App() {
     };
 
     return (
-        <SoundProvider>
-            {!loadingComplete ? (
-                <Loading onDone={handleLoadingComplete} />
-            ) : (
-                <div>
-                    {activeComponent === 'home' && (
-                        <>
-                            <div style={{ position: 'absolute', top: '3vh', right: '3vw', zIndex: 999 }}>
-                                <SettingsIconButton onClick={handleOpenSettings} />
-                            </div>
-                            <HomePage />
-                        </>
-                    )}
-                    {activeComponent === 'settings' && (
-                        <PopUp
-                            Component={Settings}
-                            componentProps={{ handleClosePopup }}
-                            anchor={anchor}
-                            setAnchor={setAnchor}
-                        />
-                    )}
-                </div>
-            )}
-        </SoundProvider>
+        <APITest />
+        // <SoundProvider>
+        //     {!loadingComplete ? (
+        //         <Loading onDone={handleLoadingComplete} />
+        //     ) : (
+        //         <div>
+        //             {activeComponent === 'home' && (
+        //                 <>
+        //                     <div style={{ position: 'absolute', top: '3vh', right: '3vw', zIndex: 999 }}>
+        //                         <SettingsIconButton onClick={handleOpenSettings} />
+        //                     </div>
+        //                     <HomePage />
+        //                 </>
+        //             )}
+        //             {activeComponent === 'settings' && (
+        //                 <PopUp
+        //                     Component={Settings}
+        //                     componentProps={{ handleClosePopup }}
+        //                     anchor={anchor}
+        //                     setAnchor={setAnchor}
+        //                 />
+        //             )}
+        //         </div>
+        //     )}
+        // </SoundProvider>
     );
 }

@@ -18,7 +18,7 @@ RUN npm install --save-dev @storybook/testing-library @storybook/jest
 COPY . .
 
 # Inform Docker that the container listens on the specified network port at runtime.
-EXPOSE 3001
+EXPOSE 3000
 
 # Run the specified command within the container.
 CMD ["npm", "run", "dev"]
