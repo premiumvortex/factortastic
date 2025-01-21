@@ -46,6 +46,14 @@ After successfully building and running the containers, you can access the Facto
 4. Push to the Branch (git push origin feature/AmazingFeature)
 5. Open a Pull Request
 
+### Run Backend Locally:
+```
+cd backend
+sam build
+sam validate
+sam local start-api --env-vars .env.json --port 5000
+```
+
 ### HelpFul Commands for Docker:
 ```
 docker-compose down

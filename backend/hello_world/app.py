@@ -37,7 +37,6 @@ def lambda_handler(event, context):
     # Retrieve the allowed origin from environment variables
     allowed_origin = os.getenv("FRONTEND_URL")
 
-
     # Your actual response logic
     response_body = {
         "message": "Hello from Lambda!"
