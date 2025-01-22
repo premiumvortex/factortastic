@@ -35,27 +35,26 @@ def lambda_handler(event, context):
     #     raise e
 
     # Retrieve the allowed origin from environment variables
-    allowed_origin = os.getenv("FRONTEND_URL")
+    allowed_origins = [os.getenv("FRONTEND_URL"), os.getenv("STORYBOOK_URL")]
+    origin = event.get("headers", {}).get("Origin", "")
 
-    # Your actual response logic
-    response_body = {
-        "message": "Hello from Lambda!"
-    }
+    if origin in allowed_origins:
+        allow_origin_header = origin
+    else:
+        allow_origin_header = "null"  # Reject requests from unknown origins
 
-    # Add CORS headers to the response
     response = {
         "statusCode": 200,
         "headers": {
-            "Access-Control-Allow-Origin": allowed_origin,  # Allow requests from the frontend URL
-            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",  # Supported methods
-            "Access-Control-Allow-Headers": "Content-Type, Authorization",  # Supported headers
+            "Access-Control-Allow-Origin": allow_origin_header,
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type, Authorization",
         },
-        "body": json.dumps(response_body)  # Convert the body to JSON
+        "body": '{"message": "Hello from Lambda"}',
     }
 
-    # Handle OPTIONS requests for preflight
     if event["httpMethod"] == "OPTIONS":
-        response["statusCode"] = 204  # No content for OPTIONS
+        response["statusCode"] = 204
         response["body"] = None
 
     return response

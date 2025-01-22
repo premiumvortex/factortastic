@@ -21,10 +21,11 @@ Resources:
   ServerlessRestApi:
     Type: AWS::Serverless::Api
     Properties:
-      StageName: Prod
+      StageName: Dev
       CorsConfiguration:
         AllowOrigins:
-          - !Sub "${FRONTEND_URL}"  # Dynamically use the environment variable
+          - !Ref FRONTEND_URL
+          - !Ref STORYBOOK_URL
         AllowMethods:
           - GET
           - POST
@@ -45,6 +46,7 @@ Resources:
       Environment:
         Variables:
           FRONTEND_URL: !Ref FRONTEND_URL
+          STORYBOOK_URL: !Ref STORYBOOK_URL
           API_KEY: !Ref API_KEY
           DATABASE_URL: !Ref DATABASE_URL
       Events:
