@@ -34,10 +34,11 @@ def lambda_handler(event, context):
 
     #     raise e
 
-    # Retrieve the allowed origin from environment variables
-    allowed_origins = [os.getenv("FRONTEND_URL"), os.getenv("STORYBOOK_URL")]
+    # Read allowed origins from the environment variable and split into a list
+    allowed_origins = os.getenv("ALLOWED_ORIGINS", "").split(",")
     origin = event.get("headers", {}).get("Origin", "")
 
+    # Check if the request's origin is in the allowed list
     if origin in allowed_origins:
         allow_origin_header = origin
     else:

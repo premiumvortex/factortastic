@@ -16,6 +16,24 @@ Globals:
   Api:
     TracingEnabled: true
 
+Parameters:
+  ALLOWED_ORIGINS:
+    Type: String
+    Description: Comma-separated list of allowed origins
+  FRONTEND_URL:
+    Type: String
+    Description: URL of the frontend
+  STORYBOOK_URL:
+    Type: String
+    Description: URL of the Storybook
+  API_KEY:
+    Type: String
+    Description: API key for authentication
+  DATABASE_URL:
+    Type: String
+    Description: Database connection URL
+
+
 Resources:
   # Define the API Gateway explicitly to add CorsConfiguration
   ServerlessRestApi:
@@ -24,8 +42,7 @@ Resources:
       StageName: Dev
       CorsConfiguration:
         AllowOrigins:
-          - !Ref FRONTEND_URL
-          - !Ref STORYBOOK_URL
+          - !Ref ALLOWED_ORIGINS
         AllowMethods:
           - GET
           - POST
@@ -45,6 +62,7 @@ Resources:
       - x86_64
       Environment:
         Variables:
+          ALLOWED_ORIGINS: !Ref ALLOWED_ORIGINS
           FRONTEND_URL: !Ref FRONTEND_URL
           STORYBOOK_URL: !Ref STORYBOOK_URL
           API_KEY: !Ref API_KEY
