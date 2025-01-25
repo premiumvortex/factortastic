@@ -1,8 +1,10 @@
 import React from "react";
 import "../../index.css";
 
-export const FinishedTutorialPage = () => {
+export default function FinishedTutorialPage() {
   return (
-    <p>hello finished tutorial</p>
+    <div>
+    hello finished tutorial
+    </div>
   );
 }
