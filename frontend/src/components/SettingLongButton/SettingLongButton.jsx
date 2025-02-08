@@ -15,7 +15,7 @@ import '../../index.css'
  * - soundEffect (string): the name of the sound effect to play when the button is clicked
  */
 export const SettingLongButton = ({ text, isDisabled, onClick, soundEffect }) => {
-    const { playSoundEffect } = useSound();
+    const { playSoundEffect } = useSound() || {}; // added '|| {}' to accept undefined.
 
     const handleClick = (e) => {
         if (soundEffect) {
