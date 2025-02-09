@@ -32,6 +32,9 @@ Parameters:
   DATABASE_URL:
     Type: String
     Description: Database connection URL
+  DYNAMODB_TABLE_NAME:
+    Type: String
+    Description: Database main table
 
 
 Resources:
@@ -67,12 +70,16 @@ Resources:
           STORYBOOK_URL: !Ref STORYBOOK_URL
           API_KEY: !Ref API_KEY
           DATABASE_URL: !Ref DATABASE_URL
+          DYNAMODB_TABLE_NAME: !Ref DYNAMODB_TABLE_NAME
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref DYNAMODB_TABLE_NAME
       Events:
         HelloWorld:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Type: Api
           Properties:
             Path: /hello
-            Method: get
+            Method: ANY
 
   ApplicationResourceGroup:
     Type: AWS::ResourceGroups::Group

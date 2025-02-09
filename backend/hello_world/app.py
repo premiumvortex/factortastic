@@ -1,61 +1,146 @@
 import json
 import os
+import uuid
+import boto3
 
-# import requests
+# --- Helper Functions ---
 
-
-def lambda_handler(event, context):
-    """Sample pure Lambda function
-
-    Parameters
-    ----------
-    event: dict, required
-        API Gateway Lambda Proxy Input Format
-
-        Event doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-input-format
-
-    context: object, required
-        Lambda Context runtime methods and attributes
-
-        Context doc: https://docs.aws.amazon.com/lambda/latest/dg/python-context-object.html
-
-    Returns
-    ------
-    API Gateway Lambda Proxy Output Format: dict
-
-        Return doc: https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html
+def get_table():
     """
+    Returns a DynamoDB Table object.
+    Uses the DATABASE_URL (for local DynamoDB endpoint) and DYNAMODB_TABLE_NAME from environment variables.
+    """
+    dynamodb_endpoint = os.environ.get("DATABASE_URL")  # e.g., http://localhost:8000 for DynamoDB Local
+    table_name = os.environ.get("DYNAMODB_TABLE_NAME", "GameTable")
 
-    # try:
-    #     ip = requests.get("http://checkip.amazonaws.com/")
-    # except requests.RequestException as e:
-    #     # Send some context about this error to Lambda Logs
-    #     print(e)
+    if dynamodb_endpoint:
+        dynamodb = boto3.resource("dynamodb", endpoint_url=dynamodb_endpoint)
+    else:
+        dynamodb = boto3.resource("dynamodb")
 
-    #     raise e
+    return dynamodb.Table(table_name)
 
-    # Read allowed origins from the environment variable and split into a list
+def build_cors_headers(event):
+    """
+    Build and return CORS headers based on the ALLOWED_ORIGINS env variable.
+    """
     allowed_origins = os.getenv("ALLOWED_ORIGINS", "").split(",")
     origin = event.get("headers", {}).get("Origin", "")
-
-    # Check if the request's origin is in the allowed list
     if origin in allowed_origins:
         allow_origin_header = origin
     else:
-        allow_origin_header = "null"  # Reject requests from unknown origins
+        allow_origin_header = "null"  # Could also return a default safe value or deny
 
-    response = {
+    headers = {
+        "Access-Control-Allow-Origin": allow_origin_header,
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    }
+    return headers
+
+# --- Request Handlers ---
+
+def handle_get(event, headers):
+    """
+    Handle GET requests.
+    Expect a query parameter 'gameId' to retrieve a specific game record.
+    """
+    params = event.get("queryStringParameters") or {}
+    game_id = params.get("gameId")
+
+    if not game_id:
+        return {
+            "statusCode": 400,
+            "headers": headers,
+            "body": json.dumps({"message": "Missing 'gameId' query parameter"})
+        }
+
+    table = get_table()
+
+    try:
+        response = table.get_item(Key={"gameId": game_id})
+    except Exception as e:
+        return {
+            "statusCode": 500,
+            "headers": headers,
+            "body": json.dumps({"error": str(e)})
+        }
+
+    item = response.get("Item")
+    if not item:
+        return {
+            "statusCode": 404,
+            "headers": headers,
+            "body": json.dumps({"message": "Game not found"})
+        }
+
+    return {
         "statusCode": 200,
-        "headers": {
-            "Access-Control-Allow-Origin": allow_origin_header,
-            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
-        "body": '{"message": "Hello from Lambda"}',
+        "headers": headers,
+        "body": json.dumps(item)
     }
 
-    if event["httpMethod"] == "OPTIONS":
-        response["statusCode"] = 204
-        response["body"] = None
+def handle_post(event, headers):
+    """
+    Handle POST requests.
+    Creates a new game record in DynamoDB.
+    Expects a JSON body with optional game data.
+    """
+    try:
+        # print(event.get("body"))
+        request_body = json.loads(event.get("body") or "{}")
+    except Exception as e:
+        return {
+            "statusCode": 400,
+            "headers": headers,
+            "body": json.dumps({"message": "Invalid JSON", "error": str(e)})
+        }
 
-    return response
+    game_id = str(uuid.uuid4())
+    table = get_table()
+    item = {
+        "gameId": game_id,
+        "status": "new",
+        "data": request_body  # Storing any additional data provided in the request
+    }
+
+    try:
+        table.put_item(Item=item)
+    except Exception as e:
+        return {
+            "statusCode": 500,
+            "headers": headers,
+            "body": json.dumps({"error": str(e)})
+        }
+
+    return {
+        "statusCode": 201,
+        "headers": headers,
+        "body": json.dumps({"gameId": game_id})
+    }
+
+# --- Main Lambda Handler ---
+
+def lambda_handler(event, context):
+    headers = build_cors_headers(event)
+
+    # Handle CORS preflight requests
+    if event.get("httpMethod") == "OPTIONS":
+        return {
+            "statusCode": 204,
+            "headers": headers,
+            "body": None
+        }
+
+    method = event.get("httpMethod")
+
+    if method == "GET":
+        return handle_get(event, headers)
+    elif method == "POST":
+        return handle_post(event, headers)
+    else:
+        return {
+            "statusCode": 405,
+            "headers": headers,
+            "body": json.dumps({"message": "Method not allowed"})
+        }

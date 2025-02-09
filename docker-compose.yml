@@ -1,4 +1,4 @@
-version: '0.3'
+version: '3'
 services:
   frontend:
     build: ./frontend
@@ -20,6 +20,12 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
+  dynamodb-local:
+    image: amazon/dynamodb-local
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+    command: "-jar DynamoDBLocal.jar -sharedDb -inMemory"
 
 #  backend:
 #    build: backend
