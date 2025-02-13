@@ -13,6 +13,9 @@ Globals:
     # You can add LoggingConfig parameters such as the Logformat, Log Group, and SystemLogLevel or ApplicationLogLevel. Learn more here https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html#sam-function-loggingconfig.
     LoggingConfig:
       LogFormat: JSON
+    Environment:
+      Variables:
+        ALLOWED_ORIGINS: !Ref ALLOWED_ORIGINS
   Api:
     TracingEnabled: true
 
@@ -65,7 +68,7 @@ Resources:
       - x86_64
       Environment:
         Variables:
-          ALLOWED_ORIGINS: !Ref ALLOWED_ORIGINS
+#          ALLOWED_ORIGINS: !Ref ALLOWED_ORIGINS
           FRONTEND_URL: !Ref FRONTEND_URL
           STORYBOOK_URL: !Ref STORYBOOK_URL
           API_KEY: !Ref API_KEY
