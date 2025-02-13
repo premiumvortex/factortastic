@@ -75,11 +75,16 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref DYNAMODB_TABLE_NAME
       Events:
-        HelloWorld:
+        CreateGame:
           Type: Api
           Properties:
-            Path: /hello
-            Method: ANY
+            Path: /games
+            Method: post
+        GetGame:
+          Type: Api
+          Properties:
+            Path: /games/{gameId}
+            Method: get
 
   ApplicationResourceGroup:
     Type: AWS::ResourceGroups::Group

@@ -2,6 +2,7 @@ import json
 import os
 import uuid
 import boto3
+import logging
 
 # --- Helper Functions ---
 
@@ -29,7 +30,7 @@ def build_cors_headers(event):
     if origin in allowed_origins:
         allow_origin_header = origin
     else:
-        allow_origin_header = "null"  # Could also return a default safe value or deny
+        allow_origin_header = "null"
 
     headers = {
         "Access-Control-Allow-Origin": allow_origin_header,
@@ -43,16 +44,16 @@ def build_cors_headers(event):
 def handle_get(event, headers):
     """
     Handle GET requests.
-    Expect a query parameter 'gameId' to retrieve a specific game record.
+    Expects a path parameter 'gameId' to retrieve a specific game record.
     """
-    params = event.get("queryStringParameters") or {}
-    game_id = params.get("gameId")
+    path_params = event.get("pathParameters") or {}
+    game_id = path_params.get("gameId")
 
     if not game_id:
         return {
             "statusCode": 400,
             "headers": headers,
-            "body": json.dumps({"message": "Missing 'gameId' query parameter"})
+            "body": json.dumps({"message": "Missing gameId in path parameters"})
         }
 
     table = get_table()
@@ -84,10 +85,10 @@ def handle_post(event, headers):
     """
     Handle POST requests.
     Creates a new game record in DynamoDB.
+    The backend generates a unique game ID and returns it.
     Expects a JSON body with optional game data.
     """
     try:
-        # print(event.get("body"))
         request_body = json.loads(event.get("body") or "{}")
     except Exception as e:
         return {
@@ -96,13 +97,17 @@ def handle_post(event, headers):
             "body": json.dumps({"message": "Invalid JSON", "error": str(e)})
         }
 
+    # Generate a new unique game ID
     game_id = str(uuid.uuid4())
     table = get_table()
     item = {
         "gameId": game_id,
         "status": "new",
-        "data": request_body  # Storing any additional data provided in the request
+        "data": request_body  # Store any additional game data here
     }
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+    logger.info("Attempting to put item into table %s", os.environ.get("DYNAMODB_TABLE_NAME"))
 
     try:
         table.put_item(Item=item)

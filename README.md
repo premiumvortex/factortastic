@@ -70,3 +70,8 @@ sam build
 sam local invoke
 sam local start-api
 ```
+
+### Dynamo DB Browser Visualizer:
+```
+dynamodb-admin --dynamo-endpoint=http://localhost:8000
+```
