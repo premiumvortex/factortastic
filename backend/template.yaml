@@ -38,6 +38,9 @@ Parameters:
   DYNAMODB_TABLE_NAME:
     Type: String
     Description: Database main table
+  DECKS_S3_BUCKET_NAME:
+    Type: String
+    Description: S3 bucket containing deck data
 
 
 Resources:
@@ -87,6 +90,33 @@ Resources:
           Type: Api
           Properties:
             Path: /games/{gameId}
+            Method: get
+
+  DeckFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: deck/
+      Handler: app.lambda_handler
+      Runtime: python3.10
+      Architectures:
+        - x86_64
+      Environment:
+        Variables:
+          ALLOWED_ORIGINS: !Ref ALLOWED_ORIGINS
+          DECKS_S3_BUCKET_NAME: !Ref DECKS_S3_BUCKET_NAME
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref DECKS_S3_BUCKET_NAME
+      Events:
+        ListDecks:
+          Type: Api
+          Properties:
+            Path: /decks
+            Method: get
+        GetDeck:
+          Type: Api
+          Properties:
+            Path: /decks/{deckId}
             Method: get
 
   ApplicationResourceGroup:
