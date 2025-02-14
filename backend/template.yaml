@@ -41,6 +41,9 @@ Parameters:
   DECKS_S3_BUCKET_NAME:
     Type: String
     Description: S3 bucket containing deck data
+  DECKS_TABLE_NAME:
+    Type: String
+    Description: Name of the Decks table
 
 
 Resources:
@@ -153,6 +156,27 @@ Resources:
         - Key: Environment
           Value: !Ref AWS::StackName
 
+  DecksTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Ref DECKS_TABLE_NAME
+      AttributeDefinitions:
+        - AttributeName: deckId
+          AttributeType: S
+        - AttributeName: order
+          AttributeType: N
+      KeySchema:
+        - AttributeName: deckId
+          KeyType: HASH
+        - AttributeName: order
+          KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      Tags:
+        - Key: Environment
+          Value: !Ref AWS::StackName
+
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
@@ -172,3 +196,9 @@ Outputs:
   GameTableArn:
     Description: "ARN of the DynamoDB table"
     Value: !GetAtt GameTable.Arn
+  DecksTableName:
+    Description: "Name of the Decks DynamoDB table"
+    Value: !Ref DecksTable
+  DecksTableArn:
+    Description: "ARN of the Decks DynamoDB table"
+    Value: !GetAtt DecksTable.Arn
