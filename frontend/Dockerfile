@@ -14,7 +14,7 @@ RUN npm install
 RUN npm install --save-dev @storybook/testing-library @storybook/jest
 
 # Copy the rest of your frontend's source code from your host to your image filesystem.
-# Since the Dockerfile is already in the frontend directory, you don't need to specify './frontend' in the path.
+# Since the Dockerfile.init is already in the frontend directory, you don't need to specify './frontend' in the path.
 COPY . .
 
 # Inform Docker that the container listens on the specified network port at runtime.

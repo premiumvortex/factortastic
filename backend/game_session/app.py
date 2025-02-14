@@ -3,6 +3,12 @@ import os
 import uuid
 import boto3
 import logging
+from botocore.exceptions import ClientError
+from aws_xray_sdk.core import patch_all
+import time
+
+# Enable X-Ray tracing
+patch_all()
 
 # --- Helper Functions ---
 
@@ -85,38 +91,70 @@ def handle_post(event, headers):
     """
     Handle POST requests.
     Creates a new game record in DynamoDB.
-    The backend generates a unique game ID and returns it.
-    Expects a JSON body with optional game data.
     """
     try:
         request_body = json.loads(event.get("body") or "{}")
-    except Exception as e:
+    except json.JSONDecodeError as e:
         return {
             "statusCode": 400,
             "headers": headers,
-            "body": json.dumps({"message": "Invalid JSON", "error": str(e)})
+            "body": json.dumps({"message": "Invalid JSON format", "error": str(e)})
+        }
+
+    # Validate request body
+    if not isinstance(request_body, dict):
+        return {
+            "statusCode": 400,
+            "headers": headers,
+            "body": json.dumps({"message": "Request body must be a JSON object"})
         }
 
     # Generate a new unique game ID
     game_id = str(uuid.uuid4())
     table = get_table()
+    
+    # Add TTL - game records expire after 24 hours
+    # ttl = int(time.time()) + (24 * 60 * 60)
+    
     item = {
         "gameId": game_id,
         "status": "new",
-        "data": request_body  # Store any additional game data here
+        "data": request_body,
+        # "ttl": ttl,
+        "createdAt": int(time.time())
     }
+
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
-    logger.info("Attempting to put item into table %s", os.environ.get("DYNAMODB_TABLE_NAME"))
-
-    try:
-        table.put_item(Item=item)
-    except Exception as e:
-        return {
-            "statusCode": 500,
-            "headers": headers,
-            "body": json.dumps({"error": str(e)})
-        }
+    
+    # Implement retry logic
+    max_retries = 3
+    retry_count = 0
+    
+    while retry_count < max_retries:
+        try:
+            table.put_item(Item=item)
+            break
+        except ClientError as e:
+            error_code = e.response['Error']['Code']
+            if error_code == 'ProvisionedThroughputExceededException':
+                retry_count += 1
+                if retry_count < max_retries:
+                    time.sleep(2 ** retry_count)  # Exponential backoff
+                    continue
+            logger.error("DynamoDB error: %s", str(e))
+            return {
+                "statusCode": 500,
+                "headers": headers,
+                "body": json.dumps({"message": "Database error", "error": error_code})
+            }
+        except Exception as e:
+            logger.error("Unexpected error: %s", str(e))
+            return {
+                "statusCode": 500,
+                "headers": headers,
+                "body": json.dumps({"message": "Internal server error"})
+            }
 
     return {
         "statusCode": 201,
