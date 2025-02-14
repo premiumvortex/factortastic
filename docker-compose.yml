@@ -1,33 +1,32 @@
 version: '3'
 services:
-  # frontend:
-  #   build: ./frontend
-  #   ports:
-  #   - "3000:3000"
-  #   volumes:
-  #     - ./frontend:/app
-  #     - /app/node_modules
-  #   environment:
-  #     - CHOKIDAR_USEPOLLING=true
-  # storybook:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile.init.storybook
-  #   ports:
-  #     - "6006:6006"
-  #   volumes:
-  #     - ./frontend:/app
-  #     - /app/node_modules
-  #   environment:
-  #     - NODE_ENV=development
-  dynamodb-local:
+   frontend:
+     build: ./frontend
+     ports:
+     - "3000:3000"
+     volumes:
+       - ./frontend:/app
+       - /app/node_modules
+     environment:
+       - CHOKIDAR_USEPOLLING=true
+   storybook:
+     build:
+       context: ./frontend
+       dockerfile: Dockerfile.init.storybook
+     ports:
+       - "6006:6006"
+     volumes:
+       - ./frontend:/app
+       - /app/node_modules
+     environment:
+       - NODE_ENV=development
+   dynamodb-local:
     image: amazon/dynamodb-local
     container_name: dynamodb-local
     ports:
       - "8000:8000"
     command: "-jar DynamoDBLocal.jar -sharedDb -inMemory"
-
-  dynamodb-healthcheck:
+   dynamodb-healthcheck:
     image: amazon/aws-cli
     depends_on:
       - dynamodb-local
@@ -44,11 +43,10 @@ services:
       echo 'DynamoDB is ready!';
       exit 0;
       "
-
-  dynamodb-init:
+   dynamodb-init:
     build: 
       context: ./backend
-      dockerfile: backend/Dockerfile.init
+      dockerfile: Dockerfile.init
     environment:
       - AWS_ACCESS_KEY_ID=dummy
       - AWS_SECRET_ACCESS_KEY=dummy
@@ -60,45 +58,3 @@ services:
         condition: service_completed_successfully
     restart: on-failure:3
 
-#  backend:
-#    build: backend
-#    ports:
-#      - "3000:3000"  # SAM CLI server
-#      - "8080:8080"  # Lambda runtime container
-#    volumes:
-#      - ./backend/backend:/var/task
-#      - /var/run/docker.sock:/var/run/docker.sock
-#    environment:
-#      - DOCKER_LAMBDA_USE_STABLE_PORTS=true
-#      - AWS_DEFAULT_REGION=us-east-1
-#      - SAM_CLI_TELEMETRY=0
-
-
-# OLD DATABASE(Postgres)
-#  db:
-#    image: postgres:latest
-#    volumes:
-#      - postgres_data:/var/lib/postgresql/data
-#    environment:
-#      - POSTGRES_DB=mydatabase
-#      - POSTGRES_USER=myuser
-#      - POSTGRES_PASSWORD=mypassword
-
-#  OLD BACKEND(Django)
-#    build: ./backend_old
-#    command: python manage.py runserver 0.0.0.0:8000
-#    volumes:
-#      - ./backend_old:/code
-#    ports:
-#      - "8000:8000"
-#    depends_on:
-#      - db
-#    environment:
-#      - DATABASE_URL=postgres://myuser:mypassword@db/mydatabase
-#      - DJANGO_SETTINGS_MODULE=myproject.settings
-#      - PYTHONUNBUFFERED=1
-#      - PYTHONDONTWRITEBYTECODE=1
-#      - DJANGO_ALLOWED_HOSTS=0.0.0.0,localhost
-#
-#volumes:
-#  postgres_data:
