@@ -3,12 +3,20 @@ import os
 import uuid
 import boto3
 import logging
+from decimal import Decimal
 from botocore.exceptions import ClientError
 from aws_xray_sdk.core import patch_all
 import time
 
 # Enable X-Ray tracing
 patch_all()
+
+# Add this class at the top level of your file
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, Decimal):
+            return str(obj)
+        return super(DecimalEncoder, self).default(obj)
 
 # --- Helper Functions ---
 
@@ -84,7 +92,7 @@ def handle_get(event, headers):
     return {
         "statusCode": 200,
         "headers": headers,
-        "body": json.dumps(item)
+        "body": json.dumps(item, cls=DecimalEncoder)
     }
 
 def handle_post(event, headers):

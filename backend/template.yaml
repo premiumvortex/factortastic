@@ -107,9 +107,13 @@ Resources:
         Variables:
           ALLOWED_ORIGINS: !Ref ALLOWED_ORIGINS
           DECKS_S3_BUCKET_NAME: !Ref DECKS_S3_BUCKET_NAME
+          DATABASE_URL: !Ref DATABASE_URL
+          DECKS_TABLE_NAME: !Ref DECKS_TABLE_NAME
       Policies:
         - S3ReadPolicy:
             BucketName: !Ref DECKS_S3_BUCKET_NAME
+        - DynamoDBCrudPolicy:
+            TableName: !Ref DECKS_TABLE_NAME
       Events:
         ListDecks:
           Type: Api

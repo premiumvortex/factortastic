@@ -1,78 +1,112 @@
 import json
 import os
 import boto3
-from botocore.exceptions import ClientError
 import logging
+from botocore.exceptions import ClientError
+
+# from aws_xray_sdk.core import patch_all
+
+# # Enable X-Ray tracing
+# try:
+#     patch_all()
+# except Exception:
+#     # X-Ray not available in local testing
+#     pass
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-def get_s3_client():
-    """Returns an S3 client"""
-    return boto3.client('s3')
+def get_table():
+    """
+    Returns a DynamoDB Table object for the Decks table.
+    Uses the DATABASE_URL (for local DynamoDB endpoint) and DECKS_TABLE_NAME from environment variables.
+    """
+    dynamodb_endpoint = os.environ.get("DATABASE_URL")
+    table_name = os.environ.get("DECKS_TABLE_NAME")
+
+    if not table_name:
+        raise ValueError("DECKS_TABLE_NAME environment variable is not set")
+
+    logger.info(f"Connecting to DynamoDB at endpoint: {dynamodb_endpoint or 'default'}")
+    logger.info(f"Using table name: {table_name}")
+
+    try:
+        if dynamodb_endpoint:
+            dynamodb = boto3.resource("dynamodb", endpoint_url=dynamodb_endpoint)
+        else:
+            dynamodb = boto3.resource("dynamodb")
+        
+        table = dynamodb.Table(table_name)
+        # Validate table exists by making a simple API call
+        table.table_status  # This will raise an exception if table doesn't exist
+        return table
+    except Exception as e:
+        logger.error(f"Failed to initialize DynamoDB table: {str(e)}")
+        raise
 
 def build_cors_headers(event):
     """Build and return CORS headers based on the ALLOWED_ORIGINS env variable."""
     allowed_origins = os.getenv("ALLOWED_ORIGINS", "").split(",")
     origin = event.get("headers", {}).get("Origin", "")
     
-    headers = {
-        "Access-Control-Allow-Origin": origin if origin in allowed_origins else "null",
+    if origin in allowed_origins:
+        allow_origin_header = origin
+    else:
+        allow_origin_header = "*"  # Fallback for development
+
+    return {
+        "Access-Control-Allow-Origin": allow_origin_header,
         "Access-Control-Allow-Methods": "GET, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Authorization",
     }
-    return headers
 
-def get_deck_data(deck_id=None):
-    """
-    Fetch deck data from S3. If deck_id is None, return list of all decks.
-    Otherwise, return specific deck data.
-    """
-    s3 = get_s3_client()
-    bucket = os.environ['DECKS_S3_BUCKET_NAME']
-    
+def handle_list_decks(headers):
+    """Handle GET request to list all unique deck IDs."""
     try:
-        if deck_id:
-            # Get specific deck data
-            key = f'decks/{deck_id}.json'
-            response = s3.get_object(Bucket=bucket, Key=key)
-            return json.loads(response['Body'].read().decode('utf-8'))
-        else:
-            # List all decks
-            key = 'decks/index.json'
-            response = s3.get_object(Bucket=bucket, Key=key)
-            return json.loads(response['Body'].read().decode('utf-8'))
-    except ClientError as e:
-        if e.response['Error']['Code'] == 'NoSuchKey':
-            return None
-        raise
-
-def handle_get_decks(headers):
-    """Handle GET /decks request"""
-    try:
-        decks = get_deck_data()
-        if decks is None:
-            return {
-                "statusCode": 404,
-                "headers": headers,
-                "body": json.dumps({"message": "No decks found"})
-            }
+        table = get_table()
+        
+        # Use scan with projection expression to get only deckId
+        response = table.scan(
+            ProjectionExpression="deckId",
+            Select="SPECIFIC_ATTRIBUTES"
+        )
+        
+        # Extract unique deck IDs
+        deck_ids = {item['deckId'] for item in response.get('Items', [])}
+        
+        logger.info(f"Successfully retrieved {len(deck_ids)} unique deck IDs")
         
         return {
             "statusCode": 200,
             "headers": headers,
-            "body": json.dumps(decks)
+            "body": json.dumps({"decks": list(deck_ids)})
         }
-    except Exception as e:
-        logger.error("Error fetching decks: %s", str(e))
+    except ClientError as e:
+        error_code = e.response['Error']['Code']
+        error_message = e.response['Error']['Message']
+        logger.error(f"DynamoDB error: {error_code} - {error_message}")
         return {
             "statusCode": 500,
             "headers": headers,
-            "body": json.dumps({"message": "Internal server error"})
+            "body": json.dumps({
+                "message": "Database error",
+                "error": error_code,
+                "details": error_message
+            })
+        }
+    except Exception as e:
+        logger.error(f"Unexpected error: {str(e)}")
+        return {
+            "statusCode": 500,
+            "headers": headers,
+            "body": json.dumps({
+                "message": "Internal server error",
+                "error": str(e)
+            })
         }
 
 def handle_get_deck(event, headers):
-    """Handle GET /decks/{deckId} request"""
+    """Handle GET request for a specific deck."""
     deck_id = event.get("pathParameters", {}).get("deckId")
     
     if not deck_id:
@@ -81,57 +115,83 @@ def handle_get_deck(event, headers):
             "headers": headers,
             "body": json.dumps({"message": "Missing deckId parameter"})
         }
+
+    table = get_table()
     
     try:
-        deck_data = get_deck_data(deck_id)
-        if deck_data is None:
+        # Query all items for this deck_id, ordered by the 'order' attribute
+        response = table.query(
+            KeyConditionExpression="deckId = :did",
+            ExpressionAttributeValues={":did": deck_id},
+            ScanIndexForward=True  # This ensures cards are returned in ascending order
+        )
+        
+        if not response['Items']:
             return {
                 "statusCode": 404,
                 "headers": headers,
                 "body": json.dumps({"message": f"Deck {deck_id} not found"})
             }
         
+        # Convert Decimal objects to regular numbers before JSON serialization
+        def decimal_to_number(obj):
+            if isinstance(obj, dict):
+                return {k: decimal_to_number(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [decimal_to_number(x) for x in obj]
+            elif isinstance(obj, boto3.dynamodb.types.Decimal):
+                return float(obj) if '.' in str(obj) else int(obj)
+            return obj
+        
+        cards = decimal_to_number(response['Items'])
+        
         return {
             "statusCode": 200,
             "headers": headers,
-            "body": json.dumps(deck_data)
+            "body": json.dumps({
+                "deckId": deck_id,
+                "cards": cards
+            })
         }
-    except Exception as e:
-        logger.error("Error fetching deck %s: %s", deck_id, str(e))
+    except ClientError as e:
+        logger.error(f"DynamoDB error: {str(e)}")
         return {
             "statusCode": 500,
             "headers": headers,
-            "body": json.dumps({"message": "Internal server error"})
+            "body": json.dumps({"message": "Database error", "error": e.response['Error']['Code']})
+        }
+    except Exception as e:
+        logger.error(f"Error retrieving deck {deck_id}: {str(e)}")
+        return {
+            "statusCode": 500,
+            "headers": headers,
+            "body": json.dumps({"message": "Error retrieving deck"})
         }
 
 def lambda_handler(event, context):
-    """Main Lambda handler"""
+    """Main Lambda handler."""
+    logger.info(f"Received event: {json.dumps(event)}")
     headers = build_cors_headers(event)
-    
+
     # Handle CORS preflight requests
     if event.get("httpMethod") == "OPTIONS":
         return {
             "statusCode": 204,
             "headers": headers,
-            "body": None
+            "body": ""
         }
-    
+
     if event.get("httpMethod") != "GET":
         return {
             "statusCode": 405,
             "headers": headers,
             "body": json.dumps({"message": "Method not allowed"})
         }
-    
-    # Route the request based on path
-    path = event.get("path", "")
-    if path == "/decks":
-        return handle_get_decks(headers)
-    elif path.startswith("/decks/"):
-        return handle_get_deck(event, headers)
+
+    # Route the request based on path parameters
+    if event.get("pathParameters") is None:
+        # No path parameters means list all decks
+        return handle_list_decks(headers)
     else:
-        return {
-            "statusCode": 404,
-            "headers": headers,
-            "body": json.dumps({"message": "Not found"})
-        }
+        # Path parameter present means get specific deck
+        return handle_get_deck(event, headers)
