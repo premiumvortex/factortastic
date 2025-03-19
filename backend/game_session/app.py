@@ -170,6 +170,36 @@ def handle_post(event, headers):
         "body": json.dumps({"gameId": game_id})
     }
 
+def handle_options(event, headers):
+    """
+    Handle OPTIONS requests.
+    Returns a 200 OK response with appropriate CORS headers and information about allowed methods.
+    """
+    # Get the path to determine which methods are allowed for this resource
+    path = event.get("path", "")
+    path_params = event.get("pathParameters") or {}
+    
+    # Determine allowed methods based on the path
+    if path.endswith("/games") and not path_params.get("gameId"):
+        allowed_methods = "GET, POST, OPTIONS"
+    elif path_params.get("gameId"):
+        allowed_methods = "GET, OPTIONS"
+    else:
+        allowed_methods = "OPTIONS"
+    
+    # Add the Allow header to indicate which methods are supported
+    response_headers = headers.copy()
+    response_headers["Access-Control-Allow-Methods"] = allowed_methods
+    response_headers["Allow"] = allowed_methods
+    
+    return {
+        "statusCode": 200,
+        "headers": response_headers,
+        "body": json.dumps({
+            "allowedMethods": allowed_methods.split(", ")
+        })
+    }
+
 # --- Main Lambda Handler ---
 
 def lambda_handler(event, context):
@@ -177,11 +207,7 @@ def lambda_handler(event, context):
 
     # Handle CORS preflight requests
     if event.get("httpMethod") == "OPTIONS":
-        return {
-            "statusCode": 204,
-            "headers": headers,
-            "body": None
-        }
+        return handle_options(event, headers)
 
     method = event.get("httpMethod")
 

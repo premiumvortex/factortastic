@@ -94,6 +94,16 @@ Resources:
           Properties:
             Path: /games/{gameId}
             Method: get
+        OptionsGame:
+          Type: Api
+          Properties:
+            Path: /games
+            Method: options
+        OptionsGameWithId:
+          Type: Api
+          Properties:
+            Path: /games/{gameId}
+            Method: options
 
   DeckFunction:
     Type: AWS::Serverless::Function
