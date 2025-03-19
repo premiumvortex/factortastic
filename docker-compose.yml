@@ -1,32 +1,35 @@
 version: '3'
 services:
-#   frontend:
-#     build: ./frontend
-#     ports:
-#     - "3000:3000"
-#     volumes:
-#       - ./frontend:/app
-#       - /app/node_modules
-#     environment:
-#       - CHOKIDAR_USEPOLLING=true
-#   storybook:
-#     build:
-#       context: ./frontend
-#       dockerfile: Dockerfile.init.storybook
-#     ports:
-#       - "6006:6006"
-#     volumes:
-#       - ./frontend:/app
-#       - /app/node_modules
-#     environment:
-#       - NODE_ENV=development
-   dynamodb-local:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  storybook:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.storybook
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+
+  dynamodb-local:
     image: amazon/dynamodb-local
     container_name: dynamodb-local
     ports:
       - "8000:8000"
     command: "-jar DynamoDBLocal.jar -sharedDb -inMemory"
-   dynamodb-healthcheck:
+
+  dynamodb-healthcheck:
     image: amazon/aws-cli
     depends_on:
       - dynamodb-local
@@ -43,8 +46,9 @@ services:
       echo 'DynamoDB is ready!';
       exit 0;
       "
-   dynamodb-init:
-    build: 
+
+  dynamodb-init:
+    build:
       context: ./backend
       dockerfile: Dockerfile.init
     environment:
@@ -57,5 +61,4 @@ services:
     depends_on:
       dynamodb-healthcheck:
         condition: service_completed_successfully
-    restart: on-failure:3
-
+    restart: "on-failure:3"

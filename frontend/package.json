@@ -20,6 +20,8 @@
     "@mui/material": "^5.15.4",
     "@react-buddy/ide-toolbox": "^2.4.0",
     "@react-buddy/palette-mui": "^5.0.1",
+    "@tanstack/react-query": "^5.69.0",
+    "axios": "^1.8.3",
     "howler": "^2.2.4",
     "lottie-web": "^5.12.2",
     "react": "^18.2.0",
@@ -44,6 +46,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "eslint-plugin-storybook": "^0.6.15",
+    "msw": "^2.7.3",
+    "msw-storybook-addon": "^2.0.4",
     "prop-types": "^15.8.1",
     "storybook": "^7.6.8",
     "vite": "^5.0.8"
