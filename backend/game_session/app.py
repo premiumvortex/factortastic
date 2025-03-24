@@ -11,6 +11,37 @@ import time
 # Enable X-Ray tracing
 patch_all()
 
+# Configure structured logging
+class CustomFormatter(logging.Formatter):
+    """Custom formatter that creates more readable, structured logs"""
+    
+    FORMATS = {
+        logging.DEBUG: "🔍 DEBUG: %(message)s",
+        logging.INFO: "ℹ️ INFO: %(message)s",
+        logging.WARNING: "⚠️ WARNING: %(message)s",
+        logging.ERROR: "❌ ERROR: %(message)s",
+        logging.CRITICAL: "🔥 CRITICAL: %(message)s"
+    }
+    
+    def format(self, record):
+        log_fmt = self.FORMATS.get(record.levelno)
+        formatter = logging.Formatter(log_fmt)
+        return formatter.format(record)
+
+# Set up logger with custom formatter
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+
+# Only add handler if running in Lambda (not during module import)
+if len(logger.handlers) > 0:
+    # Remove default handler to avoid duplicate logs
+    logger.handlers.clear()
+    
+    # Add custom handler
+    handler = logging.StreamHandler()
+    handler.setFormatter(CustomFormatter())
+    logger.addHandler(handler)
+
 # Add this class at the top level of your file
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -20,6 +51,20 @@ class DecimalEncoder(json.JSONEncoder):
 
 # --- Helper Functions ---
 
+def log_request_summary(event):
+    """Log a concise summary of the incoming request"""
+    http_method = event.get("httpMethod", "UNKNOWN")
+    path = event.get("path", "UNKNOWN")
+    origin = event.get("headers", {}).get("Origin", "UNKNOWN")
+    game_id = event.get("pathParameters", {}).get("gameId") if event.get("pathParameters") else None
+    
+    summary = f"Request: {http_method} {path}"
+    if game_id:
+        summary += f" (gameId: {game_id})"
+    summary += f" | Origin: {origin}"
+    
+    logger.info(summary)
+
 def get_table():
     """
     Returns a DynamoDB Table object.
@@ -27,6 +72,9 @@ def get_table():
     """
     dynamodb_endpoint = os.environ.get("DATABASE_URL")  # e.g., http://localhost:8000 for DynamoDB Local
     table_name = os.environ.get("DYNAMODB_TABLE_NAME", "GameTable")
+
+    logger.info(f"Connecting to DynamoDB at endpoint: {dynamodb_endpoint or 'default'}")
+    logger.info(f"Using table name: {table_name}")
 
     if dynamodb_endpoint:
         dynamodb = boto3.resource("dynamodb", endpoint_url=dynamodb_endpoint)
@@ -203,21 +251,30 @@ def handle_options(event, headers):
 # --- Main Lambda Handler ---
 
 def lambda_handler(event, context):
+    start_time = time.time()
+    request_id = context.aws_request_id if context else "local"
+    
+    # Log concise request summary instead of full event
+    log_request_summary(event)
+    
     headers = build_cors_headers(event)
 
     # Handle CORS preflight requests
     if event.get("httpMethod") == "OPTIONS":
-        return handle_options(event, headers)
-
-    method = event.get("httpMethod")
-
-    if method == "GET":
-        return handle_get(event, headers)
-    elif method == "POST":
-        return handle_post(event, headers)
+        result = handle_options(event, headers)
+    elif event.get("httpMethod") == "GET":
+        result = handle_get(event, headers)
+    elif event.get("httpMethod") == "POST":
+        result = handle_post(event, headers)
     else:
-        return {
+        result = {
             "statusCode": 405,
             "headers": headers,
             "body": json.dumps({"message": "Method not allowed"})
         }
+    
+    # Log execution summary
+    execution_time = (time.time() - start_time) * 1000
+    logger.info(f"Request completed: status={result['statusCode']} | time={execution_time:.2f}ms | requestId={request_id}")
+    
+    return result

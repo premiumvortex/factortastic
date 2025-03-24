@@ -3,6 +3,7 @@ import os
 import boto3
 import logging
 from botocore.exceptions import ClientError
+import time
 
 # from aws_xray_sdk.core import patch_all
 
@@ -13,8 +14,36 @@ from botocore.exceptions import ClientError
 #     # X-Ray not available in local testing
 #     pass
 
+# Configure structured logging
+class CustomFormatter(logging.Formatter):
+    """Custom formatter that creates more readable, structured logs"""
+    
+    FORMATS = {
+        logging.DEBUG: "🔍 DEBUG: %(message)s",
+        logging.INFO: "ℹ️ INFO: %(message)s",
+        logging.WARNING: "⚠️ WARNING: %(message)s",
+        logging.ERROR: "❌ ERROR: %(message)s",
+        logging.CRITICAL: "🔥 CRITICAL: %(message)s"
+    }
+    
+    def format(self, record):
+        log_fmt = self.FORMATS.get(record.levelno)
+        formatter = logging.Formatter(log_fmt)
+        return formatter.format(record)
+
+# Set up logger with custom formatter
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
+
+# Only add handler if running in Lambda (not during module import)
+if len(logger.handlers) > 0:
+    # Remove default handler to avoid duplicate logs
+    logger.handlers.clear()
+    
+    # Add custom handler
+    handler = logging.StreamHandler()
+    handler.setFormatter(CustomFormatter())
+    logger.addHandler(handler)
 
 def get_table():
     """
@@ -168,9 +197,28 @@ def handle_get_deck(event, headers):
             "body": json.dumps({"message": "Error retrieving deck"})
         }
 
+def log_request_summary(event):
+    """Log a concise summary of the incoming request"""
+    http_method = event.get("httpMethod", "UNKNOWN")
+    path = event.get("path", "UNKNOWN")
+    origin = event.get("headers", {}).get("Origin", "UNKNOWN")
+    deck_id = event.get("pathParameters", {}).get("deckId") if event.get("pathParameters") else None
+    
+    summary = f"Request: {http_method} {path}"
+    if deck_id:
+        summary += f" (deckId: {deck_id})"
+    summary += f" | Origin: {origin}"
+    
+    logger.info(summary)
+
 def lambda_handler(event, context):
     """Main Lambda handler."""
-    logger.info(f"Received event: {json.dumps(event)}")
+    start_time = time.time()
+    request_id = context.aws_request_id if context else "local"
+    
+    # Log concise request summary instead of full event
+    log_request_summary(event)
+    
     headers = build_cors_headers(event)
 
     # Handle CORS preflight requests
@@ -189,9 +237,16 @@ def lambda_handler(event, context):
         }
 
     # Route the request based on path parameters
+    result = None
     if event.get("pathParameters") is None:
         # No path parameters means list all decks
-        return handle_list_decks(headers)
+        result = handle_list_decks(headers)
     else:
         # Path parameter present means get specific deck
-        return handle_get_deck(event, headers)
+        result = handle_get_deck(event, headers)
+    
+    # Log execution summary
+    execution_time = (time.time() - start_time) * 1000
+    logger.info(f"Request completed: status={result['statusCode']} | time={execution_time:.2f}ms | requestId={request_id}")
+    
+    return result
