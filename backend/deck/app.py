@@ -2,9 +2,12 @@ import json
 import os
 import boto3
 from botocore.exceptions import ClientError
+import sys
 
 # Import common logging utilities
 from common.logging_utils import setup_logging, log_request_summary, create_lambda_handler
+# Import common CORS utilities
+from common.cors_utils import build_cors_headers, handle_options_request
 
 # Set up logger
 logger = setup_logging()
@@ -36,22 +39,6 @@ def get_table():
     except Exception as e:
         logger.error(f"Failed to initialize DynamoDB table: {str(e)}")
         raise
-
-def build_cors_headers(event):
-    """Build and return CORS headers based on the ALLOWED_ORIGINS env variable."""
-    allowed_origins = os.getenv("ALLOWED_ORIGINS", "").split(",")
-    origin = event.get("headers", {}).get("Origin", "")
-    
-    if origin in allowed_origins:
-        allow_origin_header = origin
-    else:
-        allow_origin_header = "null"
-
-    return {
-        "Access-Control-Allow-Origin": allow_origin_header,
-        "Access-Control-Allow-Methods": "GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    }
 
 def handle_list_decks(headers):
     """Handle GET request to list all unique deck IDs."""
@@ -170,11 +157,14 @@ def _lambda_handler(event, context, logger):
 
     # Handle CORS preflight requests
     if event.get("httpMethod") == "OPTIONS":
-        return {
-            "statusCode": 204,
-            "headers": headers,
-            "body": ""
-        }
+        # Use the common CORS utility to handle OPTIONS requests
+        path = event.get("path", "")
+        path_params = event.get("pathParameters") or {}
+        
+        # Determine additional methods based on the path
+        additional_methods = ["GET"]
+        
+        return handle_options_request(event, additional_methods=additional_methods)
 
     if event.get("httpMethod") != "GET":
         return {

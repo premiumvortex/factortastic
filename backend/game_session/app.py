@@ -9,6 +9,7 @@ from botocore.exceptions import ClientError
 # Add the parent directory to sys.path to allow importing from common
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from common.logging_utils import setup_logging, log_request_summary, create_lambda_handler, DecimalEncoder
+from common.cors_utils import build_cors_headers, handle_options_request
 
 # Set up logger
 logger = setup_logging()
@@ -48,24 +49,6 @@ def get_table():
         dynamodb = boto3.resource("dynamodb")
 
     return dynamodb.Table(table_name)
-
-def build_cors_headers(event):
-    """
-    Build and return CORS headers based on the ALLOWED_ORIGINS env variable.
-    """
-    allowed_origins = os.getenv("ALLOWED_ORIGINS", "").split(",")
-    origin = event.get("headers", {}).get("Origin", "")
-    if origin in allowed_origins:
-        allow_origin_header = origin
-    else:
-        allow_origin_header = "null"
-
-    headers = {
-        "Access-Control-Allow-Origin": allow_origin_header,
-        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    }
-    return headers
 
 # --- Request Handlers ---
 
@@ -190,26 +173,15 @@ def handle_options(event, headers):
     path = event.get("path", "")
     path_params = event.get("pathParameters") or {}
     
-    # Determine allowed methods based on the path
+    # Determine additional methods based on the path
+    additional_methods = []
     if path.endswith("/games") and not path_params.get("gameId"):
-        allowed_methods = "GET, POST, OPTIONS"
+        additional_methods = ["GET", "POST"]
     elif path_params.get("gameId"):
-        allowed_methods = "GET, OPTIONS"
-    else:
-        allowed_methods = "OPTIONS"
+        additional_methods = ["GET"]
     
-    # Add the Allow header to indicate which methods are supported
-    response_headers = headers.copy()
-    response_headers["Access-Control-Allow-Methods"] = allowed_methods
-    response_headers["Allow"] = allowed_methods
-    
-    return {
-        "statusCode": 200,
-        "headers": response_headers,
-        "body": json.dumps({
-            "allowedMethods": allowed_methods.split(", ")
-        })
-    }
+    # Use the common CORS utility to handle the OPTIONS request
+    return handle_options_request(event, additional_methods=additional_methods)
 
 # --- Main Lambda Handler ---
 
