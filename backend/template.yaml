@@ -47,6 +47,17 @@ Parameters:
 
 
 Resources:
+  # Define a Lambda Layer for common code
+  CommonLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: common-utilities
+      Description: Common utilities for Lambda functions
+      ContentUri: common/
+      CompatibleRuntimes:
+        - python3.10
+      RetentionPolicy: Retain
+
   # Define the API Gateway explicitly to add CorsConfiguration
   ServerlessRestApi:
     Type: AWS::Serverless::Api
@@ -65,10 +76,18 @@ Resources:
         MaxAge: 600
 
   GameSessionFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: python3.10
+      BuildProperties:
+        CodeUri: ./
+        SourcesDirectory: .
+        IncludeFiles:
+          - game_session/**
+          - common/**
     Properties:
-      CodeUri: game_session/
-      Handler: app.lambda_handler
+      CodeUri: .
+      Handler: game_session/app.lambda_handler
       Runtime: python3.10
       Architectures:
       - x86_64
@@ -107,9 +126,17 @@ Resources:
 
   DeckFunction:
     Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: python3.10
+      BuildProperties:
+        CodeUri: ./
+        SourcesDirectory: .
+        IncludeFiles:
+          - deck/**
+          - common/**
     Properties:
-      CodeUri: deck/
-      Handler: app.lambda_handler
+      CodeUri: .
+      Handler: deck/app.lambda_handler
       Runtime: python3.10
       Architectures:
         - x86_64
