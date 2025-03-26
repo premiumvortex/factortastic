@@ -1,0 +1,245 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  backend
+
+  Sample SAM Template for backend
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+    Tracing: Active
+    # You can add LoggingConfig parameters such as the Logformat, Log Group, and SystemLogLevel or ApplicationLogLevel. Learn more here https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html#sam-function-loggingconfig.
+    LoggingConfig:
+      LogFormat: JSON
+    Environment:
+      Variables:
+        ALLOWED_ORIGINS: !Ref ALLOWED_ORIGINS
+  Api:
+    TracingEnabled: true
+
+Parameters:
+  ALLOWED_ORIGINS:
+    Type: String
+    Description: Comma-separated list of allowed origins
+  FRONTEND_URL:
+    Type: String
+    Description: URL of the frontend
+  STORYBOOK_URL:
+    Type: String
+    Description: URL of the Storybook
+  API_KEY:
+    Type: String
+    Description: API key for authentication
+  DATABASE_URL:
+    Type: String
+    Description: Database connection URL
+  DYNAMODB_TABLE_NAME:
+    Type: String
+    Description: Database main table
+  DECKS_S3_BUCKET_NAME:
+    Type: String
+    Description: S3 bucket containing deck data
+  DECKS_TABLE_NAME:
+    Type: String
+    Description: Name of the Decks table
+
+
+Resources:
+  # Define a Lambda Layer for common code
+  CommonLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: common-utilities
+      Description: Common utilities for Lambda functions
+      ContentUri: common/
+      CompatibleRuntimes:
+        - python3.10
+      RetentionPolicy: Retain
+
+  # Define the API Gateway explicitly to add CorsConfiguration
+  ServerlessRestApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Dev
+      CorsConfiguration:
+        AllowOrigins:
+          - !Ref ALLOWED_ORIGINS
+        AllowMethods:
+          - GET
+          - POST
+          - OPTIONS
+        AllowHeaders:
+          - Content-Type
+          - Authorization
+        MaxAge: 600
+
+  GameSessionFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: python3.10
+      BuildProperties:
+        CodeUri: ./
+        SourcesDirectory: .
+        IncludeFiles:
+          - game_session/**
+          - common/**
+    Properties:
+      CodeUri: .
+      Handler: game_session/app.lambda_handler
+      Runtime: python3.10
+      Architectures:
+      - x86_64
+      Environment:
+        Variables:
+#          ALLOWED_ORIGINS: !Ref ALLOWED_ORIGINS
+          FRONTEND_URL: !Ref FRONTEND_URL
+          STORYBOOK_URL: !Ref STORYBOOK_URL
+          API_KEY: !Ref API_KEY
+          DATABASE_URL: !Ref DATABASE_URL
+          DYNAMODB_TABLE_NAME: !Ref DYNAMODB_TABLE_NAME
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref DYNAMODB_TABLE_NAME
+      Events:
+        CreateGame:
+          Type: Api
+          Properties:
+            Path: /games
+            Method: post
+        GetGame:
+          Type: Api
+          Properties:
+            Path: /games/{gameId}
+            Method: get
+        OptionsGame:
+          Type: Api
+          Properties:
+            Path: /games
+            Method: options
+        OptionsGameWithId:
+          Type: Api
+          Properties:
+            Path: /games/{gameId}
+            Method: options
+
+  DeckFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: python3.10
+      BuildProperties:
+        CodeUri: ./
+        SourcesDirectory: .
+        IncludeFiles:
+          - deck/**
+          - common/**
+    Properties:
+      CodeUri: .
+      Handler: deck/app.lambda_handler
+      Runtime: python3.10
+      Architectures:
+        - x86_64
+      Environment:
+        Variables:
+          ALLOWED_ORIGINS: !Ref ALLOWED_ORIGINS
+          DECKS_S3_BUCKET_NAME: !Ref DECKS_S3_BUCKET_NAME
+          DATABASE_URL: !Ref DATABASE_URL
+          DECKS_TABLE_NAME: !Ref DECKS_TABLE_NAME
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref DECKS_S3_BUCKET_NAME
+        - DynamoDBCrudPolicy:
+            TableName: !Ref DECKS_TABLE_NAME
+      Events:
+        ListDecks:
+          Type: Api
+          Properties:
+            Path: /decks
+            Method: get
+        GetDeck:
+          Type: Api
+          Properties:
+            Path: /decks/{deckId}
+            Method: get
+
+  ApplicationResourceGroup:
+    Type: AWS::ResourceGroups::Group
+    Properties:
+      Name:
+        Fn::Sub: ApplicationInsights-SAM-${AWS::StackName}
+      ResourceQuery:
+        Type: CLOUDFORMATION_STACK_1_0
+  ApplicationInsightsMonitoring:
+    Type: AWS::ApplicationInsights::Application
+    Properties:
+      ResourceGroupName:
+        Ref: ApplicationResourceGroup
+      AutoConfigurationEnabled: 'true'
+
+  GameTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Ref DYNAMODB_TABLE_NAME
+      AttributeDefinitions:
+        - AttributeName: gameId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: gameId
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST  # On-demand capacity
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      Tags:
+        - Key: Environment
+          Value: !Ref AWS::StackName
+
+  DecksTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Ref DECKS_TABLE_NAME
+      AttributeDefinitions:
+        - AttributeName: deckId
+          AttributeType: S
+        - AttributeName: order
+          AttributeType: N
+      KeySchema:
+        - AttributeName: deckId
+          KeyType: HASH
+        - AttributeName: order
+          KeyType: RANGE
+      BillingMode: PAY_PER_REQUEST
+      PointInTimeRecoverySpecification:
+        PointInTimeRecoveryEnabled: true
+      Tags:
+        - Key: Environment
+          Value: !Ref AWS::StackName
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  GameSessionApi:
+    Description: API Gateway endpoint URL for Prod stage for Game Session function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/games/"
+  GameSessionFunction:
+    Description: Game Session Lambda Function ARN
+    Value: !GetAtt GameSessionFunction.Arn
+  GameSessionFunctionIamRole:
+    Description: Implicit IAM Role created for Game Session function
+    Value: !GetAtt GameSessionFunctionRole.Arn
+  GameTableName:
+    Description: "Name of the DynamoDB table"
+    Value: !Ref GameTable
+  GameTableArn:
+    Description: "ARN of the DynamoDB table"
+    Value: !GetAtt GameTable.Arn
+  DecksTableName:
+    Description: "Name of the Decks DynamoDB table"
+    Value: !Ref DecksTable
+  DecksTableArn:
+    Description: "ARN of the Decks DynamoDB table"
+    Value: !GetAtt DecksTable.Arn

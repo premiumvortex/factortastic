@@ -1,14 +1,15 @@
-version: '3.8'
+version: '3'
 services:
   frontend:
     build: ./frontend
     ports:
-    - "3000:3000"
+      - "3000:3000"
     volumes:
       - ./frontend:/app
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
+
   storybook:
     build:
       context: ./frontend
@@ -21,41 +22,43 @@ services:
     environment:
       - NODE_ENV=development
 
-  db:
-    image: postgres:latest
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=mydatabase
-      - POSTGRES_USER=myuser
-      - POSTGRES_PASSWORD=mypassword
-
-  backend:
-    build: ./backend
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./backend:/code
+  dynamodb-local:
+    image: amazon/dynamodb-local
+    container_name: dynamodb-local
     ports:
       - "8000:8000"
+    command: "-jar DynamoDBLocal.jar -sharedDb -inMemory"
+
+  dynamodb-healthcheck:
+    image: amazon/aws-cli
     depends_on:
-      - db
+      - dynamodb-local
     environment:
-      - DATABASE_URL=postgres://myuser:mypassword@db/mydatabase
-      - DJANGO_SETTINGS_MODULE=myproject.settings
-      - PYTHONUNBUFFERED=1
-      - PYTHONDONTWRITEBYTECODE=1
-      - DJANGO_ALLOWED_HOSTS=0.0.0.0,localhost
+      - AWS_ACCESS_KEY_ID=dummy
+      - AWS_SECRET_ACCESS_KEY=dummy
+      - AWS_DEFAULT_REGION=us-east-1
+    entrypoint: >
+      /bin/sh -c "
+      while ! aws dynamodb list-tables --endpoint-url http://dynamodb-local:8000 2>/dev/null; do
+        echo 'Waiting for DynamoDB to be ready...';
+        sleep 1;
+      done;
+      echo 'DynamoDB is ready!';
+      exit 0;
+      "
 
-volumes:
-  postgres_data:
-
-#  OLD (Node.js)
-#  backend:
-#    build: ./backend
-#    ports:
-#      - "3001:3001"
-#    volumes:
-#      - ./backend:/app
-#      - /app/node_modules
-#    environment:
-#      - CHOKIDAR_USEPOLLING=true
+  dynamodb-init:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.init
+    environment:
+      - AWS_ACCESS_KEY_ID=dummy
+      - AWS_SECRET_ACCESS_KEY=dummy
+      - AWS_DEFAULT_REGION=us-east-1
+      - DYNAMODB_TABLE_NAME=GameTable
+      - DECKS_TABLE_NAME=DecksTable
+      - DATABASE_URL=http://dynamodb-local:8000
+    depends_on:
+      dynamodb-healthcheck:
+        condition: service_completed_successfully
+    restart: "on-failure:3"

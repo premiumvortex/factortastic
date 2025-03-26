@@ -1,0 +1,25 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+COPY scripts/create_local_table.py .
+COPY data/ ./data/
+
+# Install AWS CLI and other dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    curl \
+    unzip && \
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install && \
+    pip install boto3 && \
+    rm -rf /var/lib/apt/lists/* awscliv2.zip aws
+
+# Configure AWS CLI with dummy credentials
+RUN aws configure set aws_access_key_id dummy && \
+    aws configure set aws_secret_access_key dummy && \
+    aws configure set region us-east-1
+
+CMD ["python", "create_local_table.py"] 

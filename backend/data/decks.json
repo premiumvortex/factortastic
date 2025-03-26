@@ -1,0 +1,14 @@
+{
+  "Decks": [
+    { "deckId": "red", "order": 1, "factor1": 2, "factor2": 2 },
+    { "deckId": "red", "order": 2, "factor1": 2, "factor2": 3 },
+    { "deckId": "red", "order": 3, "factor1": 2, "factor2": 4 },
+    { "deckId": "red", "order": 4, "factor1": 2, "factor2": 12 },
+    { "deckId": "red", "order": 5, "factor1": 3, "factor2": 8 },
+    { "deckId": "red", "order": 6, "factor1": 4, "factor2": 6 },
+    { "deckId": "blue", "order": 1, "factor1": 12, "factor2": 3 },
+    { "deckId": "blue", "order": 2, "factor1": 6, "factor2": 6 },
+    { "deckId": "orange", "order": 1, "factor1": 2, "factor2": 12 },
+    { "deckId": "orange", "order": 2, "factor1": 3, "factor2": 8 }
+  ]
+} 

@@ -29,7 +29,7 @@ export default function ContactUsPage({ changePopUp }) {
   // Convert formData to JSON
   const jsonFormData = JSON.stringify(formData);
 
-  // You can do further processing here, such as sending the form data to backend
+  // You can do further processing here, such as sending the form data to backend_
 
 
   // Resets the form after the submition is handled

@@ -13,7 +13,7 @@ Factortastic is an engaging and educational card game designed for children. It 
 ## Project Structure
 The project is divided into two main directories:
 
-- **backend**: Contains the server-side code written in Node.js. It includes a Dockerfile for containerization, package management files, and the main server script.
+- **backend**: Contains the server-side code written in Python 3.10 (Fast-API) and AWS SAM.
 - **frontend**: Houses the client-side code. This includes the user interface, written in HTML/CSS/JS, along with configuration files for Vite and a dedicated Dockerfile.
 
 ## Getting Started
@@ -22,6 +22,7 @@ The project is divided into two main directories:
 - Docker
 - Node.js
 - npm (Node Package Manager)
+- AWS SAM
 
 ### Installation
 1. Clone the repository:
@@ -44,3 +45,33 @@ After successfully building and running the containers, you can access the Facto
 3. Commit your Changes (git commit -m 'Add some AmazingFeature')
 4. Push to the Branch (git push origin feature/AmazingFeature)
 5. Open a Pull Request
+
+### Run Backend Locally:
+```
+cd backend
+sam build
+sam validate
+sam local start-api --env-vars .env.json --port 5000
+```
+
+### HelpFul Commands for Docker:
+```
+docker-compose down
+docker container prune -f
+docker image prune -a -f
+docker network prune -f
+docker-compose down --volumes --remove-orphans
+docker-compose build --no-cache
+```
+
+### HelpFul Commands for SAM (Backend):
+```
+sam build
+sam local invoke
+sam local start-api
+```
+
+### Dynamo DB Browser Visualizer:
+```
+dynamodb-admin --dynamo-endpoint=http://localhost:8000
+```
