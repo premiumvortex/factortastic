@@ -1,11 +1,29 @@
 import React from "react";
 import { within, userEvent } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ChooseADeckPage } from "./ChooseADeckPage";
+
+// Create a new QueryClient for each story
+const createQueryClient = () => new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 export default {
     title: 'ChooseADeckPage',
     component: ChooseADeckPage,
+    decorators: [
+        (Story) => (
+            <QueryClientProvider client={createQueryClient()}>
+                <Story />
+            </QueryClientProvider>
+        ),
+    ],
 };
 
 const Template = (args) => <ChooseADeckPage {...args} />;
