@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import { useDecks } from '../../../../hooks/useDeck';
 import { DeckButton } from '../DeckButton/DeckButton.jsx';
+import { CircularProgress, Alert, Box, Typography, Skeleton } from '@mui/material';
 
 import './DeckPageContent.css';
 import '../../../../index.css';
@@ -69,8 +70,58 @@ export const DeckPageContent = ({ gameSession }) => {
     };
 
     // Handle loading and error states
-    if (isLoading) return <div className="loading-state">Loading decks...</div>;
-    if (error) return <div className="error-state">Error loading decks: {error.message}</div>;
+    if (isLoading) return (
+        <div>
+            <h1 className="page-title" style={{color: 'var(--cyan)'}}>Choose a Deck</h1>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: 4 }}>
+                <CircularProgress size={50} thickness={4} sx={{ color: 'var(--cyan)' }} />
+                <Typography variant="h6" sx={{ mt: 2, color: 'var(--white)' }}>
+                    Loading your decks...
+                </Typography>
+            </Box>
+            
+            <div className="buttons-grid">
+                <Grid container spacing={{ xs: 3, md: 6, lg: 10 }}>
+                    {[...Array(numberOfDecks)].map((_, index) => (
+                        <Grid item key={index} xs={3} className="grid-item">
+                            <Skeleton 
+                                variant="rounded" 
+                                width="100%" 
+                                height={120} 
+                                animation="wave"
+                                sx={{ bgcolor: 'rgba(255, 255, 255, 0.1)' }}
+                            />
+                        </Grid>
+                    ))}
+                </Grid>
+            </div>
+        </div>
+    );
+    
+    if (error) return (
+        <div>
+            <h1 className="page-title" style={{color: 'var(--cyan)'}}>Choose a Deck</h1>
+            <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
+                <Alert 
+                    severity="error" 
+                    variant="outlined"
+                    sx={{ 
+                        maxWidth: '80%', 
+                        bgcolor: 'rgba(211, 47, 47, 0.1)', 
+                        color: 'var(--white)',
+                        border: '1px solid rgba(211, 47, 47, 0.5)'
+                    }}
+                >
+                    <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                        Error loading decks
+                    </Typography>
+                    <Typography variant="body2">
+                        {error.message || "Please try again later"}
+                    </Typography>
+                </Alert>
+            </Box>
+        </div>
+    );
 
     return (
         <div>
