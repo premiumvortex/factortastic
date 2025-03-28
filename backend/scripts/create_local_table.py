@@ -73,11 +73,11 @@ def initialize_decks_table(dynamodb, table_name):
     """Initialize the Decks table with its schema."""
     key_schema = [
         {'AttributeName': 'deckId', 'KeyType': 'HASH'},
-        {'AttributeName': 'order', 'KeyType': 'RANGE'}
+        {'AttributeName': 'deckOrder', 'KeyType': 'RANGE'}
     ]
     attribute_definitions = [
         {'AttributeName': 'deckId', 'AttributeType': 'S'},
-        {'AttributeName': 'order', 'AttributeType': 'N'}
+        {'AttributeName': 'deckOrder', 'AttributeType': 'N'}
     ]
     return create_table(dynamodb, table_name, key_schema, attribute_definitions)
 
@@ -97,9 +97,10 @@ def populate_decks_table(table, data):
     """Populate the Decks table with the provided data."""
     try:
         with table.batch_writer() as batch:
-            for deck in data['Decks']:
+            for deck in data['decks']:
+                # Ensure deck is properly formatted for DynamoDB
                 batch.put_item(Item=deck)
-        logger.info(f"Successfully loaded deck data into {table.table_name}")
+        logger.info(f"Successfully loaded {len(data['decks'])} decks into {table.table_name}")
     except Exception as e:
         logger.error(f"Error loading deck data: {str(e)}")
         raise

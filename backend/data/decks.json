@@ -1,14 +1,95 @@
 {
-  "Decks": [
-    { "deckId": "red", "order": 1, "factor1": 2, "factor2": 2 },
-    { "deckId": "red", "order": 2, "factor1": 2, "factor2": 3 },
-    { "deckId": "red", "order": 3, "factor1": 2, "factor2": 4 },
-    { "deckId": "red", "order": 4, "factor1": 2, "factor2": 12 },
-    { "deckId": "red", "order": 5, "factor1": 3, "factor2": 8 },
-    { "deckId": "red", "order": 6, "factor1": 4, "factor2": 6 },
-    { "deckId": "blue", "order": 1, "factor1": 12, "factor2": 3 },
-    { "deckId": "blue", "order": 2, "factor1": 6, "factor2": 6 },
-    { "deckId": "orange", "order": 1, "factor1": 2, "factor2": 12 },
-    { "deckId": "orange", "order": 2, "factor1": 3, "factor2": 8 }
+  "decks": [
+    {
+      "deckId": "red",
+      "deckOrder": 1,
+      "deckColor": "red",
+      "cards": {
+        "regular": [
+          { "cardOrder": 1, "factor1": 2, "factor2": 2 },
+          { "cardOrder": 3, "factor1": 2, "factor2": 4 },
+          { "cardOrder": 5, "factor1": 3, "factor2": 8 }
+        ],
+        "challenge": [
+          { "cardOrder": 2, "factor1": 2, "factor2": 3 },
+          { "cardOrder": 4, "factor1": 2, "factor2": 12 },
+          { "cardOrder": 6, "factor1": 4, "factor2": 6 }
+        ]
+      }
+    },
+    {
+      "deckId": "purple",
+      "deckOrder": 2,
+      "deckColor": "purple",
+      "cards": {
+        "regular": [
+          { "cardOrder": 1, "factor1": 12, "factor2": 3 }
+        ],
+        "challenge": [
+          { "cardOrder": 2, "factor1": 6, "factor2": 6 }
+        ]
+      }
+    },
+    {
+      "deckId": "green",
+      "deckOrder": 3,
+      "deckColor": "green",
+      "cards": {
+        "regular": [
+          { "cardOrder": 1, "factor1": 2, "factor2": 12 }
+        ],
+        "challenge": [
+          { "cardOrder": 2, "factor1": 3, "factor2": 8 }
+        ]
+      }
+    },
+    {
+      "deckId": "aqua",
+      "deckOrder": 4,
+      "deckColor": "aqua",
+      "cards": {
+        "regular": [
+          { "cardOrder": 1, "factor1": 2, "factor2": 12 }
+        ],
+        "challenge": [
+          { "cardOrder": 2, "factor1": 3, "factor2": 8 }
+        ]
+      }
+    },
+    {
+      "deckId": "orange",
+      "deckOrder": 5,
+      "deckColor": "orange",
+      "cards": {
+        "regular": [
+          { "cardOrder": 1, "factor1": 2, "factor2": 12 }
+        ],
+        "challenge": [
+          { "cardOrder": 2, "factor1": 3, "factor2": 8 }
+        ]
+      }
+    },
+    {
+      "deckId": "yellow",
+      "deckOrder": 6,
+      "deckColor": "yellow",
+      "cards": {
+        "regular": [],
+        "challenge": [
+          { "cardOrder": 2, "factor1": 3, "factor2": 8 }
+        ]
+      }
+    },
+    {
+      "deckId": "gamut",
+      "deckOrder": 7,
+      "deckColor": "gamut",
+      "cards": {
+        "regular": [],
+        "challenge": [
+          { "cardOrder": 2, "factor1": 3, "factor2": 8 }
+        ]
+      }
+    }
   ]
-} 
+}
