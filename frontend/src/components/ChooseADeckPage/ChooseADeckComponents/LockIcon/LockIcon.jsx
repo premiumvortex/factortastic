@@ -10,23 +10,32 @@ import '../../../../index.css';
  */
 
 export const LockIcon = ({ color }) => {
+    // Check if the color is a gradient by looking for "gradient" or "gamut" in the name
+    const isGradient = color.includes('gradient') || color.includes('gamut');
+    
+    // Extract the gradient name from var(--name) format if it's a gradient
+    const gradientName = isGradient ? color.replace('var(--', '').replace(')', '') : '';
+    
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="41%"
             viewBox="0 0 54 68"
             style={{overflow: 'visible'}}
-            data-testid="lock-icon"  // Add data-testid here
+            data-testid="lock-icon"
         >
             <defs>
-                <linearGradient id="lock-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style={{ stopColor: 'var(--red)' }} />
-                    <stop offset="20%" style={{ stopColor: 'var(--blue)' }} />
-                    <stop offset="40%" style={{ stopColor: 'var(--green)' }} />
-                    <stop offset="60%" style={{ stopColor: 'var(--aqua)' }} />
-                    <stop offset="80%" style={{ stopColor: 'var(--orange)' }} />
-                    <stop offset="100%" style={{ stopColor: 'var(--yellow)' }} />
-                </linearGradient>
+                {/* Define a dynamic gradient ID based on the gradient name */}
+                {isGradient && (
+                    <linearGradient id={`lock-${gradientName}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style={{ stopColor: 'var(--red)' }} />
+                        <stop offset="20%" style={{ stopColor: 'var(--blue)' }} />
+                        <stop offset="40%" style={{ stopColor: 'var(--green)' }} />
+                        <stop offset="60%" style={{ stopColor: 'var(--aqua)' }} />
+                        <stop offset="80%" style={{ stopColor: 'var(--orange)' }} />
+                        <stop offset="100%" style={{ stopColor: 'var(--yellow)' }} />
+                    </linearGradient>
+                )}
 
                 <filter id="drop-shadow">
                     <feDropShadow dx="0" dy="0" stdDeviation="4" floodColor='var(--black)' />
@@ -45,7 +54,7 @@ export const LockIcon = ({ color }) => {
                 41.781 24.2444 41.1046 25.5567 40.8193C26.5314 40.6038 27.5421 40.6098 28.5142 40.837C29.4863 41.0641 
                 30.395 41.5065 31.1733 42.1316C31.9517 42.7567 32.5797 43.5485 33.0113 44.4487C33.4428 45.3489 33.6668 46.3344 
                 33.6667 47.3327C33.6648 48.4985 33.3557 49.6432 32.7705 50.6515C32.1853 51.6598 31.3447 52.496 30.3334 53.076Z" 
-                fill={color === 'var(--gradient)' ? 'url(#lock-gradient)' : color}  
+                fill={isGradient ? `url(#lock-${gradientName})` : color}  
                 filter="url(#drop-shadow)"
             />
         </svg>

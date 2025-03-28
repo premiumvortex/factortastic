@@ -15,13 +15,15 @@
   /* Deck Colors */
   --red: rgb(182, 47, 50);
   --blue: rgb(78, 65, 188);
+  --purple: rgb(78, 65, 188);
   --green: rgb(129, 184, 80);
   --aqua: rgb(150, 252, 253);
   --orange: rgb(191, 108, 47);
   --yellow: rgb(233, 204, 71);
   --gray: rgb(194, 194, 194);
 
-  --gradient: linear-gradient(90deg, var(--red) 0%, var(--blue) 20%, var(--green) 40%, var(--aqua) 60%, var(--orange) 80%, var(--yellow) 100%);
+  --gradient: linear-gradient(90deg, var(--red) 0%, var(--purple) 20%, var(--green) 40%, var(--aqua) 60%, var(--orange) 80%, var(--yellow) 100%);
+  --gamut: linear-gradient(90deg, var(--red) 0%, var(--purple) 20%, var(--green) 40%, var(--aqua) 60%, var(--orange) 80%, var(--yellow) 100%);
 
   /* Shadows */
   --drop-shadow: 3px 13px 6px 3px rgba(0, 0, 0, 0.25);
